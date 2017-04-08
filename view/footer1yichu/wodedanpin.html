@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=640,user-scalable=no">
+    <title>我的单品</title>
+    <link rel="stylesheet" href="../../css/mui.min.css">
+    <link rel="stylesheet" href="../../css/style_header.css" />
+    <link rel="stylesheet" href="../../css/style_wodedanpin.css">
+    <script src="../../js/jquery-2.1.1.min.js"></script>
+    <style>
+    body{
+        background:#0d0d12 url('../../img/BG@2X.png') no-repeat;
+    }
+        
+    </style>
+</head>
+
+<body>
+    <!-- 一级页面 -->
+    <div class="pageone">
+<div class="header">
+    <div class="clearfix contain mobile-inner-header">
+        <div class="back">
+              <a href="javascript:void(0)" onclick="closeWin();">
+                <img src="../../img/return@2x.png" alt="">返回
+            </a>
+        </div>
+        <div class="title">我的单品</div>
+        <div class="selBtn">
+            <img  class="selection" src="../../img/tj2@2x.png"/>
+            <div class="select_nav">
+       
+                <ul>
+                    <li>搜索</li>
+                    <li class="add">添加</li>
+                    <li>批量</li>
+                </ul>                
+            </div>
+        </div>        
+    </div>
+</div>
+
+<div class="main">
+    <div class="top_yichu">
+        <div class="border_rg">
+            <img class="img_bg sz" src="../../img/SZ@1X.png" data-type="0" alt="png"/>
+            <img class="top_cil" src="../../img/D@2X.png" alt="png"/>
+            <a class="tp_a userProductCount" ></a>
+        </div>
+        <div class="border_rg">
+            <img class="img_bg" src="../../img/XZ@1X.png" data-type="1"/>
+            <img class="top_cil" src="../../img/D@2X.png" alt="png"/>
+            <a class="tp_a userProductCount"></a>
+        </div>
+        <div>
+            
+            <img class="img_bg" src="../../img/YT@2X.png" alt="png" data-type="2"/>
+            <a class="tp_a userProductCount"></a>
+        </div>
+    </div>
+    <div class="bottom_yichu">
+        <div class="border_rg">
+            <img class="img_bg mag_bt" src="../../img/WJ@1X.png" alt="png" data-type="3"/>
+            <img class="bot_cil" src="../../img/D@2X.png" alt="png"/>
+            <a class="bt_a userProductCount"></a>
+        </div>
+        <div class="border_rg">
+            <img class="img_bg mag_bt" src="../../img/SP@1X.png" data-type="4"/>
+            <img class="bot_cil" src="../../img/D@2X.png" alt="png"/>
+            <a class="bt_a userProductCount"></a>
+        </div>
+        <div class="border_rg">
+            <img class="img_bg mag_bt" src="../../img/X@1X.png" data-type="5"/>
+            <img class="bot_cil" src="../../img/D@2X.png" alt="png"/>
+            <a class="bt_a userProductCount"></a>
+        </div>
+        <div class="border_rg" id="last_border_rg">
+            <img class="img_bg mag_bt" src="../../img/B@1X.png" alt="png" data-type="6"/>
+            <a class="bt_a userProductCount"></a>
+        </div>
+    </div>
+</div>
+</div>
+<script src="../../js/mui.js"></script>
+<script src="../../js/base.fontsize.js"></script>
+<script src="../../js/lss_global.js"></script>
+    
+<script>
+LSShang.ready(function() {
+/*-------------------- 打开单品二级页面 --------------------*/
+    $('.img_bg').click(function(){
+        var typeId = $(this).attr('data-type-id');
+        var type = $(this).attr('data-type');
+        LSShang.removelocStorage('toMatch');
+        openNewWin('danpin.html','danpin.html'); 
+        LSShang.setlocStorages("danpinCategory",
+                                    {
+                                    'CategoryId':typeId,
+                                    'type':type
+                                    }
+                                );
+    })
+/*-------------------- header下拉框 --------------------*/
+    $('.select_nav').on('click',function(){
+        $(this).slideUp('fast');
+    })
+    $('.add').on('click',function(){
+        $(".mobile-inner-nav").slideUp('fast');
+        //openNewWin('add_danpin','adddanpin.html',10) 
+        openNewWin('adddanpin.html');
+    })
+    $(".selection").on('click',function(){
+        $(".select_nav").slideToggle('fast');
+    });
+/*-------------------- 渲染数据 --------------------*/  
+
+	getData();
+
+    
+    function getData() {
+        lssAjax.postJson({
+            url:host + '/api/properties/category/getlist',
+            data:{
+                 MemberId:userId,
+                 U_Num:userNum
+                },
+            success:function(data){
+               if( data.ResultType == 3 ){
+                   $.each(data.Data,function(i,item){
+                       if(item.ParentId == 0){
+                           $('.img_bg').eq(i).attr('data-type-id',item.CategoryId)
+                           $('.userProductCount').eq(i).html('<p>'+item.CategoryName+'</p><span class="count"></span>')
+                       }
+                   })
+               } 
+            }, 
+        })
+        lssAjax.postJson({
+            url:host + '/api/products/membersingleproduct/getlist',
+            data:{
+                 MemberId:userId,
+                 U_Num:userNum
+                },
+            success:function(data){
+               console.log(data)
+               if( data.ResultType == 3 ){
+                   $.each(data.List,function(i,item){
+                       $('.userProductCount').eq(i).find('.count').html(item.Count)
+                   })
+               } 
+            }, 
+        })
+    }
+
+})    
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

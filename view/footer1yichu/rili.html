@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=640,user-scalable=no">
+		<title>穿衣日历</title>
+		<link rel="stylesheet" href="../../css/style_header.css" />
+		<link rel="stylesheet" href="../../css/rili.css" />
+		<script src="../../js/jquery-2.1.1.min.js"></script>
+		<script src="../../js/mui.js"></script>
+		<script src="../../js/base.fontsize.js"></script>
+		<script src="../../js/lss_global.js"></script>
+		<script src="../../js/rili.js"></script>
+
+	</head>
+
+	<body>
+		<div class="pagetwo">
+			<div class="header">
+				<div class="contain">
+					<div class="back">
+						<a href="javascript:void(0);" onclick="closeWin();"><img src="../../img/return@2x.png" alt="">返回</a>
+					</div>
+					<div class="title">穿衣日历</div>
+					<div class="ok"></div>
+				</div>
+			</div>
+			<div id="Demo">
+				<div id="CalendarMain">
+					<div id="title">
+						<a class="selectBtn month" href="javascript:" onClick="CalendarHandler.CalculateLastMonthDays();"><img src="../../img/left@2x.png" /></a>
+						<a class="selectBtn selectYear" href="javascript:" onClick="CalendarHandler.CreateSelectYear(CalendarHandler.showYearStart);">2014年</a>
+						<a class="selectBtn selectMonth" onClick="CalendarHandler.CreateSelectMonth()">6月</a>
+						<a class="selectBtn nextMonth" href="javascript:" onClick="CalendarHandler.CalculateNextMonthDays();"><img src="../../img/right@2x.png" /></a>
+						<a class="selectBtn currentDay" href="javascript:" onClick="CalendarHandler.CreateCurrentCalendar(0,0,0);">今天</a>
+					</div>
+					<div id="context">
+						<div class="week">
+							<h3> 一 </h3>
+							<h3> 二 </h3>
+							<h3> 三 </h3>
+							<h3> 四 </h3>
+							<h3> 五 </h3>
+							<h3> 六 </h3>
+							<h3> 日 </h3>
+						</div>
+						<div id="center">
+							<div id="centerMain">
+								<div id="selectYearDiv"></div>
+								<div id="centerCalendarMain">
+									<div id="Container"></div>
+								</div>
+								<div id="selectMonthDiv"></div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="addclose" style="display: none;height:150px;background: #888;opacity: .3;position: relative;">
+			</div>
+		</div>
+	</body>
+
+</html>

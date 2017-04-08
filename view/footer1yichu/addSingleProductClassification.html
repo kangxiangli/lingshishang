@@ -1,0 +1,95 @@
+	<!DOCTYPE html>
+	<html lang="zh-cn">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=640,user-scalable=no">
+		<title>创建单品</title>
+		<link rel="stylesheet" href="../../css/style_header.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/addSingleProductClassification.css"/>
+	</head>
+	<body>
+		<div class="header">
+            <div class="contain">
+              <div class="back" onclick="closeWin();">
+                  <a href=""><img src="../../img/nav_return@2x.png" alt=""><span>返回</span></a></div>
+              <div class="title">分类</div> 
+              <div class=""></div> 
+            </div>
+        </div>
+        <div class="allClass">
+            <!-- <div class="oneClass">
+                <div class="parentClass">上装</div>
+                <ul class="sonClass">
+                    <li><img class="classImage" src="img/01.png" /><span>外套</span><img class="right" src="img/duigou_pre@2x.png" /></li>
+                    <li class="active"><img class="classImage" src="img/01.png" /><span>外套</span><img class="right" src="img/duigou_pre@2x.png" /></li>
+                </ul>
+            </div> -->
+        </div>
+	</body>
+	
+
+
+<script src="../../js/jquery-2.1.1.min.js"></script>
+<script src="../../js/mui.js"></script>
+<script src="../../js/base.fontsize.js"></script>
+<script src="../../js/lss_global.js"></script>
+<script>
+LSShang.ready(function(){
+    lssAjax.postJson({
+        url:host + '/api/properties/category/getlist',
+        data:{
+            MemberId:userId,
+            U_Num:userNum
+        },
+        success:function(data){
+            //console.log(data)
+            var arr = data.Data;
+            var classArr = [];//分类数组
+            var sonArr = [];
+            $(arr).each(function(i,item){
+                if(item.ParentId == 0){
+                    classArr.push({pid:item.CategoryId,pname:item.CategoryName,pIcon:item.IconPath,parentId:item.ParentId})
+                }else{
+                    sonArr.push(item)
+                }
+            })
+            for(var k=0; k<classArr.length; k++){
+                var son = [];
+                for(var i=0; i<sonArr.length; i++){
+                    if(sonArr[i].ParentId == classArr[k].pid){
+                        son.push(sonArr[i]);
+                    }
+                }
+                classArr[k].sonClass = son;
+            }
+
+            var html = '';
+            $(classArr).each(function(i,item){
+                html +='<div class="oneClass" data-type-id='+item.CategoryId+'><div class="parentClass">'+ item.pname +'</div><ul class="sonClass">' 
+                console.log(item.sonClass.length)
+                $(item.sonClass).each(function(k,sitem){
+                    console.log(k)
+                     html+= '<li data-type-id='+ sitem.CategoryId +'><img class="classImage" src='+ sitem.IconPath +' /><span>'+ sitem.CategoryName +'</span><img class="right" src="../../img/duigou_pre@2x.png" /></li>'               
+                })
+               html+= '</ul><div></div>'
+            })
+            $('.allClass').append(html);       
+        }
+    })
+    
+
+    $('.allClass').on('click','.sonClass li',function(){
+        $('.sonClass li .right').hide();
+        $(this).find('.right').show();
+        var name = $(this).find('span').text();
+        var id = $(this).attr('data-type-id');
+        //保存选则类型到本地
+        LSShang.setlocStorages('addSingleProductParm',{'classificationName':name,'classificationId':id})         
+        //uexWindow.evaluateScript("add_danpin", 0,'setClassification()')
+        Webview.webViewJS('adddanpin.html','setClassification()')
+    })
+})
+</script>
+
+
+</html>

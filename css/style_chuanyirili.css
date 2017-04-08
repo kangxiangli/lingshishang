@@ -1,0 +1,215 @@
+@charset 'utf-8';
+h1,h2,h3,p,ul,ol,form,fieldset,figure {margin: 0;padding: 0;}
+div,figure,img,input,button {box-sizing: border-box;}
+body,html{margin: 0;padding: 0;overflow: hidden; height: 100%;background:url('../img/erjiyemian.png')no-repeat;width:100%;background-size:cover;font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei UI", "Microsoft YaHei", SimHei, "\5B8B\4F53", simsun, sans-serif;}
+ul,ol{list-style: outside none none;}
+.pageone{width: 100%;height: 100%;position: relative}
+a{
+    text-decoration: none;
+    color:#FFF;
+}
+/*header*/
+
+/*.header{height: 7%;border-bottom:1px solid silver;width: 93%;margin:0 auto;position: relative;}
+.header .contain{height: 100%;line-height: 100%;width: 100%;}
+.header .contain .back a{color: #fff;position: absolute;top:53%;left: 3%;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+.header .contain .back a img{display: inline;height:12px;padding-right: 2px;}
+.header .contain .location a{ color: #fff;position: absolute;top: 50%;left:50%;margin-left: -28px;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+.header .contain a{position: absolute;right:12px;bottom: 4px;-webkit-tap-highlight-color:rgba(0,0,0,0);}*/
+/*.header .contain .back,.header .contain .ok{
+    width: 20%;
+}*/
+.title #s{
+    display: block;
+    width: 10rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#rlii_date img{width: 1rem;}
+.dapeitu a{
+    display: block
+}
+.dapeitu img{
+    width: 100%;
+}
+/*日历*/
+/*.rili{height:100%;width:100%;overflow: scroll;color: #FFF}
+.rili .riqi{height:250%; width:2rem;float: left;border-right:1px solid silver;}
+.rili .tianqi{height:100%;width:12.5rem;float: left;position: relative;}
+.rili .tianqi .day{height:15%;width:33%;border-bottom:1px solid silver;position: relative;}
+.rili .tianqi .day  img{position: absolute;left: 0;bottom: -10%;width: 55%; height: 65%;}
+.rili .tianqi .day .weathers{position: absolute;right:0;bottom:0;}
+.rili .tianqi .day  #date{color: #fff;position: absolute;left:-30px;bottom: -21%;}
+.rili .tianqi .day .weathers .temperature{color: #fff}
+.rili .tianqi .add{position: absolute;left: 38%;top:3%;width: 20%;height: 20%;opacity: .7}
+.rili .tianqi .dapeitu{padding: 8%;height: 64%}
+.rili .tianqi .dapeitu ul li{float: left;width: 25%}
+.rili .tianqi .dapeitu ul li a{padding-left:-25%;}
+.today,.tommrow{position: relative;}
+.weathers_today,.weathers_tommrow{position: absolute;top:63%;left:50%;color:#fff;}*/
+
+.timeAxis{
+    width: 93%;
+    height:90%;
+    overflow-y:scroll;
+    margin: 0 auto;
+    color:#FFF;
+    font-size: .6rem;
+}
+
+.timeAxis .point .left{
+    width:2.5rem;
+    padding:2rem .5rem 0 0;
+    float: left;
+}
+.timeAxis .point .right{
+    width:11rem;
+    float: left;
+    min-height:5rem;
+    border-left: 1px solid #FFF;
+    position: relative;
+    padding-bottom: 1rem;
+}
+.timeAxis .point .day,.timeAxis .point .mouth{
+    text-align: right;
+}
+.timeAxis .point .day{
+    font-size: 1.2rem;
+}
+.timeAxis .Weather{
+    font-size:.6rem;
+    width: 5rem;
+    height:3.5rem;
+    border-bottom: 1px solid #FFF;
+    position: relative;
+}
+.watherImg {
+    width: 2rem;  
+    margin-left: .2rem;
+    display: block;
+}
+img[src=""]{
+opacity: 0;
+}
+.wathercityname{
+    position: absolute;
+    bottom: 2.2rem;
+    right: 0;
+}
+.Weathertop{
+    position: absolute;
+    bottom: 1.2rem;
+    right: 0;
+}
+.Weatherbottom{
+    position: absolute;
+    bottom: .2rem;
+    right: 0;
+}
+.timeAxis .point .dapintu{
+    margin:.5rem;
+    width: 9.5rem;
+    height: 10rem;
+    overflow: hidden;
+}
+.timeAxis .point .dapintu img{
+    width: 100%;
+}
+.timeAxis .point .danpintu li{
+    float: left;
+    margin-left: .5rem;
+    width:2rem;
+    height: 2rem;
+    overflow: hidden;
+}
+.timeAxis .point .danpintu li img{
+    width: 100%;
+}
+.adddapei{
+    padding:1rem;
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: .5rem;
+    left:6rem;
+    background: rgba(255,255,255,.3)
+}
+.adddapei img{
+    width: 100%;
+}
+.zan img,.pinglun img
+{
+    width: .65rem; 
+    margin-right: .3rem;
+}
+.zan{
+    position: absolute;
+    bottom: 0;
+    right: -3rem;
+}
+.pinglun{
+    position: absolute;
+    bottom: 0;
+    right: -5rem;
+}
+.pageone .date{
+    width:100%;
+    height:10rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color:#FFF;
+    background:url('../img/erjiyemian.png') no-repeat;
+    background-size: 100%;
+}
+.pageone .date .title{
+    padding: 10px 0;
+    text-align: center;
+    position: relative;
+}
+.pageone .date .title .ok{
+    position: absolute;
+    width:1rem;
+    top: .3rem;
+    right: 10px;
+}
+.pageone .date .swiper-container{
+    height:60%;
+}
+.pageone .date .swiper-container .swiper-slide{
+    text-align: center;
+    line-height: 2rem;
+    font-size:.65rem;
+    color: #AAA;
+}
+.pageone .date .swiper-container .swiper-slide-active{
+    background:rgba(0,0,0,.35);
+    box-shadow: 0 0 5px rgba(0,0,0,.5);
+    font-size:.85rem;
+    color: #FFF;
+}
+.ok{
+    position: relative;
+}
+.iconred{
+    width: 5px;
+    height: 5px;
+    background:red;
+    border-radius:50%;
+    position: absolute;
+    top: .3rem;
+    right: -.2rem;
+    display: none;
+}
+
+
+.futureCity{
+    position: absolute;
+    bottom: 2.2rem;
+    right: 0;
+}
+
+
+
+

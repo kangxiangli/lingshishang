@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="css/fonts/font-awesome.min.css">
+        <link rel="stylesheet" href="css/ui-box.css">
+        <link rel="stylesheet" href="css/ui-base.css">
+        <link rel="stylesheet" href="css/ui-color.css">
+        <link rel="stylesheet" href="css/appcan.icon.css">
+        <link rel="stylesheet" href="css/appcan.control.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/base.fontsize.js"></script>
+        <style>
+            body{
+                /*background-image: url(img/cehuaye.png);*/;
+                background-color:#332d22;
+                bckground-size:cover;
+            }
+            .sc-text-active{
+                color: #FFF
+            }
+            .navicon{
+                width:30%;
+                margin:0 auto;
+                margin-top:.2rem;
+                background-size:100%;
+                background-repeat:no-repeat;
+            }
+            .img-yichu{
+                background-image: url(img/tab_1wardrobe@2x.png) ;               
+            }
+            .img-maishou{
+                background-image: url(img/tab_2blogger@2x.png)
+            }
+            .img-fengshang{
+                background-image: url(img/tab_3popular@2x.png)
+            }
+            .img-mine{
+                background-image: url(img/tab_4my@2x.png)
+            }
+            #header{
+                background: transparent;
+                position: relative;
+                height:2rem;
+                /*font-size: 1em;*/
+            }
+            #header .portrait{
+                width:1.4rem;
+                height:1.4rem;
+                border-radius:50%;
+                position: absolute;
+                top:50%;
+                left: 5%;
+                margin-top: -.7rem;
+            }
+            #header .portrait img{
+                width:100%;
+            }
+            #header .logo{
+                height:100%;
+                width: 30%;
+                margin: 0 auto;
+            }
+            #header .logo img{
+                 width:100%;
+                 padding-top: .5rem
+             }
+            #shangcheng{
+                position:absolute;
+                right:1rem;
+                top:.5rem;
+                width: 2rem;                
+            }
+            #shangcheng img{
+                width: 100%
+            }
+            #footer{
+                background-color:#332d22;
+                font-size: .75rem;
+            }
+            #content{
+                width: 100%;
+            }
+            #content iframe{
+                margin:0 auto;
+                border:0px;
+                width:100%
+            }
+        </style>
+    </head>
+    <body class="um-vp" ontouchstart >
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+            <!--header开始-->
+            <div id="header" class="bc-text-head ub bc-head">
+                <button class="portrait" >
+                    <img src="img/shiyi.png"/>
+                </button> 
+                <div class="logo">
+                    <img src="img/login_logo_@2x.png" alt="">
+                </div>   
+                <a id="shangcheng" href="javascript:;" onclick="indexOpenPage('shangcheng','shangcheng.html');"><img src="img/sc@2x.png"/></a>       
+            </div>
+            <!--header结束-->
+            <!--content开始-->
+            <div id="content" class="ub-f1 tx-l ">
+                <iframe  src="yichu.html" class=""></iframe>
+                <iframe  src="maishou.html" hidden></iframe>
+                <iframe  src="fengshang.html" hidden></iframe>
+                <iframe  src="wode.html" hidden></iframe>
+            </div>
+            
+            <!--content结束-->
+            <div id="footer" class="uf t-bla ub ubt bc-border">
+                <div class="ub ub-f1 tab bg-color" id="footer1">
+                </div>                
+            </div>
+        </div>
+        <script src="js/appcan.js"></script>
+        <script src="js/appcan.control.js"></script>
+        <script src="js/appcan.tab.js"></script>
+ </body>
+ <script>
+        
+        
+        /*--------------- tab选项卡 ---------------------*/
+        var tabview = appcan.tab({
+            selector : "#footer1",
+            hasIcon : true,
+            hasAnim : false,
+            hasLabel : true,
+            hasBadge : true,
+            index : 0,
+            data : [{
+                label : "衣橱",
+                icon : "navicon img-yichu"
+            }, {
+                label : "买手",
+                icon : "navicon img-maishou"
+            }, {
+                label : "风尚",
+                icon : "navicon img-fengshang"
+            },{
+                label : "我的",
+                icon : "navicon img-mine"
+                }
+            ]
+        });
+        /*--------------  content高度 -----------------*/
+        var contentHeight = $(window).height() - $('#header').height() - $('#footer').height();
+        $('#content iframe').height(contentHeight);
+        
+        tabview.on("click", function(obj, index) {
+            // var htmlsrc ;
+            // if( index == 0){
+                // htmlsrc = 'yichu.html';
+            // }else if( index == 1 ){
+                // htmlsrc = 'maishou.html';
+            // }else if( index == 2 ){
+                // htmlsrc = 'fengshang.html';
+            // }else if( index == 3 ){
+                // htmlsrc = 'wode.html';
+            // };
+            // $('#content iframe').attr('src',htmlsrc)
+            
+            $('#content iframe').hide();
+            $('#content iframe').eq(index).show();
+            
+        })
+      
+        
+/*打开新页面*/      
+    function indexOpenPage(name,data){
+        appcan.window.open({
+            name:name,
+            data:data,
+            aniId:10              
+        });
+    }
+ </script>
+</html>

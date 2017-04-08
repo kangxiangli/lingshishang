@@ -1,0 +1,63 @@
+@charset "utf-8";
+/*初始化  reset*/
+blockquote,body,button,dd,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,hr,input,legend,li,ol,p,pre,td,textarea,th,ul{margin:0;padding:0}
+body,button,input,select,textarea{font-family:"华文细黑", "微软雅黑", SimSun, "宋体", sans-serif;}
+ol,ul{list-style:none}
+a{text-decoration:none}
+a,input,button,select,textarea{outline:none;}
+fieldset,img { border:0; }
+ol,ul { list-style:none; }
+
+
+
+header{position: relative;}
+.search_box{position:absolute;top: 0;}
+.search{width: 100%;height:12px;z-index: 999;position: relative}
+.search img{width: 100%;height: 100%;}
+.guanbi_search{width: 100%;z-index: 999;position:relative;}
+.guanbi_search img:last-child{height: 14px;left: 50%;margin-left: -12px;position: absolute;top: -7px;width: 23px;}
+
+.qiehuan{position:absolute;left:0;top:0;width: 38%;height:90%;display: none;}
+.qiehuan_contain{width:100%;height:62%;position: relative;border-right: 1px solid rgba(255,255,255,.4);margin-top: 8%;}
+.qiehuan  .qiehuan_contain .qiehuan_img{width: 20px;height:20px;position: absolute;left:23%;top:19%;}
+.qiehuan  .qiehuan_contain span{color:#FFFFFF;width:40px;height:20px;position: absolute;left:45%;top:23%;}
+
+.search_products{position: absolute;right:0;top:0;width:62%;height:90%;display: none;}
+.search_products .serch_inp{background-color: transparent;width:80%;height:36px;border-radius:20px;text-align: center;text-indent:3px;margin-left: 26px;margin-top: 7px;
+border:1px solid rgba(255,255,255,0.4);color:#FFFFFF;font-size: 20px;}
+.search_products .search_img{height: 21px;left: 46%;position: absolute;top:33%;width: 25px;}
+
+
+
+
+
+#main{width: 92%;height:93%;margin:0 auto;position: relative;}
+
+
+#wrapper ul{/*把模块分成两列*/
+    -moz-column-count:1; /* Firefox */-webkit-column-count:1; /* Safari and Chrome */column-count:1;
+    /*制定列之间的间距*/
+    -moz-column-gap:0.5rem; /* Firefox */ -webkit-column-gap:0.5rem; /* Safari and Chrome */  column-gap:0.5rem;}
+#wrapper ul li {
+    padding: 0.4rem 0.2rem;
+}
+
+#wrapper ul li .img_box{background-color: rgba(255,255,255,0.8);border-radius: 2px 2px 0 0;overflow: hidden}
+#wrapper ul li .img_box .single{display: inline-block;}
+#wrapper ul li>div{display: inline-block;width: 100%;}
+.finish{width: 0.8rem;vertical-align: middle;margin-right: 0.2rem;}
+/*文字信息*/
+.bt_gray{color:#fff;height: 3.2rem;width: 100%;background-color: rgba(255,255,255,0.5);border-radius: 0 0 2px 2px;overflow: hidden}
+/*钱*/
+.money{display: inline-block;width: 0.7rem;height: 0.7rem;margin-left: 0.2rem;vertical-align: middle;}
+.bt_gray p{height: 1rem;line-height: 1.2rem;}
+/*季节*/
+.cloth_sea{width: 100%;height: 1rem;color: rgba(255,255,255,0.6)}
+.cloth_sea .clothing,.cloth_sea .seasion{display: inline-block;height: 0.45rem;line-height: 0.45rem;padding: 0 0.2rem;}
+.cloth_sea .seasion{border-left: 1px solid rgba(255,255,255,0.7)}
+/*赞和评论*/
+.praise{width: 100%;height:1rem;line-height: 1rem;text-align: right;color: rgba(255,255,255,0.6);}
+.praise img{width: 0.65rem;vertical-align: middle;margin-right: 0.3rem;}
+.praise_box,.info_box{display:inline-block;margin-right: 0.2rem;}
+
+.praise_box{margin-left:2.2rem;}

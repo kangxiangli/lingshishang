@@ -1,0 +1,139 @@
+	<!DOCTYPE html>
+	<html lang="zh-cn">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=640,user-scalable=no">
+		<title>风尚</title>
+		<link href="css/style_fenggeceshi_tap6-8.css"  rel="stylesheet">
+		<script src="js/jquery-2.1.1.min.js"></script>
+		  <script src="js/lss_global.js"></script>  
+	
+		
+		
+	</head>
+
+	
+	<script src="js/appcan.js"></script>
+            
+            
+    
+
+ <script>            
+      
+       appcan.ready(function(){
+    //渲染颜色分类
+    lssAjax.postJson({
+        url : host + '/api/properties/color/getlist',
+        data:{
+            MemberId:userId,
+            U_Num:userNum
+        },
+        success:function(data){
+            //console.log(data)
+            if( data.ResultType == 3){
+       
+                $.each(data.Data,function(i,item){
+                    $('.line ul').append('<li class="" data-colorid='+item.ColorId+'><img src="'+item.IconPath+'"/><p>'+item.ColorName+'</p></li>')
+                })
+               
+            }
+        }
+    })
+                 var PreferenceColor="";
+                 $(document).on('click', '.line ul li img', function(){
+                   PreferenceColor=PreferenceColor+","+$(this).siblings('p').html();
+                        appcan.locStorage.setVal('PreferenceColor',PreferenceColor);
+                   
+        if($(this).hasClass("face")){
+              $(this).removeClass('face');
+               $(this).parent().removeClass('duigou');
+        }else{
+            $(this).addClass('face');
+            $(this).parent().addClass('duigou');
+        }
+        
+
+    });
+  });
+                  function return_yichu(){
+                     appcan.window.open({
+                    name:'yichu',
+                  data:'yichu.html',
+                  aniId:10,
+            });
+                 }
+                   function open_fenggeceshi8(){
+                      appcan.window.open({
+                    name:'tap_8',
+                  data:'fenggeceshi_8.html',
+                  aniId:10,
+            });
+            }
+ function close_fenggeceshi(){
+                     appcan.window.close(-1);
+          
+                }
+           
+          </script>
+	<body>
+				<header id="st-trigger-effects" class="column">
+					    <div class="back"><a href="javascript:void(0);" onclick="close_fenggeceshi();"><img src="img/return@2x.png" alt="">返回</a></div>
+					     <p>风格测试</p>
+                        <a id="close" href="javascript:void(0)" onclick="return_yichu();"><img src="img/close@2x.png"/></a>
+                        
+                        
+                      <div  class="progress">
+                   
+                              <li><img src="img/d1_pre@2x.png"/></li>
+                              <li><img src="img/d2_pre@2x.png"/></li>
+                              <li><img src="img/d3_pre@2x.png"/></li>
+                              <li><img src="img/d4_pre@2x.png"/></li>
+                              <li><img src="img/d5_pre@2x.png"/></li>
+                              <li><img src="img/d6_pre@2x.png"/></li>
+                              <li><img src="img/d7_pre@2x.png"/></li>
+                              <li><img src="img/d8_pre@2x.png"/></li>
+                        
+                      </div>   
+				</header>
+				
+				<div class="contain">
+
+    <div class="select_yanse_contain">
+    <div class="line_1 line">
+        <ul>
+         
+        </ul>
+    </div>
+    <div class="line_2 line">
+        <ul>
+        
+        </ul>
+    </div>
+    <div class="line_3 line">
+        <ul>
+           
+        </ul>
+    </div>
+    <div class="line_4 line">
+        <ul>
+  
+        </ul>
+    </div>
+    <div class="line_5 line">
+        <ul>
+      
+        </ul>
+    </div>
+</div>
+</div>
+	
+             	<footer>
+                    <div class="next" onclick="open_fenggeceshi8();">
+                        <img src="img/go@2x.png"/>
+                    </div>
+		
+				</footer>
+
+
+	</body>
+	</html>

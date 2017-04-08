@@ -1,0 +1,327 @@
+	<!DOCTYPE html>
+	<html lang="zh-cn">
+	<head>
+		<meta charset="UTF-8">
+        <meta name="viewport" content="width=640,user-scalable=no">
+		<title>穿衣日历</title>
+        <link rel="stylesheet" href="../../css/style_header.css">   
+        <link rel="stylesheet" href="../../css/style_chuanyirili.css">
+        <link rel="stylesheet" href="../../css/rili.css"/>
+        <link rel="stylesheet" href="../../css/swiper.css" />
+		<script src="../../js/jquery-2.1.1.min.js"></script>
+        <script src="../../js/base.fontsize.js"></script>
+	</head>
+	<body>
+		<!--<img src="../../img/erjiyemian.png" style="width: 60%" id="img" />-->
+        <div class="pageone">
+            <div class="header">
+                <div class="contain">
+                    <div class="back"><a href="javascript:void(0)" onclick="hideWin();"><img src="../../img/return@2x.png" alt="">返回</a></div>
+                    <div class="title"><a id="s" onclick=openNewWin('city.html')>请选择城市</a></div>                    
+                    <a class="ok" id="rlii_date" href="javascript:void(0);" >
+                        <img src="../../img/nav_rl@2x.png" alt="">
+                        <div class="iconred"></div>
+                    </a>
+                </div>
+            </div>
+         	<div class="clearfix timeAxis" id="timeAxis">
+             <div class="clearfix point tomorrow">
+                <div class="left">
+                    <div class="mouth">未来</div>
+                </div>
+                 <div class="right">
+                     <div class="Weather">
+                        <img class="watherImg" src="" alt=""> 
+                        <div class="futureCity"></div>
+                        <span class="Weathertop"></span>
+                        <span class="Weatherbottom">天气显示</span>
+                     </div>
+                     <div class="adddapei">
+                         <img src="../../img/nav_dp@2x.png" alt="">
+                     </div>
+                 </div>
+             </div>
+                <div class="pointList"></div>
+         </div>
+        	<div class=" date">
+            <div class="title">请选择为未来的哪天搭配<img class="ok" src="../../images/ok.png" /></div>
+            <div class="swiper-container">
+           <div class="swiper-wrapper">
+               <div class="swiper-slide"></div>
+               <div class="swiper-slide"></div>
+               <div class="swiper-slide"></div>
+               <div class="swiper-slide"></div>
+           </div>
+       </div>
+        </div>
+	   	</div>
+	</body>
+	<script src="../../js/mui.js"></script>
+	<script src="../../js/swiper.min.js"></script>
+	<script src="../../js/underscore.js"></script>
+	<script src="../../js/lss_global.js"></script>
+	<script>
+   
+    LSShang.ready(function(){
+        showTimeLine();
+        
+        LSShang.reload({
+            id:'timeAxis',
+            fn:reload
+        })        
+    //添加穿衣日历
+        $('.adddapei').click(function(e){
+            if($('.header .title').text() == '请选择城市' ){
+                LSShang.toast('请选择城市')
+            }else{
+               $('.date').slideDown('fast');
+            }
+            e.stopPropagation();
+        })
+        
+        $('.date .title .ok').on('click',function(){
+            $('.futureCity').html($('.header .title').text());
+            $('.date').slideUp(0);  
+            getWeather($('.swiper-slide-active').index() + 1);
+            LSShang.setlocStorage('selectedDp','toSelect');
+            openNewWin('wodedapei.html');
+            
+        })
+        $('.ok img').click(function(){
+            $('.iconred').hide();
+            openNewWin('rili.html');
+        })
+    /*--------------------------------- 新增日历时弹出时间 ------------------------------*/
+        var mySwiper = new Swiper ('.swiper-container', {
+            direction: 'vertical',
+            slidesPerView : 3,
+            centeredSlides:true,
+        })  
+        $('.date').slideUp(0);  
+
+        var today = new Date(); 
+        var dates = [];
+        for (var i=1; i<5; i++){
+            today.setDate(today.getDate()+1);
+            dates.push(LSShang.dateToString(today));
+        }
+        $('.date .swiper-wrapper .swiper-slide').each(function(i,item){
+            $(this).html(dates[i])
+        })   
+        $('.timeAxis').on('click',function(){
+           $('.date').slideUp();  
+        })
+      
+    })
+    var temperature = null;
+    var weather = null;
+    var cityName = null;
+    
+/*================ Function ====================*/    
+    /*-------------------------------- 获取天气图片 ------------------------------*/
+   function getWeatherImg(type){
+       var src = '';
+        $.ajaxSettings.async = false;  
+        $.getJSON('../../js/weatherImg.json',function(data){
+            $.each(data,function(i,item){
+                //console.log(i)
+                if(i == type ){
+                    src = item;
+                    return false;
+                }
+            })
+            if(src == ''){                
+               $.each(data,function(i,item){
+                    if(type.indexOf(i) != -1 ){
+                        src = item;
+                        return false;
+                    }
+                }) 
+            }
+        })
+        
+        return '../../'+src;
+    }
+    //获取城市
+    var cityname;
+    function getCity(){
+        if(localStorage.cityname != 'null' && localStorage.cityname != undefined){            
+            cityname = localStorage.cityname;
+            cityName = cityname;
+            $('#s').html(cityname);
+            if(cityname.indexOf('市') > 0){
+               cityname=cityname.substring(0,cityname.length-1);
+            }
+            if(cityname.indexOf('特别行政区') > 0){
+               cityname=cityname.substring(0,cityname.length-5);
+            }
+        }
+    }
+    
+      /*---------------------------- 获取天气 ----------------------------*/
+    function getWeather(index){      
+               //获取天气情况
+           $.ajax({
+                url: 'http://wthrcdn.etouch.cn/weather_mini',
+                type: 'GET',
+                data:'city='+cityname,
+                dataType: 'json',
+                success: function(data){//成功处理函数   
+                    var datas=data.data,i;
+                    console.log(datas)
+                    if(datas==undefined){
+                        LSShang.toast('当前网络不佳或未包含此地区！');
+                        return null;
+                    }else{
+                        $('.tomorrow .Weathertop').html(datas.forecast[index].type);    
+                        var tomorrow = datas.forecast[index].date;
+                        tomorrow = tomorrow.substring(0,tomorrow.indexOf('日')+1)
+                        $('.tomorrow .mouth').html(tomorrow)
+                        weather = datas.forecast[index].type;
+                        $('.tomorrow .Weather img').attr('src',getWeatherImg(datas.forecast[index].type))                        
+                        var high = datas.forecast[1].high;
+                        high = high.substring(2,high.length);
+                        var low = datas.forecast[1].low;
+                        low = low.substring(2,low.length);
+                        $('.tomorrow .Weatherbottom').html(low +'-'+ high)
+                        temperature = low +'-'+ high;
+                    }                                               
+                 },
+                 error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    LSShang.toast('您所选择的城市尚未获取到天气！')
+                }
+            });
+            window.localStorage.cityname = 'null';
+        } 
+    /*--------------------------- 展示时间轴 ----------------------------*/
+    var pageindex = 1;
+    var finish = -1;
+    function showTimeLine(){
+        if( finish == 1){
+            return;
+        }
+        lssAjax.postJson({
+            url: host + '/api/products/membercollocation/getcollocation',
+            data:{
+                MemberId:userId,
+                U_Num:userNum,                
+                Type:0,
+                Date:LSShang.dateToString(new Date()),
+                PageIndex:pageindex,
+                PageSize:10
+            },
+            beforeSend:$('#timeAxis'),
+            success:function(data){
+                console.log(data)
+                getTimeLine(data.Data);
+                if(data.Data.length == 0){
+                    finish = 1;
+                    LSShang.toast('没有更多了')
+                }
+                pageindex ++;
+            }
+        })
+    }
+    function getTimeLine(data){
+        var tpl = $('#timelineTpl').html();
+        var fn = _.template(tpl);
+        var html = fn(data);
+        $('.timeAxis .pointList').append(html)
+    }
+    
+    //刷新
+    function reload (){
+        pageindex = 1;
+        finish = -1;
+        $('.timeAxis .pointList').empty();
+        showTimeLine()
+    }
+    
+    //分页加载更多
+    var t = 0;
+    $('.timeAxis').scroll(function(e){
+        var p = $('.timeAxis').scrollTop();
+        console.log(p+'t'+t)
+        if( p > t){
+        	
+            //向上滚动
+            if(judgeNextPage() < 0){
+            	
+               showTimeLine()
+            }
+        }else{
+            //向下滚动
+        }
+        t = p;
+    })
+    function judgeNextPage(){
+        var dis = $('.pointList').height() - $('.timeAxis').scrollTop() - $('.timeAxis').height() + $('.tomorrow').height();
+        return dis;
+    }
+    //添加搭配
+    
+    function addcalendar(){
+        $('.iconred').show();
+        lssAjax.postJson({
+            url: host + '/api/products/membercollocation/addcalendar',
+            data:{
+                MemberId:userId,
+                U_Num:userNum,
+                Temperature:temperature,
+                Weather:weather,
+                ProductId:LSShang.getlocStorage('selectedDp'),
+                CityName:cityName,
+                Count:$('.swiper-slide-active').index()+1
+            },
+            success:function(data){
+                console.log(data);
+                LSShang.removelocStorage('selectedDp')
+                reload();
+            }
+        })
+    }      
+    $('.pointList').on('click','.dapintu',function(){
+        var showDPid = $(this).parents('.point').attr('data-id');
+        LSShang.setlocStorage('showDpId',showDPid);
+        openNewWin('dapeiDetails.html')
+    })      
+           
+    </script>
+    <script type="tpl" id="timelineTpl">
+
+        <%_.each(obj,function(item,i){%>
+            <div class="clearfix point time" data-id=<%=item.ProductId%> >
+            <div class="left">
+                <div class="day"><%=item.CollocationTime.substring(8,10)%></div>
+                <div class="mouth"><%=item.CollocationTime.substring(5,7)%>月</div>
+            </div>
+             <div class="right">
+                 <div class="Weather">
+                    <img class="watherImg" src=<%=getWeatherImg(item.Weather)%>   /> 
+                    <span class="wathercityname"><%=item.CityName%></span>
+                    <span class="Weathertop"><%=item.Weather%></span>
+                    <span class="Weatherbottom"><%=item.Temperature%></span>
+                    <div class="zan"><img src="../../images/z.png" /><%=item.IsApprove%></div>
+                     <div class="pinglun"><img src="../../images/pl.png"><%=item.CommentCount%></div>
+                 </div>
+                 <div class="dapeiBox">
+                     <div class="dapintu">
+                         <img src="<%=item.ColloImagePath%>" alt="">
+                     </div>  
+                     <ul class="danpintu">
+                         <%_.each(item.ListImagePath,function(items,a){%>
+                              <li><img src=<%=items%> alt=""></li>
+                         <%})%>
+                    </ul>
+                 </div>
+             </div>
+         </div>
+        
+        <%})%> 
+    </script>
+	</html>
+	
+
+
+
+

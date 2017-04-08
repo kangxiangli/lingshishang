@@ -1,0 +1,58 @@
+/*header*/
+.header{
+    border-bottom: 1px solid rgba(0,0,0,.2)
+}
+.header .contain .back a{
+    color: #000;
+}
+.header .contain .title{
+    color:#000;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 1.75rem
+}
+.parentClass{
+    padding:.5rem;
+    background: #e1e1e3;
+    color: #b1b1b3;
+}
+.allClass{
+    font-size: .75rem;
+    width: 100%;
+    height: calc(100% - 1.75rem);
+    overflow-y: auto;
+    position: absolute;
+    top: 1.75rem;
+    left: 0;
+}
+.sonClass li{
+    padding:.2rem 0;
+    margin: .2rem;
+    color: #d1d1d1;
+    border-bottom: 1px solid #d9d9d9;
+}
+.sonClass li img,.sonClass li span{
+     
+    vertical-align: middle;
+}
+.sonClass li .classImage{
+    width:2rem;
+    margin-right: 1rem;
+}
+.sonClass li .right{
+   width: 1.5rem;
+   float:right;
+   margin-top: .5rem;
+   display: none;
+}
+.sonClass li.active .right{
+    display: block;
+}
+.sonClass li:last-child{
+    border: 0px;
+}
+
+
+
+
+

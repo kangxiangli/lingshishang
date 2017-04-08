@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=640,user-scalable=no">
+    <link rel="stylesheet" href="../../css/style_header.css"/>
+    <link rel="stylesheet" href="../../css/style_wenzhang.css">
+ 
+    <title>我的搭配</title>
+</head>
+
+<body>
+    <div class="header">
+        <div class="contain headertop">
+            <div class="back">
+                <a href="javascript:void(0);" onclick="closeWin();">
+                    <img src="../../img/return@2x.png" alt="">返回
+                </a>
+            </div>
+            <span class="title">文章管理</span>     
+            <div class="ok selection" style="font-size:1.2rem;color:#fff">+</div>  
+        </div>    
+    </div>
+<div class="container" id="container">
+    <div class="article_contain">
+            <div class="article_img">
+                 <img src="../../images/1.jpg"/>
+            </div>
+            <div class="article_detail">
+                  <div class="article_title">
+                                                                                 文章1
+                  </div> 
+                  <div class="like">
+                      <img src="../../img/xin.png"/>
+                  </div>
+                  <div class="comment">
+                      <img src="../../img/news.png"/>
+                  </div>
+           </div>
+   </div>
+   <div class="article_contain">
+            <div class="article_img">
+                 <img src="../../images/2.jpg"/>
+            </div>
+            <div class="article_detail">
+                  <div class="article_title">
+                                                                                 文章2
+                  </div> 
+                  <div class="like">
+                      <img src="../../img/xin.png"/>
+                  </div>
+                  <div class="comment">
+                      <img src="../../img/news.png"/>
+                  </div>
+           </div>
+   </div>
+   <div class="article_contain">
+            <div class="article_img">
+                 <img src="../../images/3.jpg"/>
+            </div>
+            <div class="article_detail">
+                  <div class="article_title">
+                                                                                 文章3
+                  </div> 
+                  <div class="like">
+                      <img src="../../img/xin.png"/>
+                  </div>
+                  <div class="comment">
+                      <img src="../../img/news.png"/>
+                  </div>
+           </div>
+   </div>
+   <div class="article_contain">
+            <div class="article_img">
+                 <img src="../../images/4.jpg"/>
+            </div>
+            <div class="article_detail">
+                  <div class="article_title">
+                                                                                 文章4
+                  </div> 
+                  <div class="like">
+                      <img src="../../img/xin.png"/>
+                  </div>
+                  <div class="comment">
+                      <img src="../../img/news.png"/>
+                  </div>
+           </div>
+   </div>
+   
+            
+</div>
+   
+
+    
+</body>
+<script src="../../js/jquery-2.1.1.min.js"></script>
+<script src="../../js/appcan.js"></script>
+<script src="../../js/lss_global.js"></script>
+<script src="../../js/base.fontsize.js"></script>
+
+    <script>
+    /*------------------------------ 下拉刷新 ------------------------------*/
+LSShang.reload({
+    id:'container',
+    
+})
+   
+/*---------------------------- 瀑布流滚动加载  ----------------------------*/    
+    var t = 0;
+    $('#container').scroll(function(e){
+        var p = $('#container').scrollTop();
+        if( p > t){
+            //向上滚动
+            if(judgeNextPage() < 0){
+                getProductList(CategoryId);
+            }
+        }else{
+            //向下滚动
+        }
+        t = p;
+    })
+    function judgeNextPage(){
+        var dis = $('#product_list').height() - $('#main').scrollTop() - $('#main').height();
+        return dis;
+    }
+    
+
+
+</script>
+
+</html>

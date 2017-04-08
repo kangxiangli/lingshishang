@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=640,user-scalable=no">
+        <link rel="stylesheet" href="../../css/style_header.css"/>
+        <link rel="stylesheet" href="../../css/style_chuanyushuju.css">
+
+        <title>穿衣数据</title>
+    </head>
+
+    <body>
+        <div class="header">
+            <div class="contain headertop">
+                <div class="back">
+                    <a href="javascript:void(0);" onclick="closeWin();"> <img src="../../img/return@2x.png" alt="">返回 </a>
+                </div>
+                <span class="title">穿衣数据</span>
+                <div class="ok selection" style="font-size:.7rem;color:#fff">
+                    详情
+                </div>
+            </div>
+        </div>
+        <div class="container" id="container">
+            <div class="sj_top">
+                <div id="main" style="height:200px;width:100%;"></div>
+                <div class="clothes sz"><img class="" src="../../img/c1sz@2x.png"/><b></b>
+                </div>
+                <div class="clothes xz"><img class="" src="../../img/c2xz@2x.png"/><b></b>
+                </div>
+                <div class="clothes lt"><img class="" src="../../img/c2lt@2x.png"/><b></b>
+                </div>
+                <div class="clothes wj"><img class="" src="../../img/c7wj@2x.png"/><b></b>
+                </div>
+                <div class="clothes sp"><img class="" src="../../img/c5sp@2x.png"/><b></b>
+                </div>
+                <div class="clothes x"><img class="" src="../../img/c4x@2x.png"/><b></b>
+                </div>
+                <div class="clothes b"><img class="" src="../../img/c6b@2x.png"/><b></b>
+                </div>
+
+            </div>
+            <div class="select_sj">
+                <div class="buy">
+                    购买
+                </div>
+                <div class="dapei">
+                    搭配
+                </div>
+            </div>
+            <div class="sj_bt">
+                <div id="main2" style="height:70%;width:100%;"></div>
+            </div>
+            <div class="select_ny">
+                <div class="year">
+                    年
+                </div>
+                <div class="week">
+                    周
+                </div>
+            </div>
+        </div>
+
+    </body>
+    <script src="../../js/jquery-2.1.1.min.js"></script>
+    <script src="../../js/lss_global.js"></script>
+    <script src="../../js/base.fontsize.js"></script>
+    <script src="../../build/dist/echarts.js"></script>
+      <script src="../../js/mui.min.js"></script>
+    <script type="text/javascript">
+        // 路径配置
+       mui.plusReady(function() {
+
+            require.config({
+                paths : {
+                    echarts : '../../build/dist'
+                }
+            });
+            var count = 0;
+            var arr = [];
+             lssAjax.postJson({
+                type : 'POST',
+                dataType : 'json',
+                async : true,
+                url : host + '/api/products/membersingleproduct/getlist',
+                data : {
+                    MemberId : userId,
+                    U_Num : userNum
+                },
+                success : function(data) {
+
+                    console.log(data)
+                    if (data.ResultType == 3) {
+                        $.each(data.List, function(i, item) {
+                            $('.clothes').eq(i).find('b').html(item.Count);
+
+                            count = count + item.Count;
+                            arr.push({
+                                value : item.Count
+                            });
+
+                        })
+                          initdata();
+                    }
+                  
+                },
+            });
+
+            function initdata() {
+
+                // 使用
+                require(['echarts', 'echarts/chart/pie', // 使用柱状图就加载bar模块，按需加载
+                'echarts/chart/bar', 'echarts/chart/line'], function(ec) {
+                    // 基于准备好的dom，初始化echarts图表
+                    var myChart = ec.init(document.getElementById('main'));
+
+                    var donutoption = {
+
+                        color : ['#cfa871', '#482a32', '#432614', '#80511b', '#996c33', '#d0a972', '#181a29'],
+                        title : {
+                            textStyle : {
+                                fontSize : 14,
+                                fontWeight : 'bolder',
+                                color : '#fff'
+                            },
+                            text : '全部单品',
+                            subtext : count,
+                            x : 'center',
+                            y : 'center'
+                        },
+
+                        calculable : false,
+                        series : [{
+                            name : '访问来源',
+                            type : 'pie',
+                            radius : ['45%', '55%'],
+                            itemStyle : {
+                                normal : {
+
+                                    label : {
+                                        show : false
+                                    },
+                                    labelLine : {
+                                        show : false
+                                    },
+
+                                },
+
+                                emphasis : {
+                                    label : {
+                                        show : true,
+                                        position : 'center',
+                                        textStyle : {
+                                            fontSize : '20',
+                                            fontWeight : 'bold'
+                                        }
+                                    }
+                                }
+                            },
+
+                            data : arr,
+                        }]
+                    };
+                    // 为echarts对象加载数据
+
+                    myChart.setOption(donutoption);
+
+                    var myChart2 = ec.init(document.getElementById('main2'));
+
+                    var chartoption_year = {
+
+                        grid : {
+                            x : '20',
+                            y : '30',
+                            x2 : '20',
+                            y2 : '20',
+                            borderWidth : 0
+                        },
+                        calculable : false,
+                        xAxis : [{
+                            type : 'category',
+                            boundaryGap : true,
+                            data : [1, 2, 3, 4, 5, 6, 7],
+                            splitLine : {
+                                show : false
+                            },
+                            axisLine : {
+                                show : false
+                            },
+                            axisTick : {
+                                show : false
+                            },
+                            lineStyle : {
+                                color : 'rgba(255,255,255,.1)',
+                            }
+                        }],
+                        yAxis : [{
+                            type : 'value',
+                            lineStyle : {
+                                color : 'rgba(255,255,255,.1)',
+                            },
+                            axisLine : {
+                                show : false
+                            },
+                            axisLabel : {
+                                show : false
+                            },
+                            splitLine : {
+                                show : false
+                            },
+                            splitArea : {
+                                show : false,
+                            }
+
+                        }],
+                        series : [{
+
+                            name : '最低',
+                            type : 'bar',
+                            data : [8, 8, 8, 8, 8, 8, 8],
+
+                            itemStyle : {
+                                normal : {
+                                    color : 'rgba(255,255,255,.1)',
+                                },
+                                emphasis : {
+                                    color : 'rgba(0,0,0,0)',
+
+                                }
+                            },
+                        }, {
+                            symbol : 'emptyCircle',
+                            symbolSize : 4,
+                            name : '最高',
+                            type : 'line',
+                            data : [1, 3, 1, 1, 1, 1, 1],
+
+                            itemStyle : {
+
+                                normal : {
+                                    label : {
+                                        show : true
+                                    },
+                                    color : '#996c33',
+
+                                }
+                            },
+                        }]
+                    };
+
+                    // 为echarts对象加载数据
+                    myChart2.setOption(chartoption_year);
+                    $('.select_sj div,.select_ny div').click(function() {
+
+                        $(this).css('background', 'rgba(255,255,255,.3)').siblings().css('background', 'rgba(255,255,255,.2)');
+                        var myChart2 = ec.init(document.getElementById('main2'));
+                        myChart2.setOption(chartoption_year);
+
+                    })
+                });
+            }
+
+        });
+    </script>
+
+</html>

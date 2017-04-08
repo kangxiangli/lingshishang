@@ -1,0 +1,65 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html{background: #FFF}
+body,h1,h2,h3,p,ul,ol,form,fieldset,figure {margin: 0;padding: 0; font-size: 17px;}
+div,figure,img,input,button {box-sizing: border-box;}
+body,html{height: 100%;;background-size:cover;font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei UI", "Microsoft YaHei", SimHei, "\5B8B\4F53", simsun, sans-serif;}
+i,b{font-style: none}
+ul,ol{list-style: outside none none;}
+li{display:block;}
+a {text-decoration: none;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+.clearfix:after {
+    content:".";  
+    height:0;  
+    visibility:hidden;  
+    display:block;  
+    clear:both;  
+}
+.header {
+    height: 1.75rem;
+    color: #5a5a5a;
+    border-bottom:1px solid rgba(255,255,255,.2);
+    width: 100%;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+.header .contain {
+    width:100%;
+    height:100%;
+    display: table;
+}
+.header .contain .back {
+    vertical-align:middle;
+    width: 33.33%;
+    display: table-cell;
+}
+.header .contain .back img{
+    height: .65rem;
+    margin-right: .2rem;
+}
+.header .contain .back a{
+    color:#FFF;
+    font-size: .75rem;
+}
+.header .contain .title {
+    width: 33.33%;
+    vertical-align:middle;
+    display: table-cell;
+    font-size: .8rem;
+    letter-spacing: 2px;
+    text-align: center;
+    color: #FFF;
+}
+.header .contain .ok,.header .contain .selBtn{
+    vertical-align:middle;
+    display: table-cell;
+    width: 33.33%;
+    letter-spacing: 2px;
+    text-align: right;
+    font-size: .75rem;
+}
+

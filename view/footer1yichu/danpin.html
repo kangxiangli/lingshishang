@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=640,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    
+    <link rel="stylesheet" href="../../css/reset.css"/>
+    <link rel="stylesheet" href="../../css/style_header.css" />
+    <link rel="stylesheet" href="../../css/style_danpin.css">
+    <link rel="stylesheet" href="../../css/swiper.css">
+    <script src="../../js/jquery-2.1.1.min.js"></script>
+    <script src="../../js/mui.js"></script>
+    <title>我的单品</title>
+</head>
+<body>
+
+<div class="header">
+    <div class="contain">
+      <div class="back" onclick="closeWin();"><a href=""><img src="../../img/return@2x.png" alt="">返回</a></div>
+      <div class="fengge"><img src="../../img/nav_fg@2x.png" alt=""><span>风格</span></div>
+      <div class="color"><img src="../../img/nav_ys@2x.png" alt=""><span>颜色</span></div>
+    </div>
+</div>
+<div id="select_yanse">
+    <div class="select_yanse_contain">
+    <div class="line_1 line">
+        <ul class="clearfix colorlist">
+            <!-- <li><img src="img/nav_1black@2x.png"/><p>黑色</p></li> -->
+        </ul>
+    </div>
+</div>
+     <div id="guanbi_yanse">
+         <img src="../../img/bg_icon@2x.png"/>
+     </div>
+</div>
+<div id="select_fengge">
+    <div class="select_fengge_contain">
+    <div class="line_1 line">
+        <ul class="clearfix ProductAttr">
+            <!-- <li><img src="img/1yy@2x.png"/><p>优雅</p></li> -->
+        </ul>
+    </div>
+  </div>
+    <div id="guanbi_fengge">
+        <img src="../../img/bg_icon@2x.png"/>
+     </div>
+</div>
+<div id="main">    
+    <div id="wrapper">
+        <ul id="product_list" class="clearfix container-fluid">
+            <ul class="column1"></ul>
+            <ul class="column2"></ul>
+        </ul>
+    </div>
+    
+</div>
+<div class="productEditPop">
+    <input class="productId" type="text" hidden/>
+    <div class="editProduct">编辑</div>
+    <div class="delProduct">删除</div>
+    <div class="cloEditpop">取消</div>
+</div>
+
+
+
+<div class="footer">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <li class="swiper-slide" data-type="1"><img src="../../img/sz@2x.png"/><p>上装</p></li>
+            <li class="swiper-slide" data-type="2"><img src="../../img/xz@2x.png"/><p>下装</p></li>
+            <li class="swiper-slide" data-type="3"><img src="../../img/lt@2x.png"/><p>连体</p></li>
+            <li class="swiper-slide" data-type="4"><img src="../../img/wj@2x.png"/><p>围巾</p></li>
+            <li class="swiper-slide" data-type="5"><img src="../../img/sp@2x.png"/><p>饰品</p></li>
+            <li class="swiper-slide" data-type="6"><img src="../../img/x@2x.png"/><p>鞋</p></li>
+            <li class="swiper-slide" data-type="7"><img src="../../img/b@2x.png"/><p>包</p></li>
+        </div>
+    </div>
+</div>
+<!-- <script src="js/zepto.min.js"></script> -->
+<script src="../../js/swiper.min.js"></script>
+<script src="../../js/underscore.js"></script> 
+<script src="../../js/base.fontsize.js"></script>
+<script src="../../js/lss_global.js"></script>
+<script src="../../js/lss_danpin.js"></script>
+
+
+<script type="tpl" id="productTpl">
+    <li data-product-id=<%=obj.ProductId%> class="oneproduct" >
+        <div class="all_info">
+            <div class="img_box">
+                <a class="single" href="javascript:;"><img src=<%=obj.ImagePath%> alt="png"/></a>
+            </div>
+            <div class="bt_gray">
+                <p class="title"><img class="money" src=<%=obj.ColorIconPath%> /><span class="dollor">￥<%=obj.Price%></span></p>
+                <div class="cloth_sea">
+                    <b class="clothing"><%=obj.CategoryName%></b>
+                    <i class="seasion"><%=obj.SeasonName%></i>
+                </div>
+                <div class="praise">
+                    <div class="info_box">
+                        <img src="../../images/pl.png" alt="png"/><span><%=obj.CommentCount%></span>
+                    </div>
+                    <div class="praise_box">
+                        <img src="../../images/z.png" alt="png"/><span><%=obj.IsApproval%></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</script> 
+
+
+</body>
+</html>

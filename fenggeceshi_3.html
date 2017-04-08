@@ -1,0 +1,238 @@
+  	<!DOCTYPE html>
+	<html lang="zh-cn">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=640,user-scalable=no">
+		<title>风尚</title>
+		<link href="css/style_fenggeceshi.css"  rel="stylesheet">
+		<script src="js/jquery-2.1.1.min.js"></script>
+		
+	</head>
+
+	
+	<script src="js/appcan.js"></script>
+            
+
+                 <script>
+                  function return_yichu(){
+                     appcan.window.open({
+                    name:'yichu',
+                  data:'yichu.html',
+                  aniId:10,
+            });
+                 }
+                  function open_fenggeceshi4(){
+                        appcan.locStorage.setVal('FigureInfo',shengao+','+tizhong);
+                    
+                      appcan.window.open({
+                    name:'tap_4',
+                  data:'fenggeceshi_4.html',
+                  aniId:10,
+            });
+            }
+ function close_fenggeceshi(){
+                     appcan.window.close(-1);
+          
+                }
+          </script>
+	<body>
+				<header id="st-trigger-effects" class="column">
+					    <div class="back"><a href="javascript:void(0);" onclick="close_fenggeceshi();"><img src="img/return@2x.png" alt="">返回</a></div>
+					     <p>风格测试</p>
+                        <a id="close" href="javascript:void(0)" onclick="return_yichu();"><img src="img/close@2x.png"/></a>
+                        
+                        
+                      <div  class="progress">
+                   
+                              <li><img src="img/d1_pre@2x.png"/></li>
+                              <li><img src="img/d2_pre@2x.png"/></li>
+                              <li><img src="img/d3_pre@2x.png"/></li>
+                              <li><img src="img/d4@2x.png"/></li>
+                              <li><img src="img/d5@2x.png"/></li>
+                              <li><img src="img/d6@2x.png"/></li>
+                              <li><img src="img/d7@2x.png"/></li>
+                              <li><img src="img/d8@2x.png"/></li>
+                        
+                      </div>   
+				</header>
+				
+				
+				<div class="contain">
+				    <div class="man_icon">
+				        <img id="flash_shengao" src="img/scan_net.png"/>
+				        <img  id="flash_tizhong" src="img/scan_net1.png"/>
+						<img src="img/e3_t@2x.png"/>
+					</div>
+					<div class="tizhong">
+						<img class='ruler' src="img/e3_transverse_ruler@2x.png"/>
+						<img class='ruler_jian' src="img/e3_transverse_arrow@2x.png"/>
+						<span>体重&nbsp;&nbsp;kg</span>
+						<div class="swiper-container swiper-tizhong">
+                                     <div class="swiper-wrapper warpper_tizhong">
+                                           
+                                             <div class="swiper-slide">40</div>
+                                             <div class="swiper-slide">41</div>
+                                             <div class="swiper-slide">42</div>
+                                             <div class="swiper-slide">43</div>
+                                             <div class="swiper-slide">44</div>
+                                             <div class="swiper-slide">45</div>
+                                             <div class="swiper-slide">46</div>
+                                             <div class="swiper-slide">47</div>
+                                             <div class="swiper-slide">48</div>
+                                             <div class="swiper-slide">49</div>
+                                             <div class="swiper-slide">50</div>
+                                             <div class="swiper-slide">51</div>
+                                             <div class="swiper-slide">52</div>
+                                             <div class="swiper-slide">53</div>
+                                             <div class="swiper-slide">54</div>
+                                             <div class="swiper-slide">55</div>
+                                             <div class="swiper-slide">56</div>
+                                             <div class="swiper-slide">57</div>
+                                             <div class="swiper-slide">58</div>
+                                             <div class="swiper-slide">59</div>
+                                             <div class="swiper-slide">60</div>
+                                             <div class="swiper-slide">61</div>
+                                             <div class="swiper-slide">62</div>
+                                             <div class="swiper-slide">63</div>
+                                             <div class="swiper-slide">64</div>
+                                             <div class="swiper-slide">65</div>
+                                             <div class="swiper-slide">66</div>
+                                             <div class="swiper-slide">67</div>
+                                             <div class="swiper-slide">68</div>
+                                             <div class="swiper-slide">69</div>
+                                             <div class="swiper-slide">70</div>
+                                             <div class="swiper-slide">71</div>
+                                             <div class="swiper-slide">72</div>
+                                             <div class="swiper-slide">73</div>
+                                             <div class="swiper-slide">74</div>
+                                             <div class="swiper-slide">75</div>
+                                             <div class="swiper-slide">76</div>
+                                             <div class="swiper-slide">77</div>
+                                             <div class="swiper-slide">78</div>
+                                             <div class="swiper-slide">79</div>
+                                             <div class="swiper-slide">80</div>
+                                             <div class="swiper-slide">81</div>
+                                             <div class="swiper-slide">82</div>
+                                             <div class="swiper-slide">83</div>
+                                             <div class="swiper-slide">84</div>
+                                             <div class="swiper-slide">85</div>
+                                             <div class="swiper-slide">86</div>
+                                             <div class="swiper-slide">87</div>
+                                             <div class="swiper-slide">88</div>
+                                                                                                                                                                                                   
+                                     </div>
+                             </div>
+  <script src="js/swiper.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+ var tizhong="";
+ var shengao="";
+    var swiper = new Swiper('.swiper-tizhong', {
+     onInit: function(swiper){
+       $('.warpper_tizhong>.swiper-slide-next').nextAll().css({'font-size':'15px','color':'#888'});
+        $('.warpper_tizhong>.swiper-slide-next').prevAll().css({'font-size':'15px','color':'#888'});
+    },
+    onSlideChangeEnd: function(swiper){
+         $('#flash_tizhong').animate({'left':'0%'},function(){
+         $('#flash_tizhong').delay(200).animate({'left':'-100%'},0);
+        });
+        tizhong= $('.warpper_tizhong>.swiper-slide-next').html();
+      $('.warpper_tizhong>.swiper-slide-next').css({'font-size':'20px','color':'#FFFFFF'});
+      $('.warpper_tizhong>.swiper-slide-next').prevAll().css({'font-size':'15px','color':'#888'});
+       $('.warpper_tizhong>.swiper-slide-next').nextAll().css({'font-size':'15px','color':'#888'});
+    },
+        slidesPerView: 3,
+        spaceBetween: 30,
+        freeMode: false,
+    });
+    </script> 
+					</div>
+			         <div class="shengao">
+						<img class="ruler_2" src="img/e3_vertical_ruler@2x.png"/>
+						<img class="ruler_jian_2" src="img/e3_vertical_arrow@2x.png"/>
+						<span>身高&nbsp;&nbsp;cm</span>
+			             <div class="swiper-container4">
+                            <div class="swiper-wrapper wrapper_shengao">
+                                             <div class="swiper-slide">150</div>
+                                             <div class="swiper-slide">151</div>
+                                             <div class="swiper-slide">152</div>
+                                             <div class="swiper-slide">153</div>
+                                             <div class="swiper-slide">154</div>
+                                             <div class="swiper-slide">155</div>
+                                             <div class="swiper-slide">156</div>
+                                             <div class="swiper-slide">157</div>
+                                             <div class="swiper-slide">158</div>
+                                             <div class="swiper-slide">159</div>
+                                             <div class="swiper-slide">160</div>
+                                             <div class="swiper-slide">161</div>
+                                             <div class="swiper-slide">162</div>
+                                             <div class="swiper-slide">163</div>
+                                             <div class="swiper-slide">164</div>
+                                             <div class="swiper-slide">165</div>
+                                             <div class="swiper-slide">166</div>
+                                             <div class="swiper-slide">167</div>
+                                             <div class="swiper-slide">168</div>
+                                             <div class="swiper-slide">169</div>
+                                             <div class="swiper-slide">170</div>
+                                             <div class="swiper-slide">171</div>
+                                             <div class="swiper-slide">172</div>
+                                             <div class="swiper-slide">173</div>
+                                             <div class="swiper-slide">174</div>
+                                             <div class="swiper-slide">175</div>
+                                             <div class="swiper-slide">176</div>
+                                             <div class="swiper-slide">177</div>
+                                             <div class="swiper-slide">178</div>
+                                             <div class="swiper-slide">179</div>
+                                             <div class="swiper-slide">180</div>
+                                             <div class="swiper-slide">181</div>
+                                             <div class="swiper-slide">182</div>
+                                             <div class="swiper-slide">183</div>
+                                             <div class="swiper-slide">184</div>
+                                             <div class="swiper-slide">185</div>
+                                             <div class="swiper-slide">186</div>
+                                             <div class="swiper-slide">187</div>
+                                             <div class="swiper-slide">188</div>
+                                             <div class="swiper-slide">189</div>
+                                             <div class="swiper-slide">190</div> 
+                            </div>
+       
+                        </div>
+    <script>
+    var swiper1 = new Swiper('.swiper-container4', {
+       onInit: function(swiper1){
+         $('.wrapper_shengao>.swiper-slide-next').next().css({'font-size':'20px','color':'#FFFFFF'});
+     $('.wrapper_shengao>.swiper-slide-next').next().nextAll().css({'font-size':'15px','color':'#888'});
+     $('.wrapper_shengao>.swiper-slide-next').next().prevAll().css({'font-size':'15px','color':'#888'});
+    },
+    onSlideChangeEnd: function(swiper1){
+          $('#flash_shengao').animate({'top':'0%'},function(){
+         $('#flash_shengao').delay(200).animate({'top':'-100%'},0);
+        });
+        shengao=$('.wrapper_shengao>.swiper-slide-next').next().html();
+   $('.wrapper_shengao>.swiper-slide-next').next().css({'font-size':'20px','color':'#FFFFFF'});
+      $('.wrapper_shengao>.swiper-slide-next').next().prevAll().css({'font-size':'15px','color':'#888'});
+       $('.wrapper_shengao>.swiper-slide-next').next().nextAll().css({'font-size':'15px','color':'#888'});
+     
+    }, 
+        direction: 'vertical',
+        slidesPerView: 5,
+        paginationClickable: true,
+        spaceBetween: 30,
+        freeMode:false,
+        
+    
+    });
+    </script>
+			        </div>	
+			 </div> 
+             	<footer>
+                    <div class="next" onclick="open_fenggeceshi4();">
+                        <img src="img/next@2x.png"/>
+                    </div>
+		
+				</footer>
+
+
+	</body>
+	</html>

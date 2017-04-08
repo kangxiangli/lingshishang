@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
+    <title>评论</title>
+    <link href="../../css/style_public.css"  rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style_maishou.css"/>
+    <link rel="stylesheet" href="../../css/pullToRefresh.css"/>
+    <link rel="stylesheet" href="../../css/style_header.css"/>
+    
+   
+</head>
+<style type="text/css">
+	body{height: 100%;background:url('../../img/yijiyemian.png')no-repeat;width:100%;background-size:cover;}
+</style>
+<body>
+          <div class="header">
+                <div class="contain">
+                    <div class="back"><a href="javascript:void(0)" onclick="closeWin();"><img src="../../img/return@2x.png" alt="">返回</a></div>
+                    <div class="title"><a id="s" href="city.html">评论</a></div>                    
+                    <a class="ok" id="rlii_date" href="javascript:void(0);" >
+                        <img src="../../img/news-xin.png" alt="">
+                        <div class="iconred"></div>
+                    </a>
+                </div>
+            </div>
+</body>
+</html>
+<script src="../../js/jquery-2.1.1.min.js"></script>
+<script src="../../js/appcan.js"></script>
+<script src="../../js/lss_global.js"></script>
+<script class="dynamicScript" data-src="../../js/iscroll.js"></script>
+<script class="dynamicScript" data-src="../../js/pullToRefresh.js"></script>
+<script class="dynamicLoadedjs" data-src="../../js/lss_maishou.js"></script>
+<script type="text/javascript" charset="utf-8">
+    (function(win,doc){
+        function change(){
+            document.documentElement.style.fontSize=document.documentElement.clientWidth/16+'px';
+            document.getElementsByTagName('body')[0].style.fontSize=document.documentElement.clientWidth/16+'px';
+        }
+        win.addEventListener('resize',change,false);
+        win.addEventListener('DOMContentLoaded',change,false);
+    })(window,document);
+
+</script>

@@ -1,0 +1,400 @@
+	<!DOCTYPE html>
+	<html lang="zh-cn">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=640,user-scalable=no">
+		<title>风尚</title>
+		<link href="css/style_fenggeceshi.css"  rel="stylesheet">
+		  <script src="js/swiper.min.js"></script>
+		<script src="js/jquery-2.1.1.min.js"></script>
+		
+	</head>
+
+	
+	<script src="js/appcan.js"></script>
+       
+
+                 <script>
+                  function return_yichu(){
+                     appcan.window.open({
+                    name:'yichu',
+                  data:'yichu.html',
+                  aniId:10,
+            });
+                 }
+                 function open_fenggeceshi6(){
+                 var  FigureInfo=appcan.locStorage.getVal('FigureInfo');
+                 FigureInfo=FigureInfo+","+jian+','+xiong+","+yao+","+tun;
+       appcan.locStorage.setVal('FigureInfo',FigureInfo);
+                      appcan.window.open({
+                    name:'tap_6',
+                  data:'fenggeceshi_6.html',
+                  aniId:10,
+            });
+            }
+ function close_fenggeceshi(){
+                     appcan.window.close(-1);
+          
+                }
+          </script>
+	<body>
+				<header id="st-trigger-effects" class="column">
+					    <div class="back"><a href="javascript:void(0);" onclick="close_fenggeceshi();"><img src="img/return@2x.png" alt="">返回</a></div>
+					     <p>风格测试</p>
+                        <a id="close" href="javascript:void(0)" onclick="return_yichu();"><img src="img/close@2x.png"/></a>
+                        
+                        
+                      <div  class="progress">
+                   
+                              <li><img src="img/d1_pre@2x.png"/></li>
+                              <li><img src="img/d2_pre@2x.png"/></li>
+                              <li><img src="img/d3_pre@2x.png"/></li>
+                              <li><img src="img/d4_pre@2x.png"/></li>
+                              <li><img src="img/d5_pre@2x.png"/></li>
+                              <li><img src="img/d6@2x.png"/></li>
+                              <li><img src="img/d7@2x.png"/></li>
+                              <li><img src="img/d8@2x.png"/></li>
+                        
+                      </div>   
+				</header>
+				
+				
+				<div class="contain">
+				    <div class="shencai">
+				            <div id="jian"></div>
+							<div id="xiong"></div>
+							<div id="yao"></div>
+							<div id="tun"></div>
+					       <img class="shoulder" src="img/5_1shoulder@2x.png"/>
+					       <img class="chest" src="img/5_2chest_pre@2x.png"/>
+					       <img class="waist" src="img/5_3waist@2x.png"/>
+					       <img class="buttocks" src="img/5_4buttocks@2x.png"/>
+					</div>
+				    <div class="shencai_swiper">
+				        <span class="jian">肩</span>
+				        <span class="xiong">胸</span>
+				        <span class="yao">腰</span>
+				        <span class="tun">臀</span>
+				        <span class="cm_1">cm</span>
+				        <span class="cm_2">cm</span>
+				        <span class="cm_3">cm</span>
+				        <span class="cm_4">cm</span>
+						 <div class="swiper-container7 swiper-sanwei">
+                                     <div class="swiper-wrapper warpper_jian">  
+                                                                      
+                                             <div class="swiper-slide">32</div>
+                                             <div class="swiper-slide">33</div>
+                                             <div class="swiper-slide">34</div>
+                                             <div class="swiper-slide">35</div>
+                                             <div class="swiper-slide">36</div>
+                                             <div class="swiper-slide">37</div>
+                                             <div class="swiper-slide">38</div>
+                                             <div class="swiper-slide">39</div>
+                                             <div class="swiper-slide">40</div>
+                                             <div class="swiper-slide">41</div>
+                                             <div class="swiper-slide">42</div>
+                                             <div class="swiper-slide">43</div>
+                                             <div class="swiper-slide">44</div>
+                                             <div class="swiper-slide">45</div>                                          
+                                                                                
+                                                                                                                                                                                                   
+                                     </div>
+                             </div>
+                        
+
+    <!-- Initialize Swiper -->
+    <script>
+ var jian,xiong,yao,tun="";
+
+    var swiper = new Swiper('.swiper-container7', {
+     onInit: function(swiper){
+       $('.warpper_jian>.swiper-slide-next').next().css({'font-size':'20px','color':'#FFFFFF'});
+       $('.warpper_jian>.swiper-slide-next').next().nextAll().css({'font-size':'15px','color':'#888'});
+        $('.warpper_jian>.swiper-slide-next').next().prevAll().css({'font-size':'15px','color':'#888'});
+    },
+    onSlideChangeEnd: function(swiper){
+       jian=$('.warpper_jian>.swiper-slide-next').next().html();    
+          $('#jian').empty().append(jian);
+  
+
+      $('.warpper_jian>.swiper-slide-next').next().css({'font-size':'20px','color':'#FFFFFF'});
+      $('.warpper_jian>.swiper-slide-next').next().prevAll().css({'font-size':'15px','color':'#888'});
+      $('.warpper_jian>.swiper-slide-next').next().nextAll().css({'font-size':'15px','color':'#888'});
+    },
+        loop : true,
+        slidesPerView: 5,
+        spaceBetween: 10,
+        freeMode: false,
+    });
+    </script> 
+     <div class="swiper-container8 swiper-sanwei">
+                                     <div class="swiper-wrapper warpper_xiong">  
+                                                                      
+                                             <div class="swiper-slide">70</div>
+                                             <div class="swiper-slide">71</div>
+                                             <div class="swiper-slide">72</div>
+                                             <div class="swiper-slide">73</div>
+                                             <div class="swiper-slide">74</div>
+                                             <div class="swiper-slide">75</div>
+                                             <div class="swiper-slide">76</div>
+                                             <div class="swiper-slide">77</div>
+                                             <div class="swiper-slide">78</div>
+                                             <div class="swiper-slide">79</div>
+                                             <div class="swiper-slide">80</div>
+                                             <div class="swiper-slide">81</div>
+                                             <div class="swiper-slide">82</div>
+                                             <div class="swiper-slide">83</div>
+                                             <div class="swiper-slide">84</div>
+                                             <div class="swiper-slide">85</div>
+                                             <div class="swiper-slide">86</div>
+                                             <div class="swiper-slide">87</div>
+                                             <div class="swiper-slide">88</div>
+                                             <div class="swiper-slide">89</div>
+                                             <div class="swiper-slide">90</div>
+                                             <div class="swiper-slide">91</div>
+                                             <div class="swiper-slide">92</div>
+                                             <div class="swiper-slide">93</div>
+                                             <div class="swiper-slide">94</div>
+                                             <div class="swiper-slide">95</div>
+                                             <div class="swiper-slide">96</div>
+                                             <div class="swiper-slide">97</div>
+                                             <div class="swiper-slide">98</div>
+                                             <div class="swiper-slide">99</div>
+                                             <div class="swiper-slide">100</div>
+                                             <div class="swiper-slide">101</div>
+                                             <div class="swiper-slide">102</div>
+                                             <div class="swiper-slide">103</div>
+                                             <div class="swiper-slide">104</div>
+                                             <div class="swiper-slide">105</div>
+                                             <div class="swiper-slide">106</div>
+                                             <div class="swiper-slide">107</div>
+                                             <div class="swiper-slide">108</div>
+                                             <div class="swiper-slide">109</div>
+                                             <div class="swiper-slide">110</div>
+                                             <div class="swiper-slide">111</div>
+                                             <div class="swiper-slide">112</div>
+                                             <div class="swiper-slide">113</div>
+                                             <div class="swiper-slide">114</div>
+                                             <div class="swiper-slide">115</div>
+                                             <div class="swiper-slide">116</div>
+                                             <div class="swiper-slide">117</div>
+                                             <div class="swiper-slide">118</div>
+                                             <div class="swiper-slide">119</div>
+                                             <div class="swiper-slide">120</div>
+                                                                                                                                                                
+                                                                                                                                                                                                   
+                                     </div>
+                             </div>
+                        
+
+    <!-- Initialize Swiper -->
+    <script>
+ 
+    var swiper1 = new Swiper('.swiper-container8', {
+     onInit: function(swiper1){
+       $('.warpper_xiong>.swiper-slide-next').next().css({'font-size':'20px','color':'#FFFFFF'});
+       $('.warpper_xiong>.swiper-slide-next').next().nextAll().css({'font-size':'15px','color':'#888'});
+        $('.warpper_xiong>.swiper-slide-next').next().prevAll().css({'font-size':'15px','color':'#888'});
+    },
+    onSlideChangeEnd: function(swiper1){
+        xiong=$('.warpper_xiong>.swiper-slide-next').next().html();    
+          $('#xiong').empty().append(xiong);
+    
+      $('.warpper_xiong>.swiper-slide-next').next().css({'font-size':'20px','color':'#FFFFFF'});
+      $('.warpper_xiong>.swiper-slide-next').next().prevAll().css({'font-size':'15px','color':'#888'});
+      $('.warpper_xiong>.swiper-slide-next').next().nextAll().css({'font-size':'15px','color':'#888'});
+    },
+        loop : true,
+        slidesPerView: 5,
+        spaceBetween: 10,
+        freeMode: false,
+    });
+    </script> 
+     <div class="swiper-container9 swiper-sanwei">
+                                     <div class="swiper-wrapper warpper_yao">  
+                                                                      
+                                             <div class="swiper-slide">55</div>
+                                             <div class="swiper-slide">56</div>
+                                             <div class="swiper-slide">57</div>
+                                             <div class="swiper-slide">58</div>
+                                             <div class="swiper-slide">59</div>
+                                             <div class="swiper-slide">60</div>
+                                             <div class="swiper-slide">61</div>
+                                             <div class="swiper-slide">62</div>
+                                             <div class="swiper-slide">63</div>
+                                             <div class="swiper-slide">64</div>
+                                             <div class="swiper-slide">65</div>
+                                             <div class="swiper-slide">66</div>
+                                             <div class="swiper-slide">67</div>
+                                             <div class="swiper-slide">68</div>
+                                             <div class="swiper-slide">69</div>
+                                             <div class="swiper-slide">70</div>
+                                             <div class="swiper-slide">71</div>
+                                             <div class="swiper-slide">72</div>
+                                             <div class="swiper-slide">73</div>
+                                             <div class="swiper-slide">74</div>
+                                             <div class="swiper-slide">75</div>
+                                             <div class="swiper-slide">76</div>
+                                             <div class="swiper-slide">77</div>
+                                             <div class="swiper-slide">78</div>
+                                             <div class="swiper-slide">79</div>
+                                             <div class="swiper-slide">80</div>
+                                             <div class="swiper-slide">81</div>
+                                             <div class="swiper-slide">82</div>
+                                             <div class="swiper-slide">83</div>
+                                             <div class="swiper-slide">84</div>
+                                             <div class="swiper-slide">85</div>
+                                             <div class="swiper-slide">86</div>
+                                             <div class="swiper-slide">87</div>
+                                             <div class="swiper-slide">88</div>
+                                             <div class="swiper-slide">89</div>
+                                             <div class="swiper-slide">90</div>
+                                             <div class="swiper-slide">91</div>
+                                             <div class="swiper-slide">92</div>
+                                             <div class="swiper-slide">93</div>
+                                             <div class="swiper-slide">94</div>
+                                             <div class="swiper-slide">95</div>
+                                             <div class="swiper-slide">96</div>
+                                             <div class="swiper-slide">97</div>
+                                             <div class="swiper-slide">98</div>
+                                             <div class="swiper-slide">99</div>
+                                             <div class="swiper-slide">100</div>
+                                             <div class="swiper-slide">101</div>
+                                             <div class="swiper-slide">102</div>
+                                             <div class="swiper-slide">103</div>
+                                             <div class="swiper-slide">104</div>
+                                             <div class="swiper-slide">105</div>
+                                             <div class="swiper-slide">106</div>
+                                             <div class="swiper-slide">107</div>
+                                             <div class="swiper-slide">108</div>
+                                             <div class="swiper-slide">109</div>
+                                             <div class="swiper-slide">110</div>
+                                             <div class="swiper-slide">111</div>
+                                             <div class="swiper-slide">112</div>
+                                             <div class="swiper-slide">113</div>
+                                             <div class="swiper-slide">114</div>
+                                             <div class="swiper-slide">115</div>
+                                             <div class="swiper-slide">116</div>
+                                             <div class="swiper-slide">117</div>
+                                             <div class="swiper-slide">118</div>
+                                             <div class="swiper-slide">119</div>
+                                             <div class="swiper-slide">120</div>                                         
+                                                                                
+                                                                                                                                                                                                   
+                                     </div>
+                             </div>
+                        
+
+    <!-- Initialize Swiper -->
+    <script>
+ 
+    var swiper2 = new Swiper('.swiper-container9', {
+     onInit: function(swiper2){
+       $('.warpper_yao>.swiper-slide-next').next().css({'font-size':'20px','color':'#FFFFFF'});
+       $('.warpper_yao>.swiper-slide-next').next().nextAll().css({'font-size':'15px','color':'#888'});
+        $('.warpper_yao>.swiper-slide-next').next().prevAll().css({'font-size':'15px','color':'#888'});
+    },
+    onSlideChangeEnd: function(swiper2){
+      yao=$('.warpper_yao>.swiper-slide-next').next().html();    
+          $('#yao').empty().append(yao);
+ 
+      $('.warpper_yao>.swiper-slide-next').next().css({'font-size':'20px','color':'#FFFFFF'});
+      $('.warpper_yao>.swiper-slide-next').next().prevAll().css({'font-size':'15px','color':'#888'});
+      $('.warpper_yao>.swiper-slide-next').next().nextAll().css({'font-size':'15px','color':'#888'});
+    },
+        loop : true,
+        slidesPerView: 5,
+        spaceBetween: 10,
+        freeMode: false,
+    });
+    </script> 
+     <div class="swiper-container10 swiper-sanwei">
+                                     <div class="swiper-wrapper warpper_tun">  
+                                                                      
+                                            <div class="swiper-slide">75</div>
+                                             <div class="swiper-slide">76</div>
+                                             <div class="swiper-slide">77</div>
+                                             <div class="swiper-slide">78</div>
+                                             <div class="swiper-slide">79</div>
+                                             <div class="swiper-slide">80</div>
+                                             <div class="swiper-slide">81</div>
+                                             <div class="swiper-slide">82</div>
+                                             <div class="swiper-slide">83</div>
+                                             <div class="swiper-slide">84</div>
+                                             <div class="swiper-slide">85</div>
+                                             <div class="swiper-slide">86</div>
+                                             <div class="swiper-slide">87</div>
+                                             <div class="swiper-slide">88</div>
+                                             <div class="swiper-slide">89</div>
+                                             <div class="swiper-slide">90</div>
+                                             <div class="swiper-slide">91</div>
+                                             <div class="swiper-slide">92</div>
+                                             <div class="swiper-slide">93</div>
+                                             <div class="swiper-slide">94</div>
+                                             <div class="swiper-slide">95</div>
+                                             <div class="swiper-slide">96</div>
+                                             <div class="swiper-slide">97</div>
+                                             <div class="swiper-slide">98</div>
+                                             <div class="swiper-slide">99</div>
+                                             <div class="swiper-slide">100</div>
+                                             <div class="swiper-slide">101</div>
+                                             <div class="swiper-slide">102</div>
+                                             <div class="swiper-slide">103</div>
+                                             <div class="swiper-slide">104</div>
+                                             <div class="swiper-slide">105</div>
+                                             <div class="swiper-slide">106</div>
+                                             <div class="swiper-slide">107</div>
+                                             <div class="swiper-slide">108</div>
+                                             <div class="swiper-slide">109</div>
+                                             <div class="swiper-slide">110</div>
+                                             <div class="swiper-slide">111</div>
+                                             <div class="swiper-slide">112</div>
+                                             <div class="swiper-slide">113</div>
+                                             <div class="swiper-slide">114</div>
+                                             <div class="swiper-slide">115</div>
+                                             <div class="swiper-slide">116</div>
+                                             <div class="swiper-slide">117</div>
+                                             <div class="swiper-slide">118</div>
+                                             <div class="swiper-slide">119</div>
+                                             <div class="swiper-slide">120</div>  
+                                                                                                                                                                                                   
+                                     </div>
+                             </div>
+                        
+
+    <!-- Initialize Swiper -->
+    <script>
+ 
+    var swiper3 = new Swiper('.swiper-container10', {
+     onInit: function(swiper3){
+       $('.warpper_tun>.swiper-slide-next').next().css({'font-size':'20px','color':'#FFFFFF'});
+       $('.warpper_tun>.swiper-slide-next').next().nextAll().css({'font-size':'15px','color':'#888'});
+        $('.warpper_tun>.swiper-slide-next').next().prevAll().css({'font-size':'15px','color':'#888'});
+    },
+    onSlideChangeEnd: function(swiper3){
+     tun=$('.warpper_tun>.swiper-slide-next').next().html();    
+          $('#tun').empty().append(tun);
+ 
+      $('.warpper_tun>.swiper-slide-next').next().css({'font-size':'20px','color':'#FFFFFF'});
+      $('.warpper_tun>.swiper-slide-next').next().prevAll().css({'font-size':'15px','color':'#888'});
+      $('.warpper_tun>.swiper-slide-next').next().nextAll().css({'font-size':'15px','color':'#888'});
+    },
+        loop : true,
+        slidesPerView: 5,
+        spaceBetween: 10,
+        freeMode: false,
+    });
+    </script> 
+    
+					</div>
+			   </div> 
+             	<footer>
+                    <div class="next" onclick="open_fenggeceshi6();">
+                        <img src="img/next@2x.png"/>
+                    </div>
+		
+				</footer>
+
+
+	</body>
+	</html>

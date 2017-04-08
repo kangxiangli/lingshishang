@@ -1,0 +1,353 @@
+    <!DOCTYPE html>
+    <html lang="zh-cn">
+    <head>
+<meta charset='utf-8'>
+<meta name="viewport" content="width=640, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<title>我的</title>
+<link rel="stylesheet" type="text/css" href="css/style_admin_infor.css"/>
+            <script src="js/jquery-2.1.1.min.js"></script>     
+      		 <script src="js/mui.min.js"></script> 
+            <script src="js/lss_global.js"></script>  
+            <script src="js/base.fontsize.js"></script>
+            <script src="js/jquery.form.js"></script>
+    </head>
+
+    <body>
+            <div class="pageone">
+                
+          
+            <header id="st-trigger-effects" class="column">
+                <div class="st-trigger-effects portrait" data-effect="st-effect-6" id="show-btn">
+                    <img src="img/shiyi.png"/>
+                </div> 
+                <div class="logo">
+                    <img src="img/login_logo_@2x.png" alt="">
+                </div>   
+                <a id="shangcheng" href="javascript:void(0)" onclick="openNewWin('shangcheng','shangcheng.html');"><img src="img/sc@2x.png"/></a>       
+            </header>            
+                   <div class="admin_info">
+                                
+                         <div  class="touxiang">
+                             <img src=""/>   
+                              
+                         </div> 
+<form id="form">
+    <input type="file" name="CoverImage" id="doc" style="width:150px;" onchange="TemporaryMedia();" hidden>
+</form> 
+                         <div id="username" data-type="修改昵称"></div>
+                         <div id="userphone" data-type="修改手机号"></div>
+                         <div id="userpwd" data-type="修改密码"><span>***********</span><img style="display: inline;margin-left: .2rem;margin-right:.2rem;" src="img/lock.png"/>修改密码</div>
+                        
+                    </div>
+                    <div class="admin_info_bt">
+                            <div class="select_sex">
+                                <img src="img/m_pre.png" class="man"/>
+                                <img src="img/w.png" class="woman"/>
+                            </div>
+                            <div class="real_name" name="real_name" data-type="真实姓名">真实姓名  </div>
+                            <div class="IDCard" name="IDCard" data-type="身份证号">身份证号</div>
+                            <div class="DateofBirth" data-type="出生日期">出生日期</div>
+                            <div class="dapeishi">
+                                
+                            </div>
+                            <div class="dianpu">
+                                
+                            </div>
+                    </div>
+                      </div>
+            <!-- 修改信息page -->
+            <div class="pagetwo">
+                <div class="header">          
+                    <div class="back"><a href="javascript:void(0)"><img src="img/return@2x.png" alt="">返回</a></div>
+                    <div class="title"></div>                    
+                    <button id="save">保存</button>
+                </div>
+            
+                <div class="contain">
+                            <input type="text" name="" id="information" value="" />
+                </div>
+                
+            </div>
+    </body>
+
+
+   <script type="text/javascript" charset="utf-8">      
+ mui.plusReady(function(){
+	var index=plus.webview.getLaunchWebview();
+	setTimeout(function(){
+		 index.setStyle({       
+          zindex: -9998,	
+	      render:'always'
+        });  
+	},100)
+            //判断登陆状态/header展示用户头像 
+       if( LSShang.getlocStorage('Member') == null ){
+           //openNewWin('login','login.html');
+       }else{
+           $('.touxiang img').attr('src',LSShang.getlocStorageVal('Member','UserPhoto'));
+       }
+       initadmin();
+
+ })
+  /*--------------------------- 渲染用户信息 --------------------------------*/  
+ function initadmin(){  
+if( userId != null && userNum != null){    
+    
+    lssAjax.postJson({
+        url:host + '/api/Members/MemberInfo/GetMemberName',
+        data:{
+            MemberId:userId,
+            U_Num:userNum
+        },
+       success:function(data){
+ 
+            $('.touxiang img').attr('src',data.Data.UserPhoto);
+            $('#username').html(data.Data.MemberName);
+       }
+    });
+    lssAjax.postJson({
+        url:host + '/API/Members/MemberInfo/GetAccount',
+        data:{
+            MemberId:userId,
+            U_Num:userNum
+        },
+       success:function(data){
+            $('#userphone').html(data.Data.MobilePhone);
+       }
+    })
+    lssAjax.postJson({
+        url:host + '/API/Members/MemberInfo/GetMemberInfo',
+        data:{
+            MemberId:userId,
+            U_Num:userNum
+        },
+       success:function(data){
+            $('.real_name').html(data.Data.RealName);
+            $('.IDCard').html(data.Data.IDCard);
+             $('.DateofBirth').html(data.Data.DateofBirth);
+       }
+    })
+   
+}
+ } 
+/*--------------------------- 修改头像 --------------------------------*/   
+    $('.touxiang').click(function(){
+            $('#doc').trigger('click');       
+    });
+  function TemporaryMedia() {  
+        alert('begin');
+        //提交请求处理的url  
+        var actionUrl ='http://www.0-fashion.com/ApiMember/Upload';
+        //开始ajax操作  
+        $("#form").ajaxSubmit({              
+                type: "POST",//提交类型  
+                url: actionUrl,//请求地址  
+                data: {                 
+                    MemberId:userId,
+                    U_Num:userNum,               
+                },//请求数据  
+                success: function (data) {//请求成功后的函数  
+                    alert('ok');
+                    console.log(data);
+                    LSShang.toast(data.Message);
+                      lssAjax.postJson({
+                        url:host + '/api/Members/MemberInfo/GetMemberName',
+                        data:{
+                            MemberId:userId,
+                            U_Num:userNum
+                        },
+                       success:function(data){
+                            console.log(data);
+                            $('.touxiang img').attr('src',data.Data.UserPhoto);
+                       }
+                     });
+                 
+                },  
+                error: function (data) { 
+                     alert('no');
+                     alert(JSON.stringify(data));
+                  //  LSShang.toast(data.msg);
+                     },//请求失败的函数  
+                async: true             
+        });  
+
+    }  
+/*--------------------------- 修改昵称 --------------------------------*/ 
+   function changename(MemberName){
+       
+    lssAjax.postJson({
+        url:host + '/API/Members/MemberInfo/UpdateName',
+        data:{
+            MemberId:userId,
+            U_Num:userNum,
+            MemberName:MemberName,
+        },
+       success:function(data){
+          
+ console.log(data.Data);
+   LSShang.toast('修改成功');
+         
+       }
+    })
+}
+/*--------------------------- 修改手机号--------------------------------*/ 
+   function changphonenum(MobilePhone){
+       
+    lssAjax.postJson({
+        url:host + '/API/Members/MemberInfo/UpdatePhone',
+        data:{
+            MemberId:userId,
+            U_Num:userNum,
+            MobilePhone:MobilePhone,
+        },
+       success:function(data){
+          
+ console.log(data);
+   LSShang.toast('修改成功');
+         
+       }
+    })
+}
+/*--------------------------- 修改密码--------------------------------*/ 
+   function UpdatePassword(UpdatePassword){
+       
+    lssAjax.postJson({
+        url:host + '/api/Members/MemberInfo/UpdateInfo',
+        data:{
+            MemberId:userId,
+            U_Num:userNum,  
+            KeyWord:UpdatePassword,
+            Flag:2
+        },
+       success:function(data){      
+alert(JSON.stringify(data));
+   LSShang.toast('修改成功');
+         
+       }
+    })
+}
+/*--------------------------- 修改真实姓名--------------------------------*/ 
+   function UpdateRealName(UpdateRealName){
+       
+    lssAjax.postJson({
+        url:host + '/api/Members/MemberInfo/UpdateInfo',
+        data:{
+            MemberId:userId,
+            U_Num:userNum,  
+            KeyWord:UpdateRealName,
+            Flag:7
+        },
+       success:function(data){      
+alert(JSON.stringify(data));
+   LSShang.toast('修改成功');
+         
+       }
+    })
+}
+/*--------------------------- 修改性别 --------------------------------*/ 
+$('.select_sex img').click(function(){
+
+    var $this=$(this);
+    if($this.hasClass('man')){
+        $this.attr('src','img/m_pre.png');
+        $this.siblings().attr('src','img/w.png')
+        UpdateSex(0);
+    }else if($this.hasClass('woman')){
+        $this.attr('src','img/w_pre.png');
+        $this.siblings().attr('src','img/m.png')
+        UpdateSex(1);
+    }
+})
+function UpdateSex(sex_num){
+       
+    lssAjax.postJson({
+        url:host + '/api/Members/MemberInfo/UpdateInfo',
+        data:{
+            MemberId:userId,
+            U_Num:userNum,  
+            KeyWord:sex_num,
+            Flag:4
+        },
+       success:function(data){      
+alert(JSON.stringify(data));
+   LSShang.toast('修改成功');
+         
+       }
+    })
+}
+ var title;
+ $('div[data-type]').click(function(){
+     title=$(this).attr('data-type');
+      $('.pageone').hide();
+      $(".pagetwo").show();
+
+      $('.title').html(title);
+      $('.contain input').val('');
+      $('.contain input').focus();
+ });
+  $('.back').click(function(){
+   
+          $(".pagetwo").hide();
+
+      $('.pageone').show();  
+          initadmin();
+ });
+ /*--------------------------- 保存调接口--------------------------------*/ 
+ $('#save').click(function(){
+       var infor=$('#information').val();
+       alert(infor);
+     if(title=="修改昵称"){ 
+      changename(infor); 
+     }if(title=="修改手机号"){ 
+      changphonenum(infor); 
+     }if(title=="修改密码"){      
+      UpdatePassword(infor); 
+     }if(title=="真实姓名"){      
+      UpdateRealName(infor); 
+     }
+         
+ 
+ })
+
+ document.getElementById('show-btn').addEventListener('tap', function() {  
+    // 侧滑页面出现右移到显示区域  
+var main=plus.webview.currentWebview();
+
+    // 主界面右移  
+    main.show('none', 0, function() {  
+        main.setStyle({  
+            left: '70%',  
+          
+            mask: 'rgba(0,0,0,0.5)',  
+            transition: {  
+                duration: 100  
+            }  
+        });  
+    });  
+
+    // 每次移除遮罩点击事件，避免重复添加监听  
+    main.removeEventListener('maskClick');  
+    // 点击关闭遮罩时  
+    main.addEventListener('maskClick', function(){  
+        // 主界面移动到最大显示区域  
+        main.setStyle({  
+            left: '0',  
+            top: '0',  
+            bottom: '0',  
+            mask: 'none',  
+            transition: {  
+                duration: 100  
+            }  
+        });  
+        // 侧滑界面移出显示区域之外  
+
+        // 隐藏侧滑页面，setTimeout避免竞争资源  
+
+           //menu.hide();  
+
+    },false);  
+
+});  
+   </script>
+    
+</html>

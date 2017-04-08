@@ -1,0 +1,13 @@
+{
+	"晴":"images/weather/03.png",
+	"多云":"images/weather/05.png",
+	"阴":"images/weather/22.png",
+	"小雨":"images/weather/28.png",
+	"中雨":"images/weather/28.png",	
+	"雨夹雪":"images/weather/46.png",
+	"阵雪":"images/weather/46.png",
+	"小雪":"images/weather/46.png",
+	"雪":"images/weather/46.png",
+	"雨":"images/weather/28.png"
+	
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=640, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<title>衣橱</title>
+		<link href="../../css/style_public.css" rel="stylesheet">
+		<link href="../../css/component.css" rel="stylesheet" />
+
+		<style>
+			.container {
+				height: 100%;
+				overflow-y: auto;
+			}
+			
+			.index {
+				display: none;
+				margin-bottom: 5px;
+			}
+			
+			.index img {
+				width: 100%;
+			}
+			
+			.bounceLeft {
+				-webkit-animation: bounceLeft 1s;
+			}
+			
+			.bounceRight {
+				-webkit-animation: bounceRight 1s;
+			}
+			
+			@-webkit-keyframes bounceLeft {
+				0% {
+					-webkit-transform: translate3d(-1000px, 0, 0);
+					  -webkit-filter:brightness(.8);
+				}
+				50%{
+					 -webkit-filter:brightness(.3);
+				}
+				
+				100% {
+					-webkit-transform: translate3d(0, 0, 0);
+					  -webkit-filter:brightness(1);
+				}
+			}
+			
+			@-webkit-keyframes bounceRight {
+				0% {
+					-webkit-transform: translate3d(1000px, 0, 0);
+					  -webkit-filter:brightness(.8);
+				}
+				50%{
+					 -webkit-filter:brightness(.3);
+				}
+				100% {
+					-webkit-transform: translate3d(0, 0, 0);
+					  -webkit-filter:brightness(1);
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container st-pusher">
+			<div class="index rizhi bounceLeft" onclick=openNewWin( 'chuanyirili.html')>
+				<a href="javascript:;">
+					<img src="../../img/1bg_z@2x.png" alt="">
+				</a>
+			</div>
+			<div class="index danpin bounceRight" onclick=openNewWin( 'wodedanpin.html')>
+				<a href="javascript:;">
+					<img src="../../img/2bg_z@2x.png" alt="">
+				</a>
+			</div>
+			<div class="index dapei bounceLeft" onclick=openNewWin( 'wodedapei.html')>
+				<a href="javascript:;">
+					<img src="../../img/3bg_z@2x.png" alt="">
+				</a>
+			</div>
+		</div>
+
+	</body>
+
+	<script src="../../js/mui.min.js"></script>
+	<script src="../../js/lss_global.js"></script>
+	<script src="../../js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript">
+		function addAnimate() {
+			$('.index').css('display', 'block');
+			$('.rizhi,.dapei').addClass('bounceLeft');
+			$('.danpin').addClass('bounceRight');
+			setTimeout(function() {
+				$('.rizhi,.dapei').removeClass('bounceLeft');
+				$('.danpin').removeClass('bounceRight');
+			}, 1000)
+		}
+
+		function removeAnimate() {
+			$('.index').css('display', 'none');
+		}
+	</script>
+
+</html>

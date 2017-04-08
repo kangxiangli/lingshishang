@@ -1,0 +1,336 @@
+@charset 'utf-8';
+* {
+  -webkit-touch-callout: none;
+  /*-webkit-user-select: none;*/
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+h1,h2,h3,p,ul,ol,form,fieldset,figure {margin: 0;padding: 0;}
+div,figure,img,input,button {box-sizing: border-box;}
+body,html{  font-size: 17px;margin: 0;padding: 0;overflow-x: hidden;overflow-y:hidden; width:100%; height: 100%;background:url('../img/erjiyemian.png')no-repeat;background-size:100% 100%;}
+ul,ol{list-style: outside none none;}
+li{display:block;}
+
+
+
+/*header*/
+/*.header{height: 1.75rem; text-align:center; border-bottom:1px solid silver;width: 93%;margin:0 auto;position: relative;}
+.header .contain{height: 100%;line-height: 100%;width: 100%;}
+.header .contain .back a{color: #fff;position: absolute;bottom:20%;left: 0;width: 20%}
+.header .contain .back a img{display: inline;height:12px;padding-right: 2px;}
+.header .contain .location a{ color: #fff;position: absolute;top: 50%;left: 34.5%;font-size: 1.5em}
+.header .title{ color:#FFFFFF;line-height:1.75rem;letter-spacing: 2px;}*/
+.header .selection{
+    position: relative
+    }
+.header .selection>img{
+    position: absolute;
+    right: .3rem;
+    bottom: .3rem;
+    /* width: 1.15rem; */
+    height: 1.15rem;
+    float: right;}
+.header .selection .addandsearch{display: none;width:180px;height:145px;position: absolute;right: 0;top:100%;z-index: 999;}
+.header .selection .addandsearch>img{width: 100%;height: 100%}
+.header .selection .addandsearch>ul{position: absolute;top: 20%;right: 26%;width: 169px;height: 97px;}
+.header .selection .addandsearch>ul>li{width: 128%;height: 10%;letter-spacing: .6em;font-size: 2.2em;color: #969696;margin-bottom: 9px;text-align: center;text-align: center;line-height: 48px;}
+.header .selection .addandsearch>ul>li:first-child{border-bottom: 2px solid #969696;padding-bottom: 47px;}
+/*内容*/
+.container{height: 82%;position:relative;}
+/*卡片*/
+ @-webkit-keyframes animation{from{opacity:0; -webkit-transform:scale(1.2) rotateX(45deg);transform:scale(1.2) rotateX(45deg);} to{ }}
+
+    @-webkit-keyframes animation2{from{opacity:0; -webkit-transform:scale(1.2) rotateX(45deg);transform:scale(1.2) rotateX(45deg);} to{ }}
+
+    .slider div p{font-size:14px;/*float: left*/ text-overflow:ellipsis;}
+    .slider{
+    /*-webkit-animation: animation ease 1s;*/
+    /*animation-delay: .8s;
+    animation-fill-mode: backwards;
+    perspective: 3990px;
+    transition: ease-in-out .2s;*/
+        /*-webkit-transform:rotateX(45deg);
+        -webkit-transform-style:preserve-3d;
+        position:absolute;*/
+    }
+    /*.slider:active{ -webkit-transform:rotateZ(10deg);}*/
+    .slide img { text-align:center; -webkit-user-drag:none;user-drag:none;-moz-user-drag:none; border-radius:2px;}
+    .slide{
+        -webkit-user-select:none;
+        user-select:none;
+        -moz-user-select:none;
+        position:absolute;
+        box-shadow: 0px 10px 30px 0px rgba(0,0,0,0.3);
+        /*-webkit-transform-style:preserve-3d;
+        transform-style:preserve-3d;
+        -moz-transform-style:preserve-3d;*/
+        /*overflow:hidden;*/
+        box-sizing:border-box;
+        /*border-radius:5px; */
+        overflow: hidden;
+    }
+    .transition {
+        -webkit-transition: cubic-bezier(0,1.95,.49,.73) .4s ;
+        -moz-transition: cubic-bezier(0,1.95,.49,.73) .4s ;
+        transition: cubic-bezier(0,1.95,.49,.73) .4s ;
+    }
+/*一级页面底*/
+.pageone>footer{width: 100%; height:6rem;border-top: 1px solid #AAAAAA;position: relative}
+.pageone>footer>ul.list-inline{
+    position: relative;
+    z-index: 99;
+}
+.pageone>footer>ul.list-inline>li{float:left;width:25%;text-align: center}
+.pageone>footer>ul.list-inline>li img{width:31px;height: 29px;margin: 5px;margin-bottom: 0px}
+.pageone>footer>ul.list-inline>li p{color:#ccc;font-size:14px;text-align: center}
+/*二级页面头*/
+.pagetwo{width:100%;height: 100%;}
+.pageone{height: 100%;width: 100%;}
+.pagetwo .header .contain .back span{color: #fff;position: absolute;top:53%;left: 4%;width: 20%}
+.pagetwo .header .contain .back span>img{display: inline;height:12px;padding-right: 2px;}
+.pagetwo .header .contain .location>span{ color: #fff;position: absolute;top: 50%;left: 34.5%;font-size: 1.5em}
+/*三级页面*/
+.pagethree{display:none;width:100%;height: 100%;position: absolute;right: -100%;top: 0;}
+.pagethree .header .contain .color{color: #fff;position: absolute;right:20%;bottom: 12%;}
+.pagethree .header .contain .fengge{color: #fff;position: absolute;right: 0;bottom: 12%;}
+.pagethree .header .contain .color img{position: absolute;right:125%;bottom: -13%}
+.pagethree .header .contain .fengge img{position: absolute;right:121%;bottom: -27%}
+
+/*内容*/
+.pagetwo >.contain{height:83%;}
+
+/*footer*/
+.pagetwo>footer{position:relative; position:absolute;bottom: 0;width: 100%; height:10%;border-top: 1px solid #AAAAAA;background:#AAAAAA; overflow: hidden}
+
+.pagetwo>footer>li  img{width:36px;height: 35px;}
+.pagetwo>footer>li  p{color:black;font-size:14px;margin-left: 6px;}
+.pagetwo>footer>.img-box{position: absolute;left: 0;top:-230%;width: 100%;display: none;}
+.pagetwo>footer>.img-box >img{float:left;display: block;width:50px;height: 50px}
+.pagetwo>footer>.img-box >.wu{float:left;background:#fff ;width:50px;height: 50px;position: relative;}
+.pagetwo>footer>.img-box >.wu b{position: absolute;top:50%;left: 50%;color: black}
+.addtxt{display: none;position: fixed;top:74%;left:30%;width: 200px;height: 200px;color: #fff;}
+.sucai_img{position: absolute;left: 0;top:-230%;width: 100%;display: none;}
+.sucai_img >img{float:left;display: block;width:80px;height: 80px}
+
+/*底栏滑动*/
+.swiper-container {
+        width: 100%;
+        height: 300px;
+        margin: 20px auto;
+    }
+    .swiper-slide {
+        text-align: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+/*iphone6 plus以上*/
+@media (min-width:414px){
+	header .logo{top:19%;}
+	footer ul li a {padding-top: 8%;}
+}
+/*iphone4*/
+@media (max-width:320px){
+header{height:11%;}
+.contain{height:80%;}
+footer ul li a p {margin-left: 2px}
+footer ul li a img {width: 30px;height: 25px}
+}
+
+
+/*在768 和991 像素之间的屏幕里，小屏幕，主要是PAD/pad mini*/
+@media (min-width: 768px){
+
+.header .title{font-size:1.9em; margin-left: -52.5px;width: 150px;}
+.header .contain .back a{font-size:2em}
+.pageone>footer ul>li img {width: 46px;height: 46px;}
+.pageone>footer ul>li  p {font-size: 19px; margin-left: 4px;}
+.header .selection img{width: 50px;height: 50px;}
+.pageone>footer>ul li  {padding-left: 36%;}
+}
+
+.slide{
+    width: 14rem;
+    background: #FFF;
+}
+.slider{
+    position:absolute;
+    top: .5rem;
+    left: .75rem;
+}
+.slide .userMsg{
+    padding: 1rem 0 1rem 0.5rem;
+    background: #EEE;
+    height: 4rem;
+}
+.slide .userMsg .userImg{
+    width:2rem;
+    border-radius:50%;
+    border:1px solid #CCC;
+    float: left;
+}
+.slide .userMsg .imgName{
+    /*float: left;*/
+   white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    margin-left: 10px;
+}
+.imgBox{
+    width: 100%;
+    padding:10px;
+    height: 14rem;
+    overflow: hidden;
+}
+.imgBox img{
+    width: 100%
+}
+.slide .inter{
+    color: #AAA;
+    position: absolute;
+    bottom: .2rem;
+    right: .5rem;
+    
+}
+.slide .share img{
+    height: .65rem;
+}
+.slide .share{
+    position: absolute;
+    bottom: 1.5rem;
+    right: .5rem;
+}
+.slide .share div{
+    margin:0 5px;
+    float: left;
+    text-align: center;
+    
+    color: #AAA;
+}
+.slide .share div p{
+    font-size: .5rem;
+    text-align: center;
+}
+.slide .inter img{
+    width: .85rem;
+    display: inline-block;
+    vertical-align: middle;
+
+}
+.slide .inter span{
+    padding: 5px;
+    font-size: .6rem;
+}
+.selBox{
+    padding-top:1.5rem;
+   display:none;
+}
+.selBox li{
+    position:relative;
+    float: left;
+    width: 16.66%;
+    padding: 5px;
+   
+}
+.selBox li img{
+    width: 100%;
+}
+.class{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color:#FFF;
+    border-bottom: 6rem solid transparent;
+    background: url(../img/k@2x.png) no-repeat;
+    background-size: 100% 100%;
+}
+.class ul.selBox li p{
+    text-align: center;
+    font-size:.5rem;
+}
+.selBox li.closeSelBtn{
+    width: 1.4rem;
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    margin-left: -.7rem;
+}
+.text{
+    float: left;
+    width: 6rem;
+}
+.text p{
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    margin-left: 10px;
+}
+
+.wobble{
+    -webkit-animation:wobble 1s;
+}
+@-webkit-keyframes wobble {
+  from {
+    -webkit-transform: none;
+    transform: none;
+  }
+
+  15% {
+    -webkit-transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+    transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+  }
+
+  30% {
+    -webkit-transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
+    transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
+  }
+
+  45% {
+    -webkit-transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
+    transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
+  }
+
+  60% {
+    -webkit-transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
+    transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
+  }
+
+  75% {
+    -webkit-transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
+    transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
+  }
+
+  to {
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+.pulse {
+  -webkit-animation:pulse 1s;
+}
+@-webkit-keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.5, 1.5, 1.5);
+    transform: scale3d(1.5, 1.5, 1.5);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+

@@ -1,0 +1,377 @@
+{
+	"index.html": {
+		"resources": [
+			"js/jquery-2.1.1.min.js",
+			"img/login_logo_@2x.png",
+			"img/sc@2x.png",
+			"css/mui.min.css",
+			"css/component.css",
+			"js/base.fontsize.js",
+			"js/mui.js",
+			"img/yijiyemian.png",
+			"js/lss_global.js",
+			"img/tab_1wardrobe@2x.png",
+			"view/footer1yichu/yichu.html",
+			"js/mui.min.js",
+			"img/tab_4my@2x.png",
+			"img/tab_3popular@2x.png",
+			"img/tab_2blogger@2x.png",
+			"css/ui-base.css",
+			"css/ui-box.css",
+			"img/yijiyemian.jpg"
+		],
+		"refer": [
+			"view/footer1yichu/yichu.html",
+			"view/footer2maishou/maishou.html",
+			"fengshang.html",
+			"view/footer4mine/wode.html",
+			"view/footer3fengshang/fengshang.html",
+			"sidebar.html"
+		]
+	},
+	"view/footer1yichu/yichu.html": {
+		"resources": [
+			"img/3bg_z@2x.png",
+			"css/style_public.css",
+			"img/1bg_z@2x.png",
+			"js/appcan.js",
+			"img/2bg_z@2x.png",
+			"js/jquery-2.1.1.min.js",
+			"js/lss_global.js",
+			"css/component.css",
+			"img/yijiyemian.png",
+			"js/mui.min.js",
+			"img/yijiyemian.jpg",
+			"js/mui.js",
+			"img/w@2x.png",
+			"img/w_@2x.png"
+		],
+		"refer": [
+			"view/footer1yichu/wodedanpin.html",
+			"view/footer1yichu/chuanyirili.html",
+			"view/footer1yichu/wodedapei.html",
+			"view/footer1yichu/adddanpin.html"
+		]
+	},
+	"view/footer2maishou/maishou.html": {
+		"resources": [
+			"img/ss.png",
+			"img/ms02@2x.png",
+			"img/xin.png",
+			"js/pullToRefresh.js",
+			"img/arrow.png",
+			"img/news.png",
+			"css/pullToRefresh.css",
+			"img/qh@2x.png",
+			"css/style_maishou.css",
+			"js/iscroll.js",
+			"img/ms01@2x.png",
+			"js/lss_maishou.js",
+			"img/bg_icon@2x.png",
+			"js/jquery-2.1.1.min.js",
+			"js/lss_global.js",
+			"css/style_public.css",
+			"js/appcan.js",
+			"img/yijiyemian.png",
+			"css/component.css",
+			"img/loader.png",
+			"img/yijiyemian.jpg",
+			"js/mui.min.js"
+		],
+		"refer": []
+	},
+	"fengshang.html": {
+		"resources": [
+			"js/loading.js",
+			"js/appcan.js",
+			"img/yijiyemian.jpg",
+			"css/style_public.css",
+			"css/component.css"
+		],
+		"refer": []
+	},
+	"view/footer4mine/wode.html": {
+		"resources": [
+			"img/11@2x.png",
+			"img/5@2x.png",
+			"css/style_wode.css",
+			"img/10@2x.png",
+			"img/12@2x.png",
+			"img/9@2x.png",
+			"js/swiper.min.js",
+			"css/swiper.css",
+			"img/1@2x.png",
+			"img/4@2x.png",
+			"img/8@2x.png",
+			"img/2@2x.png",
+			"js/circle-progress.js",
+			"img/6@2x.png",
+			"img/3@2x.png",
+			"img/7@2x.png",
+			"js/lss_wode.js",
+			"js/jquery-2.1.1.min.js",
+			"js/lss_global.js",
+			"css/style_public.css",
+			"js/base.fontsize.js",
+			"js/appcan.js",
+			"img/yijiyemian.png",
+			"css/component.css",
+			"img/yijiyemian.jpg",
+			"js/mui.min.js"
+		],
+		"refer": [
+			"view/footer4mine/wenzhangguanli.html",
+			"fenggeceshi.html",
+			"view/footer4mine/chuanyishuju.html",
+			"view/footer4mine/guanyu.html"
+		]
+	},
+	"view/footer3fengshang/fengshang.html": {
+		"resources": [
+			"js/loading.js",
+			"css/style_public.css"
+		],
+		"refer": []
+	},
+	"view/footer1yichu/wodedanpin.html": {
+		"resources": [
+			"img/SZ@1X.png",
+			"js/jquery-2.1.1.min.js",
+			"img/XZ@1X.png",
+			"img/WJ@1X.png",
+			"img/return@2x.png",
+			"img/BG@2X.png",
+			"js/lss_global.js",
+			"css/style_wodedanpin.css",
+			"img/tj2@2x.png",
+			"img/B@1X.png",
+			"css/style_header.css",
+			"img/D@2X.png",
+			"img/X@1X.png",
+			"css/mui.min.css",
+			"js/base.fontsize.js",
+			"js/mui.js",
+			"img/YT@2X.png",
+			"img/SP@1X.png"
+		],
+		"refer": []
+	},
+	"view/footer1yichu/wodedapei.html": {
+		"resources": [
+			"img/nav_dp@2x.png",
+			"js/underscore.js",
+			"img/k@2x.png",
+			"css/style_header.css",
+			"img/1ys_pre@2x.png",
+			"img/return@2x.png",
+			"img/erjiyemian.png",
+			"img/4ch_pre@2x.png",
+			"img/3fg_pre@2x.png",
+			"img/2jj_pre@2x.png",
+			"css/style_wodedapei.css",
+			"js/jquery-2.1.1.min.js",
+			"js/lss_global.js",
+			"js/base.fontsize.js",
+			"js/appcan.js",
+			"img/bg_icon@2x.png",
+			"js/mui.js"
+		],
+		"refer": []
+	},
+	"view/footer1yichu/chuanyirili.html": {
+		"resources": [
+			"img/nav_dp@2x.png",
+			"css/style_chuanyirili.css",
+			"js/jquery-2.1.1.min.js",
+			"img/return@2x.png",
+			"js/swiper.min.js",
+			"img/erjiyemian.png",
+			"css/swiper.css",
+			"js/lss_global.js",
+			"js/underscore.js",
+			"img/nav_rl@2x.png",
+			"css/style_header.css",
+			"js/base.fontsize.js",
+			"js/appcan.js",
+			"images/ok.png",
+			"css/rili.css",
+			"js/mui.js"
+		],
+		"refer": []
+	},
+	"view/footer1yichu/adddanpin.html": {
+		"resources": [
+			"img/pencil@2x.png",
+			"img/nav_return@2x.png",
+			"img/list_choices.png",
+			"css/style_wodedanpin.css",
+			"img/fm@2x.png",
+			"css/style_header.css",
+			"js/swiper.min.js",
+			"js/jquery.form.js",
+			"css/reset.css",
+			"img/tp@2x.png",
+			"js/jquery-2.1.1.min.js",
+			"css/swiper.css",
+			"js/lss_global.js",
+			"js/base.fontsize.js",
+			"js/appcan.js",
+			"css/loading/css/loaders.css"
+		],
+		"refer": []
+	},
+	"sidebar.html": {
+		"resources": [
+			"img/leftbar_3news@2x.png",
+			"img/dc@2x.png",
+			"img/leftbar_1scan@2x.png",
+			"img/leftbar_6special@2x.png",
+			"img/leftbar_4test@2x.png",
+			"img/leftbar_7fashion@2x.png",
+			"css/appcan.icon.css",
+			"css/ui-color.css",
+			"img/leftbar_5mall@2x.png",
+			"css/appcan.control.css",
+			"img/bj@2x.png",
+			"img/leftbar_2navigation@2x.png",
+			"js/jquery-2.1.1.min.js",
+			"js/lss_global.js",
+			"css/ui-base.css",
+			"js/base.fontsize.js",
+			"js/appcan.js",
+			"css/ui-box.css",
+			"img/cehuaye.png"
+		],
+		"refer": [
+			"admin_infor.html",
+			"login.html",
+			"fenggeceshi.html"
+		]
+	},
+	"admin_infor.html": {
+		"resources": [
+			"css/style_admin_infor.css",
+			"img/m_pre.png",
+			"img/w.png",
+			"img/lock.png",
+			"img/return@2x.png",
+			"js/jquery.form.js",
+			"img/yijiyemian.jpg",
+			"img/login_logo_@2x.png",
+			"img/sc@2x.png",
+			"js/appcan.js",
+			"js/jquery-2.1.1.min.js",
+			"js/lss_global.js",
+			"js/base.fontsize.js",
+			"js/mui.min.js"
+		],
+		"refer": []
+	},
+	"login.html": {
+		"resources": [
+			"img/login_lock_@2x.png",
+			"js/jquery-2.1.1.min.js",
+			"img/login_logo_@2x.png",
+			"js/mui.js",
+			"img/login_mail_@2x.png",
+			"js/appcan.js",
+			"css/style_login.css",
+			"img/dl@2x.png",
+			"js/lss_global.js"
+		],
+		"refer": []
+	},
+	"view/footer4mine/wenzhangguanli.html": {
+		"resources": [
+			"images/2.jpg",
+			"js/jquery-2.1.1.min.js",
+			"css/style_wenzhang.css",
+			"img/return@2x.png",
+			"img/erjiyemian.png",
+			"img/xin.png",
+			"images/3.jpg",
+			"images/4.jpg",
+			"js/lss_global.js",
+			"img/news.png",
+			"css/style_header.css",
+			"images/1.jpg",
+			"js/base.fontsize.js",
+			"js/appcan.js"
+		],
+		"refer": []
+	},
+	"fenggeceshi.html": {
+		"resources": [
+			"img/dbg.png",
+			"img/close@2x.png",
+			"js/classie.js",
+			"img/leftbar_6special@2x.png",
+			"img/d4@2x.png",
+			"img/d3@2x.png",
+			"img/next@2x.png",
+			"img/w@2x.png",
+			"img/d1_pre@2x.png",
+			"img/d5@2x.png",
+			"img/d7@2x.png",
+			"css/style_fenggeceshi.css",
+			"js/sidebarEffects.js",
+			"img/d6@2x.png",
+			"img/m@2x.png",
+			"img/leftbar_7fashion@2x.png",
+			"js/appcan.js",
+			"img/d8@2x.png",
+			"img/d2@2x.png",
+			"img/leftbar_3news@2x.png",
+			"js/jquery-2.1.1.min.js",
+			"img/leftbar_1scan@2x.png",
+			"img/leftbar_4test@2x.png",
+			"img/leftbar_5mall@2x.png",
+			"img/login_logo_@2x.png",
+			"css/component.css",
+			"img/leftbar_2navigation@2x.png",
+			"img/w_@2x.png",
+			"img/m_pre@2x.png",
+			"js/mui.min.js",
+			"img/return@2x.png",
+			"js/lss_global.js"
+		],
+		"refer": []
+	},
+	"view/footer4mine/chuanyishuju.html": {
+		"resources": [
+			"img/c6b@2x.png",
+			"img/c4x@2x.png",
+			"img/c5sp@2x.png",
+			"img/c2lt@2x.png",
+			"img/c2xz@2x.png",
+			"css/style_chuanyushuju.css",
+			"css/style_header.css",
+			"img/return@2x.png",
+			"img/erjiyemian.png",
+			"img/c7wj@2x.png",
+			"img/c1sz@2x.png",
+			"build/dist/echarts.js",
+			"build/dist/chart/pie.js",
+			"build/dist/chart/line.js",
+			"build/dist/chart/bar.js",
+			"js/jquery-2.1.1.min.js",
+			"js/lss_global.js",
+			"js/mui.min.js",
+			"js/base.fontsize.js"
+		],
+		"refer": []
+	},
+	"view/footer4mine/guanyu.html": {
+		"resources": [
+			"css/style_header.css",
+			"img/return@2x.png",
+			"img/erjiyemian.png",
+			"js/jquery-2.1.1.min.js",
+			"js/mui.min.js",
+			"js/base.fontsize.js",
+			"js/lss_global.js",
+			"css/mui.min.css"
+		],
+		"refer": []
+	}
+}

@@ -1,0 +1,225 @@
+@charset 'utf-8';
+* {
+  -webkit-touch-callout: none;
+  /*-webkit-user-select: none;*/
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+h1,h2,h3,p,ul,ol,form,fieldset,figure {margin: 0;padding: 0;}
+div,figure,img,input,button {box-sizing: border-box;}
+body,html{  font-size: 17px;margin: 0;padding: 0;overflow: hidden;width:100%; height: 100%;background:url('../img/erjiyemian.png')no-repeat;background-size:100% 100%;font-family:"Helvetica Neue", Helvetica, Arial, "Microsoft Yahei UI", "Microsoft YaHei", SimHei, "\5B8B\4F53", simsun, sans-serif;}
+
+ul,ol{list-style: outside none none;}
+li{display:block;}
+a {text-decoration: none;}
+.clearfix:after {
+    content:".";  
+    height:0;  
+    visibility:hidden;  
+    display:block;  
+    clear:both;  
+}
+/*.header{height: 1.75rem;border-bottom:1px solid silver;width: 93%;margin:0 auto;position: relative;}
+.header .contain{height:100%;width: 100%;font-size: 18px}
+.header .contain>div{
+    height:100%;
+}
+.header .contain div:nth-child(1){
+    float: left;
+    display: table
+}
+*/
+.header .contain div:nth-child(2),.header .contain>div:nth-child(3){
+    height: 100%;
+    width: 30%;
+    float: right;
+    padding-left: 1rem;
+    position: relative;
+}
+/*
+.header .contain div img{
+    padding-right: 2px;
+}*/
+.header .contain .color img {
+    vertical-align: middle;
+    width: .75rem;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -.325rem;
+}
+
+.header .contain .fengge img {
+    vertical-align: middle;
+    width: .5rem;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -0.5rem;
+    }
+.fengge span,.color span{
+    font-size: .75rem;
+    vertical-align: middle;
+    display: table-cell
+}
+.fengge,.color{
+    display:table;
+    position: relative
+}
+/*.header .contain .back a{color: #fff;display: table-cell;vertical-align: middle;font-size:.75rem}
+.header .contain .back a img{height:12px;padding-right: 2px;}*/
+.header .contain .color{color: #fff;}
+.header .contain .fengge{color: #fff;}
+
+.single img{width:100%}
+#select_yanse{width: 100%;position: absolute;top:1.75rem;;left:0;display: none;background-image:url('../img/color_bg@2x.png');background-size:100% 100%;z-index: 999; }
+#select_yanse>.select_yanse_contain{width: 100%;padding-bottom: 20px;}
+#select_yanse>.select_yanse_contain>.line{width: 100%;padding: 5px}
+#select_yanse>.select_yanse_contain>.line ul li{margin:1%;float: left; width: 14.6%;text-align: center;color:#FFFFFF;}
+#select_yanse>.select_yanse_contain>.line ul li img{width:100%;margin:auto;}
+#select_yanse>#guanbi_yanse{width:16px;position: absolute;bottom:10px;left: 50%;margin-left: -8px;}
+#select_yanse>#guanbi_yanse img{width: 100%;}
+#select_fengge{width:100%;position: absolute;top: 1.75rem;left:0;display: none;background-image:url('../img/color_bg@2x.png');background-size:100% 100%;z-index: 999; }
+#select_fengge>.select_fengge_contain{width: 100%;margin-bottom:25px;margin-top: 10px}
+#select_fengge>.select_fengge_contain>.line{width: 100%;padding:5px;}
+#select_fengge>.select_fengge_contain>.line ul li{float: left; width: 14.6%;margin:1%;text-align: center;color:#FFFFFF;}
+#select_fengge>.select_fengge_contain>.line_2{padding-left:14%;}
+#select_fengge>.select_fengge_contain>.line_2 ul li{width:28.3%;}
+#select_fengge>.select_fengge_contain>.line ul li img{width:100%;margin:auto;}
+#select_fengge>#guanbi_fengge{width:16px;position: absolute;bottom:10px;left: 50%;margin-left: -8px;}
+#select_fengge>#guanbi_fengge img{width: 100%;}
+.footer{position:relative;position:absolute;bottom: 0;width: 100%; height:12%;background-image: url('../img/tab_k@2x.png');background-size:100% 100%;opacity: .9;z-index: 9999;}
+.footer  li  img{width:30px;height:30px;}
+.footer  li  p{color:black;font-size:14px;padding-top:2px;margin-left: -4px;}
+.slider div p{color:#1c1c1c;position:absolute;}
+.slider{
+    position: absolute;
+    -webkit-animation: animation ease 1s;
+    animation-delay: .8s;
+    animation-fill-mode: backwards;
+    perspective: 3990px;
+    transition: ease-in-out .2s;
+     text-align:center;
+        /*-webkit-transform:rotateX(45deg);
+        -webkit-transform-style:preserve-3d;
+        position:absolute;*/
+    }
+    /*.slider:active{ -webkit-transform:rotateZ(10deg);}*/
+.swiper-wrapper{margin-top:4%; text-align:center;}
+.slide img {width:100%; height:100%; -webkit-user-drag:none;user-drag:none;-moz-user-drag:none;}
+.slide{
+        -webkit-user-select:none;
+        user-select:none;
+        -moz-user-select:none;
+        position:absolute;
+        box-shadow: 0px 10px 30px 0px rgba(0,0,0,0.3);
+        -webkit-transform-style:preserve-3d;
+        transform-style:preserve-3d;
+        -moz-transform-style:preserve-3d;
+        text-align:center;
+        /*overflow:hidden;*/
+    }
+.single{
+    display: block
+}
+.single img {
+    width: 100%;
+    display: block;
+}
+.nodate{
+    line-height: 30px;
+    color: #FFF;
+    position:absolute;
+    width:100%;
+    top:100px;
+    left:0;
+    text-align: center;
+}
+.footer  li.swiper-slide-active img{
+    width: 35px;height: 35px;margin-top: -5px
+}
+.bt_gray .title{
+    display: table;
+    padding: 3px 0;
+}
+.dollor{
+    display: table-cell;
+    padding-left: 3px;
+}
+body #main{
+    overflow-y: scroll;
+    height:83%;
+    width:100%;
+    position: relative;
+}
+.container-fluid {
+  padding:0 .5rem;
+  padding-bottom:2rem;
+  position: relative
+  }
+.container-fluid li.oneproduct {
+  /*float: left;*/
+  box-sizing: border-box;
+  }
+  .container-fluid li.oneproduct .single img {
+  max-width: 100%
+}
+
+
+
+.column1,.column2{
+    float:left;
+    width: 50%;
+    /*height: 100px;*/
+    
+}
+.son{
+    margin: 10px;
+    background: red;
+}
+.noloaddate{
+position: absolute;
+bottom: 1rem;
+left: 0;
+text-align: center;
+width: 100%;
+color: #FFF;
+font-size: .75rem
+}
+.all_info{
+    border: 3px solid rgba(255,255,255,.2);
+}
+.productEditPop{
+    display:none;
+    font-size:.75rem;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    width: 5rem;
+    margin-left: -2.5rem;
+    background: rgba(255,255,255,.75);
+    border-radius: 5px;
+}
+.productEditPop div{
+    padding:.5rem 0;
+    text-align: center;
+    border-bottom: 1px solid #FFF;
+    color: #0C6AFF;
+}
+.productEditPop div:last-child{
+    border: 0px
+}
+.line p{
+    font-size: 14px;
+}
+
+
+
+
+
+
+
+

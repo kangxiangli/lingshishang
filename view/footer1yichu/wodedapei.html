@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=640,user-scalable=no">
+		<link rel="stylesheet" href="../../css/style_header.css" />
+		<link rel="stylesheet" href="../../css/style_wodedapei.css">
+
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+			
+			.selectionlist {
+				display: none;
+				position: absolute;
+				background: rgba(255, 255, 255, .75);
+				border-radius: 10%;
+				top: 2.5em;
+				right: 0;
+				z-index: 1000;
+				/*transition:all .3s;*/
+				overflow: hidden;
+			}
+			
+			.selectionlist li {
+				text-align: center;
+				white-space: nowrap;
+				padding: 10px 25px;
+			}
+			
+			.selectionlist li:first-child {
+				border-bottom: 1px solid #FFF;
+			}
+		</style>
+		<title>我的搭配</title>
+	</head>
+
+	<body>
+
+		<!-- 一级页面 -->
+		<div class="pageone">
+			<div class="header">
+				<div class="contain headertop">
+					<div class="back">
+						<a href="javascript:void(0);" onclick="closeWin();">
+							<img src="../../img/return@2x.png" alt="">返回
+						</a>
+					</div>
+					<span class="title">我的搭配</span>
+					<div class="ok selection">
+						<img src="../../img/nav_dp@2x.png" alt="">
+						<ul class="selectionlist">
+							<li>搜索</li>
+							<li id="add">添加</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="container" id="container">
+				<div class="htmleaf-container">
+					<div class="htmleaf-content">
+						<div class="slider">
+							<!-- <div class="slide" ><img src="img/8.jpg" /><p>0</p></div> -->
+						</div>
+					</div>
+					<div style="text-align:center;clear:both"></div>
+				</div>
+			</div>
+			<footer>
+				<ul class="list-inline">
+					<li class="color active">
+						<img src="../../img/1ys_pre@2x.png" />
+						<p>颜色</p>
+					</li>
+					<li class="season">
+						<img src="../../img/2jj_pre@2x.png" />
+						<p>季节</p>
+					</li>
+					<li class="productAttr">
+						<img src="../../img/3fg_pre@2x.png" />
+						<p>风格</p>
+					</li>
+					<li class="situation">
+						<img src="../../img/4ch_pre@2x.png" />
+						<p>场合</p>
+					</li>
+				</ul>
+				<div class="class">
+					<ul class="selBox colorBox">
+						<li class="closeSelBtn"><img src="../../img/bg_icon@2x.png" /></li>
+					</ul>
+					<ul class="selBox seasonBox">
+						<li class="closeSelBtn"><img src="../../img/bg_icon@2x.png" /></li>
+					</ul>
+					<ul class="selBox productAttrBox">
+						<li class="closeSelBtn"><img src="../../img/bg_icon@2x.png" /></li>
+					</ul>
+					<ul class="selBox situationBox">
+						<li class="closeSelBtn"><img src="../../img/bg_icon@2x.png" /></li>
+					</ul>
+
+				</div>
+
+			</footer>
+		</div>
+	</body>
+
+	<script src="../../js/jquery-2.1.1.min.js"></script>
+	<script src="../../js/mui.js"></script>
+	<script src="../../js/underscore.js"></script>
+	<script src="../../js/lss_global.js"></script>
+	<script src="../../js/base.fontsize.js"></script>
+<script>
+LSShang.ready(function() {
+	$('.selection').click(function() {
+		$('.selectionlist').slideToggle('fast');
+	})
+	$(document).on('click', function() {
+		$('.addandsearch').slideUp('fast');
+	})
+	document.ontouchmove = function(e) {
+		e.preventDefault();
+	};
+	/******************************** 添加搭配 ********************************/
+	$('#add').click(function() {
+		LSShang.removelocStorage('showDpId');
+		openNewWin('dapei.html')
+	});
+	/********************************* 初始化请求数据参数 ************************/
+	var windowWidth = $(window).width();
+	var pageIndex = 0;
+	var pageSize = 5;
+	var thisPageCount = 0;
+	var finish = -1;
+	var colorId = -1;
+	var seasonId = -1;
+	var productAttrId = -1;
+	var situationId = -1;88
+	getStyle();
+	/******************************** 卡片切换 ********************************/
+	function onWndLoad() {
+		var slider = document.querySelector('.slider');
+		var surplusCards = slider.children.length;
+		var sliders = slider.children;
+		var initX = null;
+		var transX = 0;
+		//var rotZ = 0;
+		var transY = 0;
+		var curSlide = null;
+		var Z_DIS = 50;
+		var Y_DIS = 10;
+		var TRANS_DUR = 0.4;
+		var images = document.querySelectorAll('img');
+		for(var i = 0; i < images.length; i++) {
+			images[i].onmousemove = function(e) {
+				e.preventDefault();
+			};
+			images[i].ondragstart = function(e) {
+				return false;
+			};
+		}
+
+		function init() {
+			var z = 0,
+				y = 0;
+			sliders = slider.children;
+			//getCard();
+			attachEvents(sliders[sliders.length - 1]);
+		}
+
+		function attachEvents(elem) {
+			curSlide = elem;
+			curSlide.addEventListener('mousedown', slideMouseDown, false);
+			curSlide.addEventListener('touchstart', slideMouseDown, false);
+		}
+		init();
+
+		function slideMouseDown(e) {
+			if(e.touches) {
+				initX = e.touches[0].clientX;
+			} else {
+				initX = e.pageX;
+			}
+			document.addEventListener('mousemove', slideMouseMove, false);
+			document.addEventListener('touchmove', slideMouseMove, false);
+			document.addEventListener('mouseup', slideMouseUp, false);
+			document.addEventListener('touchend', slideMouseUp, false);
+		}
+		var prevSlide = null;
+
+		function slideMouseMove(e) {
+			var mouseX;
+			if(e.touches) {
+				mouseX = e.touches[0].clientX;
+			} else {
+				mouseX = e.pageX;
+			}
+			transX = mouseX - initX;
+			console.log(transX)
+			transY = -Math.abs(transX / 15);
+			e.preventDefault();
+
+			//上一张
+			if(transX >= 50) {
+				document.removeEventListener('mousemove', slideMouseMove, false);
+				document.removeEventListener('touchmove', slideMouseMove, false);
+				//alert(curSlide.nextElementSibling)
+				if(curSlide.nextElementSibling == null) {
+					LSShang.toast('已经是第一张');
+					return;
+				}
+				prevSlide.style.transition = 'ease .35s';
+				prevSlide.style.webkitTransform = 'translateX(0px) translateY(0px)';
+				setTimeout(function() {
+					curSlide = prevSlide;
+					prevSlide = curSlide.nextElementSibling || null;
+					$('.active').removeClass('active');
+					$(curSlide).addClass('active');
+					attachEvents(curSlide);
+					getCard();
+				}, 401)
+				return;
+			}
+			//下一张
+			if(transX <= -50) {
+				document.removeEventListener('mousemove', slideMouseMove, false);
+				document.removeEventListener('touchmove', slideMouseMove, false);
+				if(surplusCards > 0) {
+					surplusCards--;
+				}
+				if($('.slider .active').index() == 0) {
+					LSShang.toast('最后一张了');
+					$('.slider .active').addClass('wobble');
+					setTimeout(function() {
+						$('.slider .active').removeClass('wobble');
+					}, 1000)
+					return;
+				}
+				prevSlide = curSlide;
+				prevSlide.style.transition = 'ease .35s';
+				prevSlide.style.webkitTransform = 'translateX(-' + windowWidth + 'px) translateY(0px)';
+				setTimeout(function() {
+					attachEvents(sliders[$(curSlide).index() - 1]);
+					$('.active').removeClass('active');
+					$(curSlide).addClass('active');
+					//分页
+					if($('.slider .active').index() == 3) {
+						getStyle();
+					}
+					getCard();
+				}, 401);
+				return;
+			}
+		}
+
+		function slideMouseUp() {
+			transX = 0;
+			transY = 0;
+			document.removeEventListener('mouseup', slideMouseUp, false);
+			document.removeEventListener('touchend', slideMouseUp, false);
+		}
+		//重排
+		function getCard() {
+			var j = 0;
+			var index = $('.slider .active').index();
+			if(index == -1) {
+				var len = sliders.length;
+				if(len >= 2) {
+					sliders[len - 1].style.webkitTransform = 'translateX(0px) translateY(0px)';
+					sliders[len - 2].style.webkitTransform = 'translateX(5px) translateY(5px)';
+				}
+				if(len >= 3) {
+					sliders[len - 3].style.webkitTransform = 'translateX(10px) translateY(10px)';
+
+				}
+				return;
+			}
+			sliders[index].style.webkitTransform = 'translateX(0px) rotateZ(0deg) translateY(0px)';
+			if(index > 0) {
+				sliders[index - 1].style.webkitTransform = 'translateX(5px) rotateZ(0deg) translateY(5px)';
+			}
+			if(index > 1) {
+				sliders[index - 2].style.webkitTransform = 'translateX(10px) rotateZ(0deg) translateY(10px)';
+			}
+		}
+		getCard();
+	}
+	/******************************* 获取搭配 *********************************/
+	//分页
+	function getStyle() {
+		if(finish == 1) {
+			return;
+		}
+		pageIndex++;
+		var json = {
+			MemberId: userId,
+			U_Num: userNum,
+			PageIndex: pageIndex,
+			PageSize: pageSize
+		}
+		if(colorId >= 0) {
+			json.ColorId = colorId;
+		}
+		if(seasonId >= 0) {
+			json.SeasonId = seasonId;
+		}
+		if(productAttrId >= 0) {
+			json.ProductAttrId = productAttrId;
+		}
+		if(situationId >= 0) {
+			json.SituationId = situationId;
+		}
+		console.log(json)
+		lssAjax.postJson({
+			url: host + '/api/products/membercollocation/getlist',
+			data: json,
+			success: function(data) {
+				console.log(data)
+				if(data.ListCollo.length == 0 && pageIndex == 1) {
+					LSShang.toast('暂无搭配');
+					return;
+				}
+				getstyleTpl(data.ListCollo);
+
+				thisPageCount = data.ListCollo.length;
+				if(thisPageCount < pageSize) {
+					finish = 1;
+				}
+				onWndLoad();
+
+			}
+		})
+	}
+	function getstyleTpl(data) {
+			var str = $('#dpTpl').html();
+			var fn = _.template(str);
+			var html = fn(data);
+			$('.slider').prepend(html);
+		}
+/*============================================ 分类列表 =========================================*/
+	getColor();
+	getSeason();
+	getProductAttr();
+	getProductSituation();
+	$('.color').click(function() {
+		$('.selBox').hide();
+		$('.colorBox').slideDown();
+	})
+	$('.season').click(function() {
+		$('.selBox').hide();
+		$('.seasonBox').slideDown();
+	})
+	$('.productAttr').click(function() {
+		$('.selBox').hide();
+		$('.productAttrBox').slideDown();
+	})
+	$('.situation').click(function() {
+		$('.selBox').hide();
+		$('.situationBox').slideDown();
+	})
+	$('footer').on('click', '.colorBox li', function() {
+		$('.color img').attr('src', $(this).find('img').attr('src'));
+		$('.color p').html($(this).find('p').html());
+		colorId = $(this).attr('data-colorid');
+		getClassStyle();
+	})
+	$('footer').on('click', '.seasonBox li', function() {
+		$('.season img').attr('src', $(this).find('img').attr('src'));
+		$('.season p').html($(this).find('p').html());
+		seasonId = $(this).attr('data-seasonId');
+		getClassStyle();
+	})
+	$('footer').on('click', '.productAttrBox li', function() {
+		$('.productAttr img').attr('src', $(this).find('img').attr('src'));
+		$('.productAttr p').html($(this).find('p').html());
+		productAttrId = $(this).attr('data-productattrid');
+		getClassStyle();
+	})
+	$('footer').on('click', '.situationBox li', function() {
+		$('.situation img').attr('src', $(this).find('img').attr('src'));
+		$('.situation p').html($(this).find('p').html());
+		situationId = $(this).attr('data-situationid');
+		getClassStyle();
+	})
+	$('footer').on('click', '.colorBox .closeSelBtn img', function() {
+		$('.color img').attr('src', "../../img/1ys_pre@2x.png");
+		$('.color p').html('颜色');
+		colorId = -1;
+		getClassStyle();
+		return false;
+	})
+	$('footer').on('click', '.seasonBox .closeSelBtn img', function() {
+		$('.season img').attr('src', "../../img/2jj_pre@2x.png");
+		$('.season p').html('季节');
+		seasonId = -1;
+		getClassStyle();
+		return false;
+	})
+	$('footer').on('click', '.productAttrBox .closeSelBtn img', function() {
+		$('.productAttr img').attr('src', "../../img/3fg_pre@2x.png");
+		$('.productAttr p').html('风格');
+		productAttrId = -1;
+		getClassStyle();
+		return false;
+	})
+	$('footer').on('click', '.situationBox .closeSelBtn img', function() {
+		$('.situation img').attr('src', "../../img/4ch_pre@2x.png");
+		$('.situation p').html('场合');
+		situationId = -1;
+		getClassStyle();
+		return false;
+	})
+
+	function getClassStyle() {
+		$('.selBox').slideUp();
+		pageIndex = 0;
+		finish = -1;
+		$('.slider').empty();
+		getStyle();
+	}
+
+	/*-------------------------- 颜色分类渲染 ----------------------------------*/
+	function getColor() {
+		lssAjax.postJson({
+			url: host + '/api/properties/color/getlist',
+			data: {
+				MemberId: userId,
+				U_Num: userNum
+			},
+			success: function(data) {
+				if(data.ResultType == 3) {
+					$.each(data.Data, function(i, item) {
+						$('.colorBox').append('<li data-colorid=' + item.ColorId + '><img src="' + item.IconPath + '"/><p>' + item.ColorName + '</p></li>')
+					})
+				}
+			}
+		})
+	}
+	/*----------------------------- 季节分类渲染 ----------------------------*/
+	function getSeason() {
+		lssAjax.postJson({
+			url: host + '/api/properties/season/getlist',
+			data: {
+				MemberId: userId,
+				U_Num: userNum
+			},
+			success: function(data) {
+				//console.log(data)
+				if(data.ResultType == 3) {
+					$.each(data.Data, function(i, item) {
+						$('.seasonBox').append('<li data-SeasonId=' + item.SeasonId + '><img src="' + item.IconPath + '"/><p>' + item.SeasonName + '</p></li>')
+					})
+				}
+			}
+		})
+	}
+	/*-------------------------- 风格分类 渲染 -------------------------------*/
+	function getProductAttr() {
+		lssAjax.postJson({
+			url: host + '/api/products/productattribute/getlist',
+			data: {
+				MemberId: userId,
+				U_Num: userNum,
+				ProductAttrType: 1
+			},
+			success: function(data) {
+				//console.log(data)
+				if(data.ResultType == 3) {
+					$.each(data.Data, function(i, item) {
+						$('.productAttrBox').append('<li data-ProductAttrId=' + item.ProductAttrId + '><img src="' + item.IconPath + '"/><p>' + item.ProductAttrName + '</p></li>')
+					})
+				}
+			}
+		})
+	}
+	/*-------------------------- 场合分类 渲染 -------------------------------*/
+	function getProductSituation() {
+		lssAjax.postJson({
+			url: host + '/api/properties/situation/getlist',
+			data: {
+				MemberId: userId,
+				U_Num: userNum,
+			},
+			success: function(data) {
+				//console.log(data)
+				if(data.ResultType == 3) {
+					$.each(data.Data, function(i, item) {
+						$('.situationBox').append('<li data-SituationId=' + item.SituationId + '><img src="' + item.IconPath + '"/><p>' + item.SituationName + '</p></li>')
+					})
+				}
+			}
+		})
+	}
+
+	/*=======================================from穿衣日历/to搭配详情 =============================*/
+
+	if(LSShang.getlocStorage('selectedDp') == 'toSelect') {
+		cyrl();
+	} else {
+		getdetial();
+	}
+	/*----------- from穿衣日历 ----------*/
+	function cyrl() {
+		//LSShang.removelocStorage('selectedDp')
+		$('.slider').on('click', '.slide', function() {
+			LSShang.setlocStorage('selectedDp', $(this).attr('data-id'));
+			closeWin();
+			Webview.webViewJS('chuanyirili.html','addcalendar()')
+		})
+	}
+
+	/*------------ to搭配详情 --------------*/
+	function getdetial() {
+		$('.slider').on('click', '.slide', function() {
+			LSShang.setlocStorage('showDpId', $(this).attr('data-id'));
+			LSShang.setlocStorage('showDetails', true);
+			openNewWin('dapeiDetails.html');
+
+		})
+	}
+})
+	/*************************** 点赞 *********************************/
+$('.slider').on('click', '.IsApprove', function() {
+	var status = $(this).attr('data-id');
+	var imgSrcNo = "../../img/like@2x.png";
+	var imgSrcYes = "../../img/codi_like_pre@2x.png";
+	if(status == 0) { //点赞
+		var _this = $(this);
+		var id = $(this).parents('.slide').attr('data-id');
+		lssAjax.postJson({
+			url: host + '/api/approvals/approval/addapproval',
+			data: {
+				MemberId: userId,
+				U_Num: userNum,
+				SourceId: id, //true    int 评论对象Id
+				ApprovalSource: 1 //true    int 评论来源（0表示上传单品，1表示搭配，2表示商城单品，3表示文章，4表示App文章）
+
+			},
+			success: function(data) {
+				//console.log(data)
+				if(data.ResultType == 3) {
+					_this.attr('src', imgSrcYes);
+					_this.addClass('pulse');
+					_this.next().html(parseInt($(_this).next().html()) + 1)
+					_this.attr('data-id', 1);
+				} else {
+					LSShang.toast('点赞失败')
+				}
+			}
+		})
+
+	} else { //取消赞
+		var _this = $(this);
+		var id = $(this).parents('.slide').attr('data-id');
+		lssAjax.postJson({
+			url: host + '/api/approvals/approval/cancelapproval',
+			data: {
+				MemberId: userId,
+				U_Num: userNum,
+				SourceId: id, //true    int 评论对象Id
+				ApprovalSource: 1 //true    int 评论来源（0表示上传单品，1表示搭配，2表示商城单品，3表示文章，4表示App文章）
+
+			},
+			success: function(data) {
+				//console.log(data)
+				if(data.ResultType == 3) {
+					_this.attr('src', imgSrcNo);
+					_this.addClass('pulse');
+					if(parseInt($(_this).next().html()) > 0) {
+						_this.next().html(parseInt($(_this).next().html()) - 1)
+					}
+
+					_this.attr('data-id', 0);
+				} else {
+					LSShang.toast('取消点赞失败')
+				}
+
+			}
+
+		})
+
+	}
+
+	setTimeout(function() {
+		$('.pulse').removeClass('pulse');
+	}, 1000)
+	return false;
+})
+
+</script>
+	
+
+<script type="tpl" id="dpTpl">
+	<%for(var i = obj.length-1; i>=0 ;i--){ var item = obj[i]%>
+	<div class="slide" data-id=<%=item.ProductId%> >
+		<div class="imgBox"><img src=<%=item.ColloImagePath%> /></div>
+
+		<div class="clearfix userMsg">
+			<img class="userImg" src=<%=item.MemberImage%> />
+			<div class="text">
+				<p class="imgName">
+					<%=item.ColloName%>
+				</p>
+				<p>
+					<%=item.Notes%>
+				</p>
+			</div>
+		</div>
+		<div class="share">
+			<div onclick=openNewWin('chuanyirili.html')><img src="../../img/calendar@2x.png" />
+				<p>日历</p>
+			</div>
+			<div><img src="../../img/share@2x.png" />
+				<p>分享</p>
+			</div>
+		</div>
+		<div class="inter">
+			<%var imgSrc = '';if(item.IsApprove == 0){imgSrc = "../../img/like@2x.png"}else{imgSrc = "../../img/codi_like_pre@2x.png"}%>
+			<img class="IsApprove" data-id=<%=item.IsApprove%> src=
+			<%=imgSrc%> /><span><%=item.ApproveCount%></span>
+			<img src="../../img/comment@2x.png" /><span><%=item.CommentCount%></span>
+		</div>
+	</div>
+	<%}%>
+</script>
+
+</html>

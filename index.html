@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title>首页</title>
+        <meta charset="utf-8">
+      	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="stylesheet" href="css/mui.min.css">     
+        <script src="js/base.fontsize.js"></script>
+        <link href="css/component.css" rel="stylesheet"/>
+        <style>           
+
+            .sc-text-active{
+                color: #FFF;
+            }
+            .sc-text-active .navicon{
+                opacity: 1;
+            }
+              .mui-icon{
+              	height: 18px !important;
+              }
+            .img-yichu{
+                background-image: url(img/tab_1wardrobe@2x.png);  
+                background-size: 100% 100%;          
+            }
+            .img-maishou{
+                background-image: url(img/tab_2blogger@2x.png);
+                background-size: 100% 100%; 
+            }
+            .img-fengshang{
+                background-image: url(img/tab_3popular@2x.png);
+                background-size: 100% 100%; 
+            }
+            .img-mine{
+                background-image: url(img/tab_4my@2x.png);
+                background-size: 100% 100%; 
+            }
+            header{
+                background: transparent;
+                position: relative;
+                height:2.4rem;
+                /*font-size: 1em;*/
+            }
+            header .portrait{
+                width:1.7rem;
+                height:1.7rem;
+                border-radius:50%;
+                position: absolute;
+                top:50%;
+                left: 5%;
+                margin-top: -.8rem;
+                border:.2rem solid rgba(255,255,255,.2)
+            }
+            header .portrait img{
+                width:100%;
+            }
+            header .logo{
+                height:100%;
+                width: 30%;
+                margin: 0 auto;
+            }
+            header .logo img{
+                 width:100%;
+                 padding-top: .5rem
+             }
+            #shangcheng{
+                position:absolute;
+                right:1rem;
+                top:.8rem;
+                width: 2rem;                
+            }
+            #shangcheng img{
+                width: 100%
+            }
+            .mui-active{
+            	color:#fff !important;            }
+            
+        </style>
+    </head>
+    <body class="um-vp" ontouchstart >     
+      <div id="st-container" class="st-container" >        
+        <div class="st-pusher">        
+            <div id="page_0" class="up ub ub-ver st-pusher" tabindex="0">
+			            <header id="st-trigger-effects" class="column">
+			                <div class="st-trigger-effects portrait" data-effect="st-effect-6" id="show-btn">
+			                    <img src="img/shiyi.png"/>
+			                </div> 
+			                <div class="logo">
+			                    <img src="img/login_logo_@2x.png" alt="">
+			                </div>   
+			                <a id="shangcheng" href="javascript:void(0)"><img src="img/sc@2x.png"/></a>       
+			            </header>
+
+	            <div id="content" class="ub-f1 tx-l ">
+	            </div>	        
+		            <nav class="mui-bar mui-bar-tab" style="background: transparent !important;">
+						<a class="mui-tab-item" data-index="0">
+							<span class="mui-icon img-yichu"></span>
+							<span class="mui-tab-label">衣橱</span>
+						</a>
+						<a class="mui-tab-item"  data-index="1">
+							<span class="mui-icon img-maishou"></span>
+							<span class="mui-tab-label">买手</span>
+						</a>
+						<a class="mui-tab-item  mui-active" data-index="2" >
+							<span class="mui-icon img-fengshang"></span>
+							<span class="mui-tab-label">风尚</span>
+						</a>
+						<a class="mui-tab-item" data-index="3">
+							<span class="mui-icon img-mine"></span>
+							<span class="mui-tab-label">我的</span>
+						</a>
+				    </nav>	
+				
+				    <script src="js/mui.min.js"></script>
+		             
+		<script type="text/javascript">
+				mui.init({
+					swipeBack: false,
+				
+				});
+		
+	var main,menu;
+			mui.plusReady(function() {
+		
+				main = plus.webview.currentWebview();
+		
+				var subpages = ["view/footer1yichu/yichu.html", "view/footer2maishou/maishou.html", "view/footer3fengshang/fengshang.html", "view/footer4mine/wode.html"];
+		
+				var subStyles = {
+					top: "45px",
+					bottom: "50px",
+					background:"transparent"
+				};
+		
+				var subLen = subpages.length;
+				// 子窗口对象数组
+				var subWvs = [];
+			
+				var tabs = document.querySelectorAll(".mui-tab-item");
+				// 底部文字
+				var labels = document.querySelectorAll(".mui-tab-label");
+				// 当前页面索引，初始化为0；
+				var activeIndex = 2;
+				// 目标页面索引，初始化为当前页面索引；
+				var targetIndex = activeIndex;
+				// 创建子页面
+				for(var i = 0; i < subLen; i++) {
+				
+					var subWv = plus.webview.create(subpages[i],subpages[i],subStyles);
+					// 窗口对象添加至数组
+					subWvs.push(subWv);
+					if(i != activeIndex) {
+						subWv.hide("none");
+					}
+				
+					main.append(subWv);
+				}
+				// 底部选项卡点击切换事件
+				for(var j = 0, jlen = tabs.length; j < jlen; j++) {
+					tabs[j].addEventListener("tap", function() {
+						// 获取当前结点的索引
+						targetIndex = this.getAttribute("data-index");
+						// 转换为number类型
+						targetIndex = parseInt(targetIndex, 10);
+						if(targetIndex == activeIndex) {
+							return;
+						}
+						// 切换页面
+						switchPage("tap", activeIndex, targetIndex);
+					});
+				}
+				
+		
+				function switchPage(_event, _active, _target) {
+					/**
+					 * 目标页面展示
+					 * http://www.html5plus.org/doc/zh_cn/webview.html#plus.webview.WebviewObject.show
+					 */
+					
+					//获取子页面衣橱的view对象
+				var curw_1=plus.webview.getWebviewById('view/footer1yichu/yichu.html');
+				var curw_3=plus.webview.getWebviewById('view/footer4mine/wode.html');
+					subWvs[_target].show("fade-in");
+					//点击添加动画，或者渲染数据
+					
+					switch (_target){
+						case 0:
+						   curw_1.evalJS("addAnimate()");
+							break;
+						case 1:
+						   curw_1.evalJS("removeAnimate()");		
+							break;
+						case 2:
+						   curw_1.evalJS("removeAnimate()");		
+							break;
+						case 3:
+						   curw_1.evalJS("removeAnimate()");
+						   curw_3.evalJS('wode_animate()');
+							break;
+						default:
+							break;
+					}
+					if(_event == "switch") {
+						tabs[_active].classList.remove("mui-active");
+						tabs[_target].classList.add("mui-active");
+					}
+					// 之前展示的页面隐藏
+					subWvs[_active].hide("none");
+					// 更新当前页索引
+					activeIndex = _target;
+				}
+		
+			//setTimeout的目的是等待窗体动画结束后，再执行create webview操作，避免资源竞争，导致窗口动画不流畅；
+			setTimeout(function () {
+				//侧滑菜单默认隐藏，这样可以节省内存；
+				menu = mui.preload({
+					id: 'sidebar',
+					url: 'sidebar.html',
+					styles: {			
+						left: "0",			
+						zindex: -9997,
+						width:"100%",
+						render:'always'
+					}
+				});
+			},300);
+				
+				
+	});
+	
+		document.getElementById('show-btn').addEventListener('tap', function() {  
+    // 侧滑页面出现右移到显示区域  
+   menu.show('none', 0, function() {  
+      menu.setStyle({  
+            left: '0',  
+        });  
+    });  
+    // 主界面右移  
+    main.show('none', 0, function() {  
+        main.setStyle({  
+            left: '70%',  
+          
+            mask: 'rgba(0,0,0,0.5)',  
+            transition: {  
+                duration: 100  
+            }  
+        });  
+    });  
+
+    // 每次移除遮罩点击事件，避免重复添加监听  
+    main.removeEventListener('maskClick');  
+    // 点击关闭遮罩时  
+    main.addEventListener('maskClick', function(){  
+        // 主界面移动到最大显示区域  
+        main.setStyle({  
+            left: '0',  
+            top: '0',  
+            bottom: '0',  
+            mask: 'none',  
+            transition: {  
+                duration: 100  
+            }  
+        });  
+        // 侧滑界面移出显示区域之外  
+
+        // 隐藏侧滑页面，setTimeout避免竞争资源  
+
+           //menu.hide();  
+
+    },false);  
+
+});  
+		</script>
+		    </div>
+          
+        </div>
+      </div>
+ </body>
+ 
+   
+</html>

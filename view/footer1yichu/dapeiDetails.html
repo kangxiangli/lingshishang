@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<meta charset="UTF-8">
+        <meta name="viewport" content="width=640,user-scalable=no">
+        <link rel="stylesheet" href="../../css/style_header.css"/>
+        <link rel="stylesheet" href="../../css/footer1/dapeidetials.css"/>
+        <script src="../../js/base.fontsize.js"></script>
+        <title>搭配详情</title>
+    </head>
+    <body>
+        <div class="header">
+            <div class="contain headertop">
+                <div class="back">
+                    <a href="javascript:void(0);" onclick="closeWin();LSShang.removelocStorage('showDpId');">
+                        <img src="../../img/left@2x.png" alt="">返回
+                    </a>
+                </div>
+                <span class="title">0-fashion</span>     
+                <div class="ok selection">
+                    <img src="../../img/nav_sha_sho@2x.png" alt="">
+                </div>  
+            </div>    
+        </div>
+        <div class="contentBox">
+            <div class="content"></div>
+        </div>
+        <div class="pop">
+            <ul class="clearfix">
+                <li id="edit">修改</li>
+                <li id="del">删除</li>
+                <li>取消</li>
+            </ul>
+        </div>
+    </body>
+    <script src="../../js/jquery-2.1.1.min.js"></script>
+    <script src="../../js/mui.js"></script>
+    <script src="../../js/lss_global.js"></script>
+    <script src="../../js/underscore.js"></script>
+    
+    <script>
+    var Detial = {
+        init:function(){
+            this.getdetial();
+            
+        },
+        edit:function(){
+            this.pop();
+            this.toEdit();
+            this.del();
+        },
+        getdetial:function(){
+            var showDPid = LSShang.getlocStorage('showDpId');
+            //LSShang.removelocStorage('showDpId');
+            lssAjax.postJson({
+                url : host + '/api/products/membercollocation/getdetail',
+                data:{
+                    MemberId:userId,
+                    U_Num:userNum,
+                    ColloId:showDPid
+                },
+                success:function(data){
+                    console.log(data)
+                    if( data.ResultType == 3){
+                        setTpl(data.Data)
+                    }
+                }
+            })       
+        },
+        pop:function(){
+            $('.content').on('click','.matchImg',function(){
+                $('.pop').show();
+                $('.pop ul').slideDown('fast');
+            });
+            $('body').on('click','.pop',function(){
+                $('.pop').hide();
+                $('.pop ul').slideUp('fast');
+            });
+        },
+        toEdit:function(){
+            $('#edit').click(function(){
+                openNewWin('dapei.html');
+            })
+        },
+        del:function(){
+            var showDPid = LSShang.getlocStorage('showDpId');
+            $('#del').click(function(){
+                lssAjax.postJson({
+                    url : host + '/api/products/membercollocation/remove',
+                    data:{
+                        MemberId:userId,
+                        U_Num:userNum,
+                        ColloId:showDPid
+                    },
+                    success:function(data){
+                        console.log(data)
+                        LSShang.toast(data.Message);
+                        if( data.ResultType == 3){
+                            setTimeout(function(){
+                                closeWin();
+                            },500)
+                        }
+                    }
+                })     
+            })
+        }
+    };
+    function setTpl(data){
+        var tpl = $('#contentTpl').html();
+        var fn = _.template(tpl);
+        var html = fn(data);
+        $('.content').append(html);
+    }
+    
+    LSShang.ready(function(){
+    	//alert(LSShang.getlocStorage('showDetails'))
+        Detial.init();
+        if(LSShang.getlocStorage('showDetails') == 'true' ){
+            Detial.edit();
+            LSShang.removelocStorage('showDetails');
+        }
+    })    
+    </script>
+    <script type="tpl" id="contentTpl">
+            <div class="clearfix matchImgBox">
+                <div class="matchImg" data-id=<%=obj.ProductId%>>
+                    <img src="<%=obj.ColloImagePath%>" />
+                </div>
+                <div class="matchDetial">
+                    <p><%=obj.ColloName%></p>
+                    <div class="user">
+                        <img src="<%=obj.MemberImage%>" />
+                        <span class="username"><%=obj.MemberName%></span>
+                    </div>
+                    <div class="note">
+                        <%=obj.ColloNotes%>
+                    </div>
+                </div>
+                <div class="buyinfo">
+                    <div class="buyall">全部购买</div>
+                    <div class="clearfix iconList">
+                        
+                        <div class="icon">
+                            <img src="../../img/collection@2x.png" />
+                            <span><%=obj.ApproveCount%></span>
+                        </div>
+                        <div class="icon">
+                            <img src="../../img/comment@2x.png" />
+                            <span><%=obj.CommentCount%></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="detialimg">
+                <ul class="clearfix detialList">
+                    <%_.each(obj.ListSingle,function(item,i){%>
+                        <li class="danpin">
+                            <div class="danpinImgBox"><img src="<%=item.Image%>" /></div>
+                            <p class="price">￥<%=item.Price%></p>
+                        </li>
+                    <%})%>
+                </ul>
+            </div>
+    </script>
+</html>
+
+
+
+
+
+
+

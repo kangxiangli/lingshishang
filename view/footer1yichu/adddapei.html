@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=640,user-scalable=no">
+        <title>创建搭配</title>
+        <link rel="stylesheet" href="../../css/style_header.css" />
+        <link rel="stylesheet" href="../../css/style_wodedanpin.css">
+        <link rel="stylesheet" href="../../css/swiper.css">
+        <script src="../../js/jquery-2.1.1.min.js"></script>
+        <script src="../../js/mui.js"></script>
+        <script src="../../js/base.fontsize.js"></script>
+    </head>
+
+    <body>
+        <div class="pagethree">
+            <div class="header">
+                <div class="contain">
+                    <div class="back">
+                        <a href="javascript:void(0);" onclick="closeWin();"><img src="../../img/nav_return@2x.png" alt="">返回</a>
+                    </div>
+                    <span class="title">创建搭配</span>
+                    <div class="ok">
+                        <span class="save">保存</span>
+                    </div>
+                </div>
+            </div>
+            <div class="tupian">
+                <strong>图片*</strong>
+                <span id="fenlei_class" data-id=""></span>
+                <div class="dapeiimg"><img id="preview" src="../../img/fm@2x.png" alt="">
+                </div>
+            </div>
+            <div class="name">
+                <strong>名称</strong>
+                <input placeholder="搭配名称" class="ProductName"/>
+                <img class="pencil" src="../../img/pencil@2x.png" />
+            </div>
+            <div class="yanse">
+                <strong>颜色*</strong>
+                <div class="swiper-container">
+                    <ul class="swiper-wrapper colorlist">
+
+                    </ul>
+                </div>
+            </div>
+            <div class="details">
+                <ul>
+                    <li class="flip season-list">
+                        <strong>季节*</strong><span class="selected">选择搭配适穿季节</span><img src="../../img/list_choices.png"alt="">
+                        <div class="panel">
+                            <ul class="clearfix"></ul>
+                        </div>
+                    </li>
+                    <li class="flip productattribute-list">
+                        <strong>风格*</strong><span class="selected">选择搭配属于风格</span><img src="../../img/list_choices.png"alt="">
+                        <div class="panel">
+                            <ul class="clearfix"></ul>
+                        </div>
+                    </li>
+                    <li class="flip changheList">
+                        <strong>场合*</strong><span class="selected">选择搭配适穿场合</span><img src="../../img/list_choices.png"alt="">
+                        <div class="panel">
+                            <ul class="clearfix"></ul>
+                        </div>
+                    </li>
+                    <li>
+                        <strong>备注</strong>
+                        <input placeholder="如：收纳位置" class="Notes" />
+                        <img class="pencil" src="../../img/pencil@2x.png" />
+                    </li>
+                </ul>
+                <div class="end">
+                    *为必填项目
+                </div>
+            </div>
+        </div>
+        <div class="bg"></div>
+    </body>
+    <script src="../../js/swiper.min.js"></script>
+    <script src="../../js/jquery.form.js"></script>
+    <script src="../../js/lss_global.js"></script>
+<script type="text/javascript">
+/*============================ add/edit ===========================================*/
+//提交遮罩
+LSShang.loadAnimate($('.bg'),'zzloading');
+
+LSShang.ready(function(){ 
+    //渲染颜色分类
+    lssAjax.postJson({
+        url : host + '/api/properties/color/getlist',
+        data : {
+            MemberId : userId,
+            U_Num : userNum
+        },
+        success : function(data) {
+            //console.log(data)
+            if (data.ResultType == 3) {
+                $.each(data.Data, function(i, item) {
+                    $('.colorlist').append('<li class="swiper-slide" data-colorid=' + item.ColorId + '><img src="' + item.IconPath + '"/><p>' + item.ColorName + '</p></li>')
+                })
+                $('.colorlist').append('<li class="swiper-slide"></li>');
+                var swiper = new Swiper('.swiper-container', {
+                    slidesPerView : 6,
+                    spaceBetween : 5,
+                });
+            }
+        }
+    })
+    /************************************ 季节选择器 *****************************************/
+    lssAjax.postJson({
+        url : host + '/api/properties/season/getlist',
+        data : {
+            MemberId : userId,
+            U_Num : userNum,
+        },
+        success : function(data) {
+            //console.log(data)
+            if (data.ResultType == 3) {
+                $.each(data.Data, function(i, item) {
+                    $('.season-list .panel ul').append('<li data-id=' + item.SeasonId + '>' + item.SeasonName + '</li>')
+                })
+            }
+        }
+    })
+/************************************** 风格选择器 *******************************/
+    lssAjax.postJson({
+        url : host + '/api/products/productattribute/getlist',
+        data : {
+            MemberId : userId,
+            U_Num : userNum,
+            ProductAttrType : 0
+        },
+        success : function(data) {
+            //console.log(data)
+            if (data.ResultType == 3) {
+                $.each(data.Data, function(i, item) {
+                    $('.productattribute-list .panel ul').append('<li data-id=' + item.ProductAttrId + '>' + item.AttributeName + '</li>')
+                })
+            }
+        }
+    })
+/****************************************** 场合选择器  ***********************************/
+
+    lssAjax.postJson({
+        url : host + '/api/properties/situation/getlist',
+        data : {
+            MemberId : userId,
+            U_Num : userNum,
+        },
+        success : function(data) {
+            if (data.ResultType == 3) {
+                $.each(data.Data, function(i, item) {
+                    $('.changheList .panel ul').append('<li data-id=' + item.SituationId + '>' + item.SituationName + '</li>')
+                })
+            }
+        }
+    })
+})
+/*========================================= save =====================================*/
+    var dpId = LSShang.getlocStorage('showDpId');
+    var ADD = {
+        save:function(){
+            var _this = this;
+            $('.save').click(function() {
+            	
+             
+                	//_this.getSaveTextList()
+                	//TemporaryMedia(_this.getSaveTextList());
+                    TemporaryMedia(_this.getSaveImageList(),_this.getSaveTextList());
+                
+               
+            })
+        },
+        getSaveImageList:function(){  
+            return  Webview.currentWebview().imgPositionList;
+        },
+        getSaveTextList:function(){
+            return Webview.currentWebview().textareaList;
+        }
+    }
+    var EDIT = {
+        editGetData:function(id){
+            var _this = this;
+            lssAjax.postJson({
+                url : host + '/api/products/membercollocation/getedit',
+                data : {
+                    MemberId : userId,
+                    U_Num : userNum,
+                    ColloId:id
+      
+                },
+                success : function(data) {
+                    console.log(data)
+                    if (data.ResultType == 3) {
+                        _this.setData(data.Data)
+                    }
+                }
+            })
+        },
+        setData:function(data){
+            console.log(data)
+            $('.header').attr('ColloId',data.ColloId)
+            $('.ProductName').val(data.CollocationName);
+            $('.header .title').html('修改搭配');
+            $('.yanse .swiper-slide[data-colorid='+data.ColorId+']').addClass('slide-active-ys')
+            $('.season-list .selected').html(data.SeasonName).attr('data-id',data.SeasonId);
+            $('.productattribute-list .selected').html(data.ProductAttrName).attr('data-id',data.ProductAttrId);
+            $('.changheList .selected').html(data.SituationName).attr('data-id',data.SituationId);
+            $('.Notes').val(data.Notes);
+        },
+        save:function(){
+            $('.save').click(function() {
+                $(this).addClass('saveDisabled');
+               
+                     
+                    savaEdit(ADD.getSaveImageList(),ADD.getSaveTextList())
+              
+            })
+        },
+        getSaveData:function(){
+            var imgList = LSShang.getlocStorage('dapeiToSaveImgList');
+            console.log(imgList)
+        }
+    }
+   LSShang.ready(function(){
+       if(dpId){
+           EDIT.editGetData(dpId);
+           EDIT.save();
+           
+       }else{
+           //ADD.getSaveDate();
+           ADD.save();
+       }
+       
+   })
+   
+   /************************************** add搭配   *******************************/
+    function TemporaryMedia(imgList,textList) {
+		if(!checkRequestParm())return;
+    	var data = {
+                MemberId : userId,
+                U_Num : userNum,
+                MyCollo :JSON.stringify({
+                  	MemberId : userId,
+                  	U_Num : userNum,
+                    FigureIds:'347,348',
+                    CollocationName : $('.ProductName').val(),
+                    ProductAttrId : $('.productattribute-list .selected').attr('data-id'),
+                    SituationId : $('.changheList .selected').attr('data-id'),
+                    ColorId : $('.slide-active-ys').attr('data-colorid'),
+                    SeasonId : $('.season-list .selected').attr('data-id'),
+                    Image :getBase64(),
+                    IsCallendar : 0,
+                    Notes : $('.Notes').val(),
+                    ImageList : imgList,
+                    TextList : textList
+                })
+            }
+
+        $('.bg').show(); 
+        lssAjax.postJson({
+            url : host + '/api/products/membercollocation/add',
+            data : data,
+            success : function(data) {
+                //console.log(data)
+                if (data.ResultType == 3) {
+                	LSShang.toast(data.Message);
+                    setTimeout(function(){
+                    	Webview.webViewJS('dapei.html','closeWin()');
+                    	closeWin();
+                    	
+                    },1000)
+                } else {
+                    //LSShang.toast('添加失败');
+                    setTimeout(function() {
+                      
+                        $('.save').removeClass('saveDisabled');
+                    }, 1000)
+                }
+            }
+        })
+    }
+/********************************** edit搭配   **************************************/
+   function savaEdit(imgList,textList) {
+   	if(!checkRequestParm())return;
+       $('.bg').show(); 
+        var data = {
+            MemberId : userId,
+            U_Num : userNum,
+            ColloInfo : JSON.stringify({
+            	MemberId : userId,
+            	U_Num : userNum,
+                ColloId: parseInt($('.header').attr('ColloId')),   //int 搭配Id
+                CollocationName :$('.ProductName').val(),//true    string  搭配名称（12个字符以内）
+                ProductAttrId : $('.productattribute-list .selected').attr('data-id'),
+                SituationId : $('.changheList .selected').attr('data-id'),
+                ColorId : $('.slide-active-ys').attr('data-colorid'),
+                SeasonId : $('.season-list .selected').attr('data-id'),
+                Image:getBase64(),//   true    //Base64String    搭配图
+                Notes :'',  //true    //string  备注（120个字符以内）
+                ListColloImage:imgList,
+                ListColloText:textList
+            }) 
+        }
+        lssAjax.postJson({
+            url : host + '/api/products/membercollocation/saveedit',
+            data : data,
+            success : function(data) {
+                             
+                if (data.ResultType == 3) {
+                    LSShang.toast(data.Message);
+                    setTimeout(function(){
+                    	Webview.webViewJS('dapei.html','closeWin()');
+                    	closeWin();
+                    	
+                    },1000)
+                } else {
+                    LSShang.toast('添加失败');
+                    setTimeout(function() {
+                    }, 1000)
+                }
+            }
+        })
+    }
+
+/*=================================== end ========================================*/
+/******************************* 颜色，季节，风格展开 *****************************/
+    $('.flip').on('click', function(e) {
+        $('.panel').slideUp();
+        $(this).find('.panel').slideDown();
+    })
+/************************************ 分类选择器 *********************************/
+    $('.fenlei .open').on('click', function() {
+        openNewWin('addSingleProductClassification.html')
+    })
+/************************************** 颜色选择器 ********************************/
+    $('.yanse .colorlist').on('click', '.swiper-slide img', function() {
+        $('.slide-active-ys').removeClass('slide-active-ys')
+        $(this).parent().addClass('slide-active-ys');
+    })
+    
+
+    $('.fenlei .open').click(function() {
+        openNewWin('addSingleProductClassification.html')
+    })
+
+/************************************* 选择季节，风格，尺码  ********************************/
+    $('.panel').on('click', 'ul li', function(e) {
+        $('.panel').slideUp();
+        $(this).parent().parent().find('.active').removeClass('active');
+        $(this).addClass('active');
+        $(this).parent().parent().parent().find('.selected').html($(this).text());
+        $(this).parent().parent().parent().find('.selected').attr('data-id', $(this).attr('data-id'))
+        e.stopPropagation();
+    })
+    $('.panel').on('click', function(e) {
+        e.stopPropagation();
+        //点击列表阻止冒泡
+    });
+
+
+/*********************************** 获取搭配图  ********************************/
+    getImg();
+    function getImg() {
+        var imgBase64 = LSShang.getlocStorage('addDpImageBase64');
+        $('#preview').attr('src', imgBase64);
+        LSShang.removelocStorage('addDpImageBase64');
+    }
+
+    function getBase64() {
+        var imgBase64 = $('#preview').attr('src');
+        if(!imgBase64){return};
+        console.log(imgBase64.length)
+        console.log(imgBase64)
+       	imgBase64 = imgBase64.replace("data:image/png;base64,","");
+        console.log(imgBase64.length)
+        console.log(imgBase64)
+        
+        return imgBase64;
+    }
+    
+    function checkRequestParm(){
+    	
+    	var CollocationName = $('.ProductName').val();
+    	var ProductAttrId = $('.productattribute-list .selected').attr('data-id');
+        var SituationId = $('.changheList .selected').attr('data-id');
+        var ColorId = $('.slide-active-ys').attr('data-colorid');
+        var SeasonId = $('.season-list .selected').attr('data-id');
+        var Image = getBase64();
+        if(!Image){
+        	LSShang.toast('请添加搭配图');
+        }else if(!CollocationName){
+        	LSShang.toast('请添加名称');
+        }else if(!ColorId){
+        	LSShang.toast('请选择颜色');
+        	return false;
+        }else if(!SeasonId){
+        	LSShang.toast('请选择季节');
+        	return false;
+        }else if(!ProductAttrId){
+        	LSShang.toast('请选择风格');
+        	return false;
+        }else if(!SituationId){
+    		LSShang.toast('请选择场合');
+    		return false;
+    	}else{
+    		return true;
+    	}
+    	
+    }
+
+</script>
+
+</html>
+

@@ -1,0 +1,84 @@
+@charset 'utf-8';
+* {
+  -webkit-touch-callout: none;
+  /*-webkit-user-select: none;*/
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body,h1,h2,h3,p,ul,ol,form,fieldset,figure {margin: 0;padding: 0;font-size: 17px;}
+div,figure,img,input,button {box-sizing: border-box;}
+body,html{overflow:hidden; height: 100%;background:url('../img/yijiyemian.jpg')no-repeat;width:100%;background-size:cover;font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei UI", "Microsoft YaHei", SimHei, "\5B8B\4F53", simsun, sans-serif;}
+img {display: block;max-width: 100%;}
+ul,ol{list-style: outside none none;}
+li{display:block;}
+a {text-decoration:none;display:block;color:#fff}
+ header{
+                background: transparent;
+                position: relative;
+                height:2.4rem;
+                /*font-size: 1em;*/
+               border-bottom: 1px solid rgba(255,255,255,.2);
+            }
+            header .portrait{
+                width:1.7rem;
+                height:1.7rem;
+                border-radius:50%;
+                position: absolute;
+                top:50%;
+                left: 5%;
+                margin-top: -.8rem;
+                border:.2rem solid rgba(255,255,255,.2)
+            }
+            header .portrait img{
+                width:100%;
+            }
+            header .logo{
+                height:100%;
+                width: 30%;
+                margin: 0 auto;
+       
+            }
+            header .logo img{
+                 width:100%;
+                 padding-top: .9rem
+             }
+            #shangcheng{
+                position:absolute;
+                right:1rem;
+                top:.8rem;
+                width: 2rem;                
+            }
+            #shangcheng img{
+                width: 100%
+            }
+.admin_info{width: 95%;height: 40%;border-bottom: 1px solid rgba(255,255,255,.4);text-align: center;margin: 0 auto;}
+.touxiang{width:25%;margin:1rem auto;border-radius: 50%;overflow:hidden; background: rgba(255,255,255,.2);border:.2rem solid rgba(255,255,255,.2);}
+.touxiang img{max-width: 100%;}
+#username{color:#fff;margin:1rem auto;letter-spacing: 2px;font-weight: bold;font-size: 1.2rem;}
+#userphone{color:#fff;margin:1rem auto;font-weight: bold;font-size: .7rem;}
+#userpwd{color:#fff;margin-left: 4rem}
+.admin_info_bt{margin:0 auto;text-align: center;color:#fff}
+.admin_info_bt div{margin-bottom: .5rem;}
+.select_sex img{display: inline-block;margin:1.4rem 1rem;width: 1.2rem;}
+.bounced{position:absolute;top:50%;left:50%;margin-left:-5rem;margin-top:-4rem;width:10rem;height:8rem;border:1px solid #ccc;}
+.bounced .bounced_header{width:100%;height: 2rem;padding:0 0 0 1rem;border-bottom: 1px solid #888}
+.bounced .bounced_content{width:100%;height:4rem;border-bottom: 1px solid #888;filt}
+.bounced .bounced_content input{width: 100%;background-color:transparent;height:2rem;color:#fff;font-size:20px;border:0;}
+.bounced .bounced_content input:focus{border:none}
+.pageone{width: 100%;height: 100%;}
+
+
+
+
+.pagetwo{display:none;position:absolute;top:0;width: 100%;height: 100%;}
+.pagetwo .header{width: 100%;height:2rem;color:#fff;border-bottom: 1px solid #888}
+.pagetwo .header .title{text-align: center;margin: 1rem 0 0 0;}
+.pagetwo .header .back{position: absolute;}
+.pagetwo .header .back a img{display: inline;}
+.pagetwo .header button{font-size: 1rem;border: none;background: none;position: absolute;top: 1rem;right: .4rem;color: #fff;}
+.pagetwo .contain{width:100%;height:3rem;}
+.pagetwo .contain input{margin:0 auto;display:block; padding-left: 1rem; width: 92%;background-color:transparent;height:2rem;color:#fff;font-size:20px;border:0;border-bottom: 1px solid #fff;padding:0 1rem;}

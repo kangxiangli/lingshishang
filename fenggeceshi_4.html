@@ -1,0 +1,167 @@
+	<!DOCTYPE html>
+	<html lang="zh-cn">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=640,user-scalable=no">
+		<title>风尚</title>
+		<link href="css/style_fenggeceshi.css"  rel="stylesheet">
+		<script src="js/jquery-2.1.1.min.js"></script>
+		
+	</head>
+
+	
+	<script src="js/appcan.js"></script>
+            
+
+                 <script>
+                  function return_yichu(){
+                     appcan.window.open({
+                    name:'yichu',
+                  data:'yichu.html',
+                  aniId:10,
+            });
+                 }
+                  function open_fenggeceshi5(){
+                 
+                       appcan.locStorage.setVal("ApparelSize",shang_size+","+xia_size);
+                      appcan.window.open({
+                    name:'tap_5',
+                  data:'fenggeceshi_5.html',
+                  aniId:10,
+            });
+            }
+ function close_fenggeceshi(){
+                     appcan.window.close(-1);
+          
+                }
+          </script>
+	<body>
+				<header id="st-trigger-effects" class="column">
+					    <div class="back"><a href="javascript:void(0);" onclick="close_fenggeceshi();"><img src="img/return@2x.png" alt="">返回</a></div>
+					     <p>风格测试</p>
+                        <a id="close" href="javascript:void(0)" onclick="return_yichu();"><img src="img/close@2x.png"/></a>
+                        
+                        
+                      <div  class="progress">
+                   
+                              <li><img src="img/d1_pre@2x.png"/></li>
+                              <li><img src="img/d2_pre@2x.png"/></li>
+                              <li><img src="img/d3_pre@2x.png"/></li>
+                              <li><img src="img/d4_pre@2x.png"/></li>
+                              <li><img src="img/d5@2x.png"/></li>
+                              <li><img src="img/d6@2x.png"/></li>
+                              <li><img src="img/d7@2x.png"/></li>
+                              <li><img src="img/d8@2x.png"/></li>
+                        
+                      </div>   
+				</header>
+				
+				
+				<div class="contain">
+				   <div class="shangzhuang">
+				       <div class="img_shang">
+					   <img src="img/4_jacket@2x.png"/>
+                       <img id="flash_shang" src="img/scan_net_blue@2x.png"/>
+					   </div>
+					  
+					   <span>上装</span>
+					 <div class="swiper-container5 swiper-shangzhuang">
+                                     <div class="swiper-wrapper warpper_shangzhuang">  
+                                             <div class="swiper-slide"></div>                                
+                                             <div class="swiper-slide">XS</div>
+                                             <div class="swiper-slide">S</div>
+                                             <div class="swiper-slide">M</div>
+                                             <div class="swiper-slide">L</div>
+                                             <div class="swiper-slide">XL</div>
+                                             <div class="swiper-slide">2XL</div>
+                                             <div class="swiper-slide">3XL</div>
+                                             <div class="swiper-slide">4XL</div>
+                                             <div class="swiper-slide"></div>                                         
+                                                                                                                                                                                                   
+                                     </div>
+                             </div>
+  <script src="js/swiper.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var shang_size="";
+        var xia_size="";
+    var swiper = new Swiper('.swiper-shangzhuang', {
+     onInit: function(swiper){
+       $('.warpper_shangzhuang>.swiper-slide-next').css({'font-size':'20px','color':'#00FF00'});
+       $('.warpper_shangzhuang>.swiper-slide-next').nextAll().css({'font-size':'15px','color':'#888'});
+        $('.warpper_shangzhuang>.swiper-slide-next').prevAll().css({'font-size':'15px','color':'#888'});
+    },
+    onSlideChangeEnd: function(swiper){
+        $('#flash_shang').animate({'top':'4%'},function(){
+         $('#flash_shang').delay(200).animate({'top':'-100%'},0);
+        });
+        shang_size=$('.warpper_shangzhuang>.swiper-slide-next').html();
+      $('.warpper_shangzhuang>.swiper-slide-next').css({'font-size':'20px','color':'#00FF00'});
+      $('.warpper_shangzhuang>.swiper-slide-next').prevAll().css({'font-size':'15px','color':'#888'});
+      $('.warpper_shangzhuang>.swiper-slide-next').nextAll().css({'font-size':'15px','color':'#888'});
+    },
+        slidesPerView: 3,
+        spaceBetween: 30,
+        freeMode: false,
+    });
+    </script> 
+				   </div>
+				   <div class="xiazhuang">
+				       <div class="img_xia">
+						 <img src="img/4_pants@2x.png"/>
+                        <img id="flash_xia" src="img/scan_net_blue@2x.png"/>
+					   </div>
+					 
+					    <span>下装</span>
+					     <div class="swiper-container6 swiper-xiazhuang">
+                                     <div class="swiper-wrapper warpper_xiazhuang">  
+                                             <div class="swiper-slide"></div>                                
+                                             <div class="swiper-slide">XS</div>
+                                             <div class="swiper-slide">S</div>
+                                             <div class="swiper-slide">M</div>
+                                             <div class="swiper-slide">L</div>
+                                             <div class="swiper-slide">XL</div>
+                                             <div class="swiper-slide">2XL</div>
+                                             <div class="swiper-slide">3XL</div>
+                                             <div class="swiper-slide">4XL</div>
+                                             <div class="swiper-slide"></div>                                                                                                                                                                                                                                          
+                                     </div>
+                             </div>
+
+
+    <!-- Initialize Swiper -->
+    <script>
+ 
+    var swiper1 = new Swiper('.swiper-container6', {
+     onInit: function(swiper1){
+       $('.warpper_xiazhuang>.swiper-slide-next').css({'font-size':'20px','color':'#00FF00'});
+       $('.warpper_xiazhuang>.swiper-slide-next').nextAll().css({'font-size':'15px','color':'#888'});
+        $('.warpper_xiazhuang>.swiper-slide-next').prevAll().css({'font-size':'15px','color':'#888'});
+    },
+    onSlideChangeEnd: function(swiper1){
+         $('#flash_xia').animate({'top':'4%'},function(){
+         $('#flash_xia').delay(200).animate({'top':'-100%'},0);
+        });
+        xia_size=$('.warpper_xiazhuang>.swiper-slide-next').html();
+      $('.warpper_xiazhuang>.swiper-slide-next').css({'font-size':'20px','color':'#00FF00'});
+      $('.warpper_xiazhuang>.swiper-slide-next').prevAll().css({'font-size':'15px','color':'#888'});
+       $('.warpper_xiazhuang>.swiper-slide-next').nextAll().css({'font-size':'15px','color':'#888'});
+    },
+        slidesPerView: 3,
+        spaceBetween: 30,
+        freeMode: false,
+    });
+    </script>
+				   </div>
+			   </div> 
+             	<footer>
+                    <div class="next" onclick="open_fenggeceshi5();">
+                        <img src="img/next@2x.png"/>
+                    </div>
+		
+				</footer>
+
+
+	</body>
+	</html>

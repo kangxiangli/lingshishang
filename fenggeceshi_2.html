@@ -1,0 +1,311 @@
+	<!DOCTYPE html>
+	<html lang="zh-cn">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=640,user-scalable=no">
+		<title>风尚</title>
+		<link href="css/style_fenggeceshi.css"  rel="stylesheet">
+		<script src="js/jquery-2.1.1.min.js"></script>
+		
+	</head>
+
+	
+	<script src="js/appcan.js"></script>
+            
+
+                 <script>
+                  function return_yichu(){
+                     appcan.window.open({
+                    name:'yichu',
+                  data:'yichu.html',
+                  aniId:10,
+            });
+                 }
+                 function open_fenggeceshi3(){
+             
+                     var date = new Date(brithday);
+                     var year=date.getFullYear();
+                     var month=date.getMonth()+1;
+                     var day=date.getDate();
+                     var brithday_1=year+"-"+month+"-"+day;
+                    appcan.locStorage.setVal('Birthday',brithday_1);
+                      appcan.window.open({
+                    name:'tap_3',
+                  data:'fenggeceshi_3.html',
+                  aniId:10,
+            });
+                 }
+ function close_fenggeceshi(){
+                     appcan.window.close(-1);
+          
+                }
+          </script>
+	<body>
+				<header id="st-trigger-effects" class="column">
+					    <div class="back"><a href="javascript:void(0);" onclick="close_fenggeceshi();"><img src="img/return@2x.png" alt="">返回</a></div>
+					     <p>风格测试</p>
+                        <a id="close" href="javascript:void(0)" onclick="return_yichu();"><img src="img/close@2x.png"/></a>
+                        
+                        
+                      <div  class="progress">
+                   
+                              <li><img src="img/d1_pre@2x.png"/></li>
+                              <li><img src="img/d2_pre@2x.png"/></li>
+                              <li><img src="img/d3@2x.png"/></li>
+                              <li><img src="img/d4@2x.png"/></li>
+                              <li><img src="img/d5@2x.png"/></li>
+                              <li><img src="img/d6@2x.png"/></li>
+                              <li><img src="img/d7@2x.png"/></li>
+                              <li><img src="img/d8@2x.png"/></li>
+                        
+                      </div>   
+				</header>
+				
+				
+				<div class="contain">
+				    <div class="brith">
+				        <div class="year_1">
+							
+						</div>
+						<div class="year_2">
+							
+						</div>
+						 <div class="year_3">
+                            
+                        </div>
+                        <div class="year_4">
+                            
+                        </div>
+                         <div class="yue_1">
+                            
+                        </div>
+                         <div class="yue_2">
+                            
+                        </div>
+                         <div class="ri_1">
+                            
+                        </div>
+                        <div class="ri_2">
+                            
+                        </div>
+						<div class="br_tp brithday">
+							<img src="img/s1@2x.png"/>
+							<div class="swiper-container1 swiper_brith_1">
+                                     <div class="swiper-wrapper warpper_brith_1">
+                                             <div class="swiper-slide"></div>
+                                             <div class="swiper-slide">1965</div>
+                                             <div class="swiper-slide">1966</div>
+                                             <div class="swiper-slide">1967</div>
+                                             <div class="swiper-slide">1968</div>
+                                             <div class="swiper-slide">1969</div>
+                                             <div class="swiper-slide">1970</div>
+                                             <div class="swiper-slide">1971</div>
+                                             <div class="swiper-slide">1972</div>
+                                             <div class="swiper-slide">1973</div>
+                                             <div class="swiper-slide">1974</div>
+                                             <div class="swiper-slide">1975</div>
+                                             <div class="swiper-slide">1976</div>
+                                             <div class="swiper-slide">1977</div>
+                                             <div class="swiper-slide">1978</div>
+                                             <div class="swiper-slide">1978</div>
+                                             <div class="swiper-slide">1980</div>
+                                             <div class="swiper-slide">1981</div>
+                                             <div class="swiper-slide">1982</div>
+                                             <div class="swiper-slide">1982</div>
+                                             <div class="swiper-slide">1984</div>
+                                             <div class="swiper-slide">1985</div>
+                                             <div class="swiper-slide">1986</div>
+                                             <div class="swiper-slide">1987</div>
+                                             <div class="swiper-slide">1988</div>
+                                             <div class="swiper-slide">1989</div>
+                                             <div class="swiper-slide">1990</div>
+                                             <div class="swiper-slide">1991</div>
+                                             <div class="swiper-slide">1992</div>
+                                             <div class="swiper-slide">1993</div>
+                                             <div class="swiper-slide">1994</div>
+                                             <div class="swiper-slide">1995</div>
+                                             <div class="swiper-slide">1996</div>
+                                             <div class="swiper-slide">1997</div>
+                                             <div class="swiper-slide">1998</div>
+                                             <div class="swiper-slide">1999</div>
+                                             <div class="swiper-slide">2000</div>
+                                             <div class="swiper-slide">2001</div>
+                                             <div class="swiper-slide">2002</div>
+                                             <div class="swiper-slide">2003</div>
+                                             <div class="swiper-slide">2004</div>
+                                             <div class="swiper-slide"></div>                                     
+                                       
+                                     </div>
+                             </div>
+  <script src="js/swiper.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+   var brithday="";
+    var swiper = new Swiper('.swiper_brith_1', {
+     onInit: function(swiper){
+      $('.swiper_brith_1').width($('.br_tp').width()*.9);
+       $('.warpper_brith_1>.swiper-slide-next').nextAll().css({'font-size':'15px','color':'#888'});
+    },
+    onSlideChangeEnd: function(swiper){
+      $('.warpper_brith_1>.swiper-slide-next').css({'font-size':'20px','color':'#FFFFFF'});
+      $('.warpper_brith_1>.swiper-slide-next').prevAll().css({'font-size':'15px','color':'#888'});
+       $('.warpper_brith_1>.swiper-slide-next').nextAll().css({'font-size':'15px','color':'#888'});
+     var year=$('.warpper_brith_1>.swiper-slide-next').html();
+     brithday=year+'-';
+        var year_1=year.substr(0,1);
+        var year_2=year.substr(1,1);
+        var year_3=year.substr(2,1);
+        var year_4=year.substr(3,1);
+  $('.year_1').empty().append(year_1);
+    $('.year_2').empty().append(year_2);
+      $('.year_3').empty().append(year_3);
+        $('.year_4').empty().append(year_4);
+    },
+ 
+        slidesPerView: 3,
+        paginationClickable: true,
+        spaceBetween: 30,
+        freeMode: false,
+    });
+    </script> 
+						</div>
+						<div class="br_md brithday">
+							<img src="img/s2@2x.png"/>
+							<div class="swiper-container2 swiper_brith_2">
+                                     <div class="swiper-wrapper wrapper_brith_2">
+                                             <div class="swiper-slide"></div>
+                                             <div class="swiper-slide">1</div>
+                                             <div class="swiper-slide">2</div>
+                                             <div class="swiper-slide">3</div>
+                                             <div class="swiper-slide">4</div>
+                                             <div class="swiper-slide">5</div>
+                                             <div class="swiper-slide">6</div>
+                                             <div class="swiper-slide">7</div>
+                                             <div class="swiper-slide">8</div>
+                                             <div class="swiper-slide">9</div>
+                                             <div class="swiper-slide">10</div>
+                                             <div class="swiper-slide">11</div>
+                                             <div class="swiper-slide">12</div>
+                                             <div class="swiper-slide"></div>                                                                                                                     
+                                     </div>
+                             </div>
+                               <script>
+    var swiper1 = new Swiper('.swiper_brith_2', {
+       onInit: function(swiper1){
+           $('.swiper_brith_2').width($('.br_md').width()*.9);
+     $('.wrapper_brith_2>.swiper-slide-next').nextAll().css({'font-size':'15px','color':'#888'});
+    },
+    onSlideChangeEnd: function(swiper1){
+   $('.wrapper_brith_2>.swiper-slide-next').css({'font-size':'20px','color':'#FFFFFF'});
+      $('.wrapper_brith_2>.swiper-slide-next').prevAll().css({'font-size':'15px','color':'#888'});
+       $('.wrapper_brith_2>.swiper-slide-next').nextAll().css({'font-size':'15px','color':'#888'});
+       var yue=$('.wrapper_brith_2>.swiper-slide-next').html();
+         brithday+=yue+"-";
+       var yue_1=0;
+       if(yue.length>1){
+           yue_1=yue.substr(0,1);
+        var yue_2=yue.substr(1,1);
+       }else{
+           yue_1='0';
+           yue_2=yue.substr(0,1);
+       }
+  
+      $('.yue_1').empty().append(yue_1);
+        $('.yue_2').empty().append(yue_2);
+    },
+       
+        slidesPerView: 3,
+        paginationClickable: true,
+        spaceBetween: 40,
+        freeMode: false,
+    });
+    </script> 
+						</div>
+						<div class="br_bt brithday">
+							<img src="img/s3@2x.png"/>
+							<div class="swiper-container3 swiper_brith_3">
+                                     <div class="swiper-wrapper wrapper_brith_3">
+                                             <div class="swiper-slide"></div>
+                                             <div class="swiper-slide">1</div>
+                                             <div class="swiper-slide">2</div>
+                                             <div class="swiper-slide">3</div>
+                                             <div class="swiper-slide">4</div>
+                                             <div class="swiper-slide">5</div>
+                                             <div class="swiper-slide">6</div>
+                                             <div class="swiper-slide">7</div>
+                                             <div class="swiper-slide">8</div>
+                                             <div class="swiper-slide">9</div>
+                                             <div class="swiper-slide">10</div>
+                                             <div class="swiper-slide">11</div>
+                                             <div class="swiper-slide">12</div>
+                                             <div class="swiper-slide">13</div>
+                                             <div class="swiper-slide">14</div>
+                                             <div class="swiper-slide">15</div>
+                                             <div class="swiper-slide">16</div>
+                                             <div class="swiper-slide">17</div>
+                                             <div class="swiper-slide">18</div>
+                                             <div class="swiper-slide">19</div>
+                                             <div class="swiper-slide">20</div>
+                                             <div class="swiper-slide">21</div>
+                                             <div class="swiper-slide">22</div>
+                                             <div class="swiper-slide">23</div>
+                                             <div class="swiper-slide">24</div>
+                                             <div class="swiper-slide">25</div>
+                                             <div class="swiper-slide">26</div>
+                                             <div class="swiper-slide">27</div>
+                                             <div class="swiper-slide">28</div>
+                                             <div class="swiper-slide">29</div>
+                                             <div class="swiper-slide">30</div>
+                                             <div class="swiper-slide">31</div>
+                                             <div class="swiper-slide"></div>                                                                                                                     
+                                     </div>
+                             </div>
+                               <script>
+    var swiper2 = new Swiper('.swiper_brith_3', {
+       onInit: function(swiper2){
+            $('.swiper_brith_3').width($('.br_bt').width()*.9);
+       $('.wrapper_brith_3>.swiper-slide-next').nextAll().css({'font-size':'15px','color':'#888'});
+    },
+    onSlideChangeEnd: function(swiper2){
+      $('.wrapper_brith_3>.swiper-slide-next').css({'font-size':'20px','color':'#FFFFFF'});
+      $('.wrapper_brith_3>.swiper-slide-next').prevAll().css({'font-size':'15px','color':'#888'});
+       $('.wrapper_brith_3>.swiper-slide-next').nextAll().css({'font-size':'15px','color':'#888'});
+       var ri=$('.wrapper_brith_3>.swiper-slide-next').html();  
+        brithday+=ri;
+        
+       var ri_1=0;
+       if(ri.length>1){
+           ri_1=ri.substr(0,1);
+        var ri_2=ri.substr(1,1);
+       }else{
+           ri_1='0';
+           ri_2=ri.substr(0,1);
+       }
+  
+      $('.ri_1').empty().append(ri_1);
+        $('.ri_2').empty().append(ri_2);
+    },
+  
+        slidesPerView: 3,
+        paginationClickable: true,
+        spaceBetween: 35,
+        freeMode: false,
+    });
+    </script> 
+						</div>
+					</div>
+				</div>
+				
+				
+             	<footer>
+                    <div class="next" onclick="open_fenggeceshi3();">
+                        <img src="img/next@2x.png"/>
+                    </div>
+		
+				</footer>
+
+
+	</body>
+	</html>
+	

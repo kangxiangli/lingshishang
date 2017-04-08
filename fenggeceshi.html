@@ -1,0 +1,166 @@
+	<!DOCTYPE html>
+	<html lang="zh-cn">
+	<head>
+		<meta charset="utf-8">
+      	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>风尚</title>
+		<link href="css/style_fenggeceshi.css"  rel="stylesheet">
+		<link href="css/component.css" rel="stylesheet"/>
+		<script src="js/jquery-2.1.1.min.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script src="js/lss_global.js"></script>
+	</head>
+	
+
+                 <script>
+                mui.plusReady(function(){
+				  var index=plus.webview.getLaunchWebview();
+					setTimeout(function(){
+						 index.setStyle({       
+				          zindex: -9998,	
+					      render:'always'
+				        });  
+					},100)
+			    var main=plus.webview.currentWebview();
+			  		if(main.type==0){
+            var return_dom="<div class='back'><a href='javascript:void(0);'"+
+            "onclick='close_fenggeceshi();'><img src='img/return@2x.png'>返回</a></div>";
+			  			$('.logo').replaceWith(return_dom);
+			  			
+			  		}
+                 })
+                 
+                 function open_fenggeceshi2(){
+                     if($('.man').hasClass("active")){
+                      
+                          LSShang.setlocStorages('Gender',1);
+                       
+                        		openNewWin('fenggeceshi_2.html');
+                     }
+                       if($('.women').hasClass("active")){
+          
+                         LSShang.setlocStorages('Gender',0);
+                    
+                        openNewWin('fenggeceshi_2.html');
+                     }
+                       
+                 }
+
+              
+          </script>
+	<body>
+
+	 <div id="st-container" class="st-container" > 
+
+	  	<div class="st-pusher">			<!--被侧滑的区域 -->
+
+	  		<nav class="st-menu st-effect-6" id="menu-6">     
+                <ul>
+                    <li><a class="icon icon-saoma" href="#">扫码购物</a></li>
+                    <li><a class="icon icon-daohang" href="#">店铺导航</a></li>
+                    <li><a class="icon icon-xiaoxi" href="#">消息通知</a></li>
+                    <li><a class="icon icon-fengge" href="#">风格测试</a></li>
+                    <li><a class="icon icon-shangcheng" href="#">买手商城</a></li>
+                    <li><a class="icon icon-dapei" href="#">搭配专题</a></li>
+                    <li><a class="icon icon-qianyan" href="#">时尚前沿</a></li>
+                </ul>
+            </nav>
+
+				<header id="st-trigger-effects" class="column">
+						<button class="logo" data-effect="st-effect-6" id="show-btn"></button> 
+						<img src="img/login_logo_@2x.png" alt="">
+                        <a id="close" href="javascript:void(0)" onclick="return_index();"><img src="img/close@2x.png"/></a>
+                        
+                        
+                      <div  class="progress">
+                   
+                              <li><img src="img/d1_pre@2x.png"/></li>
+                              <li><img src="img/d2@2x.png"/></li>
+                              <li><img src="img/d3@2x.png"/></li>
+                              <li><img src="img/d4@2x.png"/></li>
+                              <li><img src="img/d5@2x.png"/></li>
+                              <li><img src="img/d6@2x.png"/></li>
+                              <li><img src="img/d7@2x.png"/></li>
+                              <li><img src="img/d8@2x.png"/></li>
+                        
+                      </div>   
+				</header>
+				<div class="contain">
+				        <div class="man">
+							<img src="img/m@2x.png"/>
+							<p>男</p>
+						</div>
+						<div class="women">
+							<img src="img/w@2x.png"/>
+							<p>女</p>
+						</div>
+				</div>
+			<script type="text/javascript" charset="utf-8">
+			var flag=true;
+				$('.man').bind('click',function(){
+				    $(this).addClass('active');
+				    $('.women').removeClass('active');
+		     $('.man').find('img').replaceWith("<img src='img/m_pre@2x.png'/>");
+		      $('.women').find('img').replaceWith("<img src='img/w@2x.png'/>");
+		     					  				   							
+				});
+				$('.women').bind('click',function(){
+				    $(this).addClass('active');
+				    $('.man').removeClass('active');
+				 $('.man').find('img').replaceWith("<img src='img/m@2x.png'/>");
+                      $('.women').find('img').replaceWith("<img src='img/w_@2x.png'/>");
+                });
+			</script>
+             	<footer>
+                    <div class="next" onclick="open_fenggeceshi2();">
+                        <img src="img/next@2x.png"/>
+                    </div>
+		
+				</footer>
+		</div>
+</div>
+	<script type="text/javascript">
+		document.getElementById('show-btn').addEventListener('tap', function() {  
+    // 侧滑页面出现右移到显示区域  
+        var main=plus.webview.currentWebview();
+
+    // 主界面右移  
+    main.show('none', 0, function() {  
+        main.setStyle({  
+            left: '70%',  
+          
+            mask: 'rgba(0,0,0,0.5)',  
+            transition: {  
+                duration: 100  
+            }  
+        });  
+    });  
+
+    // 每次移除遮罩点击事件，避免重复添加监听  
+    main.removeEventListener('maskClick');  
+    // 点击关闭遮罩时  
+    main.addEventListener('maskClick', function(){  
+        // 主界面移动到最大显示区域  
+        main.setStyle({  
+            left: '0',  
+            top: '0',  
+            bottom: '0',  
+            mask: 'none',  
+            transition: {  
+                duration: 100  
+            }  
+        });  
+        // 侧滑界面移出显示区域之外  
+
+        // 隐藏侧滑页面，setTimeout避免竞争资源  
+
+           //menu.hide();  
+
+    },false);  
+
+});  
+	</script>
+	</body>
+	</html>

@@ -1,0 +1,61 @@
+@charset 'utf-8';
+* {
+  -webkit-touch-callout: none;
+  /*-webkit-user-select: none;*/
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body,h1,h2,h3,p,ul,ol,form,fieldset,figure {margin: 0;padding: 0;font-size: 17px;}
+div,figure,img,input,button {box-sizing: border-box;}
+body,html{overflow:hidden; height: 100%;/*background:url('../img/cehuaye.png')no-repeat;*/width:100%;background-size:cover;font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei UI", "Microsoft YaHei", SimHei, "\5B8B\4F53", simsun, sans-serif;}
+img {display: block;max-width: 100%;}
+ul,ol{list-style: outside none none;}
+li{display:block;}
+a {text-decoration: none;display: block;}
+/*侧滑*/
+.icon-saoma{background:url('../img/leftbar_1scan@2x.png')no-repeat;background-size:2em;background-position-y:.5em;  }
+.icon-daohang{background:url('../img/leftbar_2navigation@2x.png')no-repeat;background-size:2em;background-position-y:.5em;  }
+.icon-xiaoxi{background:url('../img/leftbar_3news@2x.png')no-repeat;background-size:2em;background-position-y:.5em;  }
+.icon-fengge{background:url('../img/leftbar_4test@2x.png')no-repeat;background-size:2em;background-position-y:.5em;  }
+.icon-shangcheng{background:url('../img/leftbar_5mall@2x.png')no-repeat;background-size:2em;background-position-y:.5em;  }
+.icon-dapei{background:url('../img/leftbar_6special@2x.png')no-repeat;background-size:2em;background-position-y:.5em;  }
+.icon-qianyan{background:url('../img/leftbar_7fashion@2x.png')no-repeat;background-size:2em;background-position-y:.5em;  }
+/*header*/
+header{height:7%;width:100%;position: relative;border-bottom:1px solid silver;}
+header .logo{position: absolute;bottom: 9%;left:6%; width:29px;height:29px;border:1px solid #FFFFFF; border-radius: 50%;background:url('../img/shiyi.png') no-repeat;background-position:-10px -19px;}
+header>img{height: 16px;left: 50%;margin-left: -38.5px;margin-top: -4px;position: absolute;top: 50%;width: 74px;}
+header #shangcheng{bottom: 6px;height: 20px;position: absolute;right: 16px;width: 41px;}
+header #shangcheng>img{width: 100%;height: 100%;}
+/*内容区域*/    
+.contain{width:100%;height:86%;overflow: hidden}
+.contain .index{height: 33.3%}
+.contain .index a{height: 100%;-webkit-tap-highlight-color:rgba(0,0,0,.3);}
+.contain .index a img{height: 100%;width: 100%;}
+.contain .rizhi{border-bottom:5px solid #888;}
+.contain .danpin{border-bottom:5px solid #888;}
+/*footer*/
+footer{position:absolute;bottom: 0;width: 100%; height:7%;border-top: 1px solid #AAAAAA;}
+footer ul li{float:left;width:25%;}
+footer ul li a{padding-left: 25%;}
+footer ul li a img{height: 18px;margin-top: 4px;width: 25px;}
+footer ul li a p{color: #CCC;font-size: 11px;margin-left: 2px;margin-top: 3px;}
+.list-inline>li{padding-left: 17px;}
+
+/*iphone6 plus以上*/
+@media (min-width:414px){
+	header .logo{top:19%;}
+	footer ul li a {padding-top: 8%;}
+}
+/*iphone4*/
+@media (max-width:320px){
+header{height:11%;}
+.contain{height:80%;}
+footer ul li a p {margin-left: 2px}
+footer ul li a img {width: 30px;height: 25px}
+}
+
+

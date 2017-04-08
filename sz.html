@@ -1,0 +1,263 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8" http-equiv="content-type" content="text/html">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>修改个人信息</title>
+    <script>
+        (function (w) {
+            s();
+            var e = ("onorientationchange" in w) ? "orientationchange" : "resize";
+            w.addEventListener(e, function () {
+                setTimeout(function () {
+                    s()
+                }, 200)
+            }, false);
+            function s() {
+                var a = w.innerWidth;
+                var b = 20 * (a / 320);
+                if (b > 40) {
+                    b = 40;
+                }
+                document.querySelector("html").style.fontSize = b + "px";
+            }
+        })(window);
+    </script>
+    <link href="css/public.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="css/cropper.min.css">
+    <link rel="stylesheet" type="text/css" href="css/mui.min.css">
+    <link rel="stylesheet" type="text/css" href="css/mobiscroll_date.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+</head>
+<body class="sz_box">   
+    <div id="box_info_only">
+        <!-- 一级页面-->
+        <div class="all_info">
+            <div class="til_bak person_infi">
+                <p class="back_befo back_ig"><img src="img/nav_fh@2x.png" alt="png" /><span>返回</span></p>
+                                                 个人设置
+            </div>
+            
+            <!--信息修改-->
+            <div class="info_only">
+                <div class="module">
+                    <div class="moduleIner">
+                        <!-- 头像 -->
+                        <div class="hendOnly">
+                            <div id="showResult">
+                                <div id="file_box">
+                                    <input id="image" type="file" accept="image/*" capture="camera" />
+                                </div>
+                                <div id="changeAvatar">
+                                    <img src="img/dlzc/head.png" style="display:block;">
+                                </div>
+                            </div>
+                            <div id="showEdit" style="display: none;width:100%;height: 100%;position: absolute;top:0;left: 0;z-index: 9;">
+                                <div style="width:100%;position: absolute;top:10px;left:0px;">
+                                    <button class="mui-btn" data-mui-style="fab" id='cancleBtn' style="margin-left: 10px;">取消</button>
+                                    <button class="mui-btn" data-mui-style="fab" data-mui-color="primary" id='confirmBtn' style="float:right;margin-right: 10px;">
+                                        确定
+                                    </button>
+                                </div>
+                                <div id="report">
+                                    <img src="img/dlzc/head.png" alt="png" style="width: 400px;height:400px">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 真实姓名 -->
+                        <div class="btInfo trueName">
+                            <div id="true_name">
+                                姓名
+                            </div>
+                            <img src="img/b@2x.png" alt="Alternate Text" />
+                        </div>
+                        
+                        <!-- 手机号 -->
+                        <div class="btInfo numPhone">
+                            <div>
+                                <input id="number_phone" placeholder="手机号"/>
+                            </div>
+                            <img src="img/b@2x.png" alt="Alternate Text" />
+                        </div>
+                        <!-- 密码 -->
+                        <div class="btInfo padWord">
+                            <div>
+                                <label type="text" id="password">******</label>
+                            </div>
+                            <div class="suo"><img src="img/s@2x.png" alt="Alternate Text" />修改密码</div>
+                        </div>
+                        <!-- 邮箱 -->
+                        <div class="btInfo emailAdd">
+                            <div>
+                                <input id="email_id" placeholder="邮箱" />
+                            </div>
+                            <img src="img/b@2x.png" alt="Alternate Text" />
+                        </div>
+                    </div>
+                                      
+                    <div id="footerInfo">
+                        <!-- 性别 -->
+                        <div id="sex_div">
+                            <img src="img/m.png" alt="man" class="man sexOp" />
+                            <img src="img/w.png" alt="woman" class="woman" />
+                        </div>                        
+                        <div class="btInfo cardId">
+                            <input class="idCard" placeholder="身份证号"/>
+                            <img src="img/b@2x.png" alt="Alternate Text" />
+                        </div>
+                        <!-- 出生日期 -->
+                        <div class="btInfo" id="birthDay">
+                            <div>
+                                <input type="text" name="USER_AGE" id="birthday" readonly class="input" value="2016-12-12" data-flag="4" />
+                            </div>
+                            <img src="img/b@2x.png" alt="Alternate Text" />
+                        </div>
+                        <!-- MAC -->
+                        <div class="btInfo macAdd">
+                            <div class="lefRg mag_tp">
+                                <label>MAC:</label>
+                                <label type="text" id="mac">2edfsf</label>
+                            </div>
+                            <img src="img/b@2x.png" alt="Alternate Text" />
+                        </div>
+                        <!-- 不可更改信息 -->
+                        <div class="bumen">
+                            <!-- 部门 -->
+                            <div>
+                                <label>部门:</label>
+                                <label type="text" id="post">总部-网络部</label>
+                            </div>
+                            <!-- 部门领导 -->
+                            <div>
+                                <label>部门领导:</label>
+                                <label type="text" id="lead">萧睿</label>
+                            </div>
+                            <!-- 入职时间 -->
+                            <div>
+                                <label>入职时间:</label>
+                                <label type="text" id="entry_time">2015/12/05</label>
+                            </div>
+                        </div>         
+                    </div>
+                    <!--<div class="personal_info">
+                        <label>个人信息</label>
+                        <img src="img/nav_fh@2x2.png" class="change_info" alt="png" />
+                    </div>-->
+                               
+                </div>
+             
+            </div>
+        </div>
+      
+        <!--个人信息 二级页面 真实姓名-->
+        <div class="true_name">
+            <div class="account_infi">
+                <p class="back_ig three_bck"><img src="img/nav_fh@2x.png" alt="png" /> <span>返回</span></p>
+                真实姓名
+                <input class="only_sub" type="submit" value="保存" data-flag="0" id="saveRealName" />
+            </div>
+            <div class="near_in">
+                <input type="text" id="name_tue" value="大世界" />
+            </div>
+        </div>
+        <!--个人信息 二级页面 手机号码-->
+        <div class="number_phone">
+            <div class="account_infi">
+                <p class="back_ig three_bck"><img src="img/nav_fh@2x.png" alt="png" /> <span>返回</span></p>
+                手机号码
+                <input class="only_sub" type="submit" value="保存" data-flag="1" id="savePhone"/>
+            </div>
+            <div class="near_in">
+                <input type="text" id="phone_number" value="1233221212" />
+            </div>
+        </div>
+        <!--个人信息 二级页面 邮箱地址-->
+        <div class="email">
+            <div class="account_infi">
+                <p class="back_ig three_bck"><img src="img/nav_fh@2x.png" alt="png" /> <span>返回</span></p>
+                邮箱
+                <input class="only_sub" type="submit" value="保存" data-flag="3" id="saveEmail" />
+            </div>
+            <div class="near_in">
+                <input type="text" id="id_email" value="111@126.com" />
+            </div>
+        </div>
+        <!--个人信息 二级页面 身份证-->
+        <div class="CordId">
+            <div class="account_infi">
+                <p class="back_ig three_bck"><img src="img/nav_fh@2x.png" alt="png" /> <span>返回</span></p>
+                身份证号码
+                <input class="only_sub" type="submit" value="保存" data-flag="1" id="saveCard" />
+            </div>
+            <div class="near_in">
+                <input type="text" id="cardNum" value="2323223" />
+            </div>
+        </div>
+        <!--MAC 地址更改 二级页面-->
+        <div class="MAC_info">
+            <div class="account_infi">
+                <p class="back_tx back_ig"><img src="img/nav_fh@2x.png" alt="png" /> <span>返回</span></p>
+                修改MAC地址
+                <input class="only_sub" type="submit" value="保存" data-flag="5" id="saveMac" />
+            </div>
+            <div class="info_only pad_only">
+                <div>
+                    <input type="text" class="psdword" id="mac_id" placeholder="MAC" />
+                </div>
+            </div>
+        </div>
+        <!--密码更改 二级页面-->
+        <div class="password_info">
+            <div class="account_infi">
+                <p class="back_tx back_ig"><img src="img/nav_fh@2x.png" alt="png" /> <span>返回</span></p>
+                修改密码
+                <input class="only_sub" type="submit" value="保存" id="savePass" />
+            </div>
+            <div class="info_only pad_only">
+                <div>
+                    <label for="psd" id="psdold">原始密码:</label>
+                    <input type="password" class="psdword" id="psd" />
+                </div>
+                <div>
+                    <label for="newpsd" id="psdnew">新密码:</label>
+                    <input type="password" class="psdword" id="newpsd" />
+                </div>
+                <div>
+                    <label for="newpsd_agin" id="psdnew2">再次输入新密码: </label>
+                    <input type="password" class="psdword" id="newpsd_agin" />
+                </div>
+            </div>
+        </div>
+        <div class="mask_bg"></div>
+        <div class="dialog_info">
+            <p class="dialog_p">保存成功</p>
+            <input type="button" name="name" id="confirm" value="确定" />
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="js/fastclick.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/lrz6.mobile.min.js"></script>
+    <script type="text/javascript" src="dist/lrz.all.bundle.js"></script>
+    <script type="text/javascript" src="js/cropper.min.js"></script>
+
+    <script src="js/mobiscroll_date.js" charset="gb2312"></script>
+    <script src="js/mobiscroll.js" charset="gb2312"></script>
+
+    <script src="js/setting.js" charset="utf-8"></script>
+
+    <script>
+//        $(function () {
+//            new FastClick(document.body);
+//        });
+        $(function () {
+            $('.person_infi .back_befo').click(function () {
+                window.location.href = "dk.html";
+            });
+        });
+    </script>
+
+</body>
+</html>

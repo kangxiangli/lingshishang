@@ -1,0 +1,127 @@
+	<!DOCTYPE html>
+	<html lang="zh-cn">
+	<head>
+        <meta charset="utf-8">
+      	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>我的</title>
+		<link href="../../css/style_public.css"  rel="stylesheet">
+		<link href="../../css/component.css" rel="stylesheet"/>
+		<link rel="stylesheet" href="../../css/swiper.css">
+		<link href="../../css/style_wode.css" rel="stylesheet"/>
+		<script src="../../js/jquery-2.1.1.min.js"></script>	  
+        <script src="../../js/base.fontsize.js"></script>
+    </head>
+    
+    <body>
+        <div id="st-container" class="st-container" > 
+            <div class="st-pusher">					
+                <div class="contain">
+			        <div class="admin_info">
+								
+						 <div  class="touxiang">
+							 <img src=""/>		
+							 <div id="jingyanzhi"></div>  						  
+						 </div> 
+						
+					</div>
+					<div class="admin_name_level">
+                        <p id="username">未登录</p>
+                        <small id="userStore"></small>     
+                        <small id="usertype"></small>                                                 
+                    </div>
+                    <div class="clearfix admin_jf_cz">
+                        <small class="jifen" ><p id="score">0</p>积分</small>
+                        <small class="chuzhi" onclick=openNewWin('chuzhi','chuzhi.html')>
+                            <p id="Balance">0</p>储值
+                        </small>
+                    </div>
+                    <div class="admin_details swiper-container">
+                        <div class="details_contain swiper-wrapper">
+                            <div class="swiper-slide animatePage1">
+                                <div class="details_tp">                
+                                    <div class="br_right_bottom animate_top">
+                                       <div class="animate_1">
+                                           <img src="../../img/7@2x.png"/><p>每日签到</p>                                        
+                                        </div>
+                                      </div>                              
+                                    <div class="br_right_bottom animate_top">
+                                        <div class="animate_1" >
+                                            <img src="../../img/3@2x.png"/><p>我的钱包</p>                                             
+                                        </div>                                      
+                                    </div>
+                                    <div  class="br_bottom animate_top">
+                                        <div class="animate_1">
+                                            <img src="../../img/5@2x.png"/><p>我的商品</p>                                            
+                                        </div>
+                                    </div>
+                               </div>
+                               <div class="details_bt">
+                                    <div class="br_right animate_bot">
+                                        <div class="animate_2">
+                                              <img src="../../img/4@2x.png"/><p>我的圈子</p>
+                                        </div>
+                                    </div>
+                                    <div  class="br_right animate_bot">
+                                        <div class="animate_2">
+                                            <img src="../../img/9@2x.png"/><p>好友管理</p>
+                                        </div>
+                                    </div>
+                                    <div class="br_none animate_bot">
+                                        <div class="animate_2" >
+                                             <img src="../../img/6@2x.png"/><p>消息通知</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide ">
+                                <div class="details_tp">
+                                    <div class="br_right_bottom animate_next animate_top">
+                                        <div class="animate_1" onclick="openNewWin('chuanyishuju.html')">
+                                             <img src="../../img/1@2x.png"/><p>穿衣数据</p></div>
+                                        </div>
+                                    <div class="br_right_bottom animate_next animate_top">
+                                        <div class="animate_1" id="open_fenggeceshi" onclick="openNewWin('../../fenggeceshi.html',{type:0});">
+                                            <img src="../../img/2@2x.png"/><p>测试报告</p>
+                                        </div>
+                                        </div>
+                                    <div class="br_bottom animate_next animate_top">
+                                        <div class="animate_1" onclick="openNewWin('wenzhangguanli.html');">
+                                              <img src="../../img/8@2x.png"/><p>发布文章</p>
+                                        </div>
+                                    </div>                            
+                               </div>
+                               <div class="details_bt">
+                                    <div class="br_right animate_next_bt animate_bot">
+                                        <div class="animate_2">
+                                            <img src="../../img/10@2x.png"/><p>我的任务</p></div>
+                                        </div>
+                                    <div class="br_right animate_next_bt animate_bot">
+                                        <div class="animate_2">
+                                              <img src="../../img/11@2x.png"/><p>我的收益</p>
+                                        </div>
+                                    </div>
+                                   <div class="br_none animate_next_bt animate_bot">
+                                        <div class="animate_2" onclick="openNewWin('guanyu.html')">
+                                          <img src="../../img/12@2x.png"/><p>关于我们</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>   
+            </div>
+        </div>
+    </body>
+<script src="../../js/mui.min.js"></script>
+<script src="../../js/lss_global.js"></script> 
+<script src="../../js/circle-progress.js"></script>
+<script src="../../js/swiper.min.js"></script>
+<script src="../../js/lss_wode.js"></script>    
+<script type="text/javascript">
+</script>
+	
+</html>

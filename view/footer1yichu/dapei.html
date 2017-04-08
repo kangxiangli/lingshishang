@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=640,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../css/style_header.css" />
+		<link rel="stylesheet" href="../../css/style_dapei.css">
+		<link rel="stylesheet" href="../../css/reset.css" />
+		<link rel="stylesheet" href="../../css/pullToRefresh.css" />
+		<link rel="stylesheet" href="../../css/swiper.css">
+		<script src="../../js/base.fontsize.js"></script>
+		<title>我的搭配</title>
+	</head>
+
+	<body>
+		<div id="pop-up_box">
+			<ul>
+				<li id="wddp" class="border_rg">我的单品</li>
+				<li id="scdp" class="border_rg">商城单品</li>
+				<li id="close">取消</li>
+			</ul>
+		</div>
+		<div class="pageone" style="overflow: hidden;">
+			<div class="header">
+				<div class="contain">
+					<div class="back back_dapei" onclick="closeWin();">
+						<a href=""><img src="../../img/return@2x.png" alt="">返回</a>
+					</div>
+					<span class="title">我的搭配</span>
+					<div class="ok selection"><img id="open_save" src="../../img/cjdp@2x.png" alt="">
+					</div>
+					<div class="save">
+						<ul>
+							<li id="save">保存</li>
+							<li class="cancel">取消</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="canvasBox contain">
+				<canvas id="c"></canvas>
+				<!--<div class="zuobiao" style="display:none;">
+					X坐标<input id="xval" name="x" type="text" value="0" /> Y坐标<input id="yval" name="y" type="text" value="0" /> 角度：
+					<input id="role" type="text"> 拉伸宽度：<input id="kuan" type="text"/>
+					保存截图：<input type="button" id="save" name="save" value="保存">
+				</div>-->
+			</div>
+			<div class="biaoyu">
+				<p>你的作品将引领时尚潮流</p>
+			</div>
+			<footer>
+				<div class="imgBox sucaibox">
+					<div class="clearfix sucai_img"></div>
+				</div>
+				<div class="imgBox back-img">
+					<div class="clearfix img-box"></div>
+				</div>
+				<div class="addtxt">
+					<textarea type="text" placeholder="请输入要添加的文字" class="text"></textarea>&nbsp;<span class="addText"><img src="../../img/duigou_pre@2x.png" /></span>
+				</div>
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<li class="active swiper-slide addEle">
+							<img src="../../img/tab_1tj_pre_@2x.png" />
+							<p>添加</p>
+						</li>
+						<li class="remove swiper-slide">
+							<img src="../../img/tab_2sc_pre_@2x.png" />
+							<p>删除</p>
+						</li>
+						<li class="fanzhuan swiper-slide">
+							<img src="../../img/tab_3xz_pre_@2x.png" />
+							<p>翻转</p>
+						</li>
+						<li class="swiper-slide lock">
+
+							<img src="../../img/tab_4sd_pre_@2x.png" />
+							<p>锁定</p>
+
+						</li>
+						<li class="txt swiper-slide">
+
+							<img src="../../img/tab_5wz_pre_@2x.png" />
+							<p>文字</p>
+
+						</li>
+						<li class="swiper-slide sucai">
+
+							<img src="../../img/tab_6sc_pre_@2x.png" />
+							<p>素材</p>
+
+						</li>
+						<li class="addBackground swiper-slide">
+							<img src="../../img/tab_7bj_pre_@2x.png" />
+							<p>背景</p>
+
+						</li>
+						<li class="swiper-slide" id="shangyi">
+
+							<img src="../../img/tab_8sy_pre_@2x.png" />
+							<p>上移</p>
+
+						</li>
+						<li class="swiper-slide" id="xiayi">
+							<img src="../../img/tab_9xy_pre_@2x.png" />
+							<p>下移</p>
+
+						</li>
+					</div>
+				</div>
+
+				<!-- Initialize Swiper -->
+			</footer>
+		</div>
+	</body>
+	<script src="../../js/swiper.min.js"></script>
+	<script>
+		var swiper = new Swiper('.swiper-container', {
+			pagination: '.swiper-pagination',
+			slidesPerView: 7,
+			paginationClickable: true,
+			spaceBetween: 15,
+			freeMode: false,
+		});
+	</script>
+
+	<script src="../../js/jquery-2.1.1.min.js"></script>
+	<script src="../../js/mui.js"></script>
+	<script src="../../js/lss_global.js"></script>
+	<script src="../../js/underscore.js"></script>
+	<script src="../../js/fabric_with_gestures.js"></script>
+	<script src="../../js/dapeicanvas.js"></script>
+
+	<script>
+	</script>
+
+</html>
